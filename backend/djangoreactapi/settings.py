@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'post',
     'rest_framework', #추가
     'corsheaders', # 추가
-
+    'themovieDB', # 추가
 ]
 
 MIDDLEWARE = [
@@ -90,7 +90,7 @@ WSGI_APPLICATION = 'djangoreactapi.wsgi.application'
 
 DATABASES = {
     'default': {    #변경
-        'ENGINE': 'mysql.connector.django', #1
+        'ENGINE': 'django.db.backends.mysql', #1
         'NAME': 'otte_dev', #2
         'USER': 'team1', #3                      
         'PASSWORD': 'team1',  #4              
