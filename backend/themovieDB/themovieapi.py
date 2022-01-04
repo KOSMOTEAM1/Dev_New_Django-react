@@ -12,11 +12,11 @@ cur = conn.cursor()
 def crawling(start_id, finish_id):
 
     for i in range(start_id, finish_id):
-        req_url = "https://api.themoviedb.org/3/movie/" + str(i) + \
+        url = "https://api.themoviedb.org/3/movie/" + str(i) + \
             "?api_key=5605da5e202977c4ef4b7125796e1173&language=ko-KR"
         try:
             # [데이터 요청]
-            r = requests.get(req_url)
+            r = requests.get(url)
 
             # [JSON 형태로 응답받은 데이터를 딕셔너리 데이터로 변환]
             items = r.json()
@@ -43,5 +43,6 @@ def crawling(start_id, finish_id):
             pass
         finally:
             print('완료')
-            #cur.close()
-            #conn.close()
+""" 
+cur.close()
+conn.close() """

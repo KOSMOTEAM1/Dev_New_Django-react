@@ -1,8 +1,7 @@
 from django.test import TestCase
 from unittest import mock
 from datetime import datetime
-
-from .models import themoviedb
+from .models import themovieDB
 
 class themovieModelTest(TestCase):
     def test_default_values(self):
