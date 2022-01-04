@@ -1,35 +1,35 @@
-//frontend/src/app.js
-import React, { Component } from 'react';
+import React from "react";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
-class App extends Component {
-    state = {
-        posts: []
-    };
+//Header
+import Header from "./Components/header/Header";
+//Footer
+import Footer from "./Components/footer/Footer";
+//Routes
+import Table from "./Routes/Table";
+import Community from "./Routes/Community";
+import Home from "./Routes/Home";
 
-    async componentDidMount() {
-        try {
-            const res = await fetch('http://127.0.0.1:8000/api/');
-            const posts = await res.json();
-            this.setState({
-                posts
-            });
-        } catch (e) {
-            console.log(e);
-        }
-    }
+//import Sidebar from "./Components/Sidebar/Sidebar";
 
-    render() {
-        return (
-            <div>
-                {this.state.posts.map(item => (
-                    <div key={item.id}>
-                        <h1>{item.title}</h1>
-                        <span>{item.content}</span>
-                    </div>
-                ))}
-            </div>
-        );
-    }
+//css
+import "./source/css/style.css";
+
+function App() {
+  return (
+    <>
+      <Router>
+        <Header />
+        <Switch>
+          <Route path="/Community" component={Community} />
+          <Route path="/Table" component={Table} />
+          <Route exact path="/" component={Home} />
+          <Route render={() => <div className="error">Error</div>} />
+        </Switch>
+        <Footer />
+      </Router>
+    </>
+  );
 }
 
 export default App;
