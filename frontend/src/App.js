@@ -2,9 +2,9 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 //Header
-import Header from "./Components/header/Header";
+import Header from "./components/header/Header";
 //Footer
-import Footer from "./Components/footer/Footer";
+import Footer from "./components/footer/Footer";
 //Routes
 import Table from "./Routes/Table";
 import Community from "./Routes/Community";
