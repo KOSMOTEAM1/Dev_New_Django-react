@@ -21,6 +21,9 @@ function Header() {
                   <li>
                     <Link to={"/Community"}>자유게시판</Link>
                   </li>
+                  <li>
+                    <Link to={"/Community2"}>자유게시판(작업중)</Link>
+                  </li>
                 </ul>
               </nav>
             </div>

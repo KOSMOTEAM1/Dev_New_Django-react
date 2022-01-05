@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'rest_framework', #추가
     'corsheaders', # 추가
     'themovieDB', # 추가
+    'board', # 추가
 ]
 
 MIDDLEWARE = [
