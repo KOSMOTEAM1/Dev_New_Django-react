@@ -11,7 +11,7 @@ logger = logging.getLogger(__name__)
 
 
 class ListBoard(generics.ListCreateAPIView):
-    queryset = Board.objects.all()
+    queryset = Board.objects.order_by('-id')
     serializer_class = BoardSerializer
 
 

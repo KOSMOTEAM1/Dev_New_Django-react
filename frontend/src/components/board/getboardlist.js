@@ -4,28 +4,6 @@ import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 
 class getboard_org extends Component {
-    submitClick = (e) => {
-        this.id= $('#id').val();
-        console.log($('#id').val()+'버튼 함수 발생')
-        axios.delete('http://127.0.0.1:8000/board/'+this.id+'/')
-    }
-
-    detailClick = (e) => {
-        this.id= $('#id').val();
-        this.title = $('#title').val();
-        this.username = $('#username').val();
-        this.content = $('#content').val();
-        this.readcount = $('#readcount').int();
-        this.writedate = $('#writedate').val();
-        console.log(this.readcount);
-        axios.put('http://127.0.0.1:8000/board/'+this.id+'/', {
-            title: this.title,
-            username: this.username,
-            content: this.content,
-            readcount: this.readcount+1,
-            writedate: this.writedate
-        })
-    }
 
     state = {
         posts: []
@@ -63,8 +41,6 @@ class getboard_org extends Component {
                                     <input type="hidden" id="content" placeholder={item.content} defaultValue={item.content}></input>
                                 </div>
                                 <div class="card-footer">
-                                    <button>상세조회</button>
-                                    <button type="submit" onClick={(e) => this.submitClick(e)}>삭제</button>
                                 </div>
                             </Link>
                             </div>

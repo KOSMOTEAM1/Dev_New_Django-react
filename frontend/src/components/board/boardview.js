@@ -57,7 +57,7 @@ class boardview extends Component {
             <div>
                 <div class="container">
 			    <div class="row d-flex justify-content-center"></div>
-                <div class="col-lg-8">
+                <div class="col-lg-12">
                 <div class="card">
                 <div>
                     <Boarddetail id={this.props.match.params.id}/>
