@@ -6,5 +6,6 @@ from . import views
 urlpatterns = [
     path('', views.Listinsertcnt.as_view()),
     path('<int:pk>/', views.Detailinsertcnt.as_view()),
-    path('today/', views.Sortinsertcnt.as_view()),
+    path('today/', views.Sortinsertcnt_today.as_view()),
+    path('yesterday/', views.Sortinsertcnt_yesterday.as_view()),
 ]

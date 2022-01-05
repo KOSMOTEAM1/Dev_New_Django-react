@@ -14,6 +14,8 @@ import Community from "./Routes/Community";
 import Community2 from "./components/board/getboard";
 import Home from "./Routes/Home";
 import insertcnt from "./Routes/insertcnt";
+import result_today from "./Routes/result_today";
+import result_yesterday from "./Routes/result_yesterday";
 
 //Routes/board
 import insertboard from "./components/board/insertboard";
@@ -39,6 +41,8 @@ function App() {
           <Route path="/Community" component={Community} />
           <Route exact path="/Table" component={Table} />
           <Route path="/insertcnt" component={insertcnt} />
+          <Route path="/result_today" component={result_today} />
+          <Route path="/result_yesterday" component={result_yesterday} />
           <Route exact path="/" component={Home} />
           <Route render={() => <div className="error">Error</div>} />
         </Switch>

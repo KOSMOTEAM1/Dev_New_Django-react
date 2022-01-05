@@ -7,6 +7,7 @@ from rest_framework.response import Response
 from .models import insertcnt
 from .serializers import insertcntSerializer
 from rest_framework.views import APIView
+from datetime import datetime, timedelta, time, date
 ##################################################################
 
 
@@ -32,13 +33,35 @@ class Detailinsertcnt(generics.RetrieveUpdateDestroyAPIView):
 #       return Response(serializer.data)
 ##################################################################
 
-class Sortinsertcnt(APIView):
+class Sortinsertcnt_today(APIView):
+    #today = datetime.today().date()
+    #yesterday = date.today() - timedelta(days=1)
+    #lastweek = 
     def get_object(self, sysdate):
         try:
-            return insertcnt.objects.filter(sysdate='2022-01-05')
+            return insertcnt.objects.filter(sysdate=date.today())
         except insertcnt.DoesNotExist:
             raise Http404
     def get(self, format=None):
-        insertcnt = self.get_object('2022-01-05')
+        insertcnt = self.get_object('')
         serializer_class = insertcntSerializer(insertcnt, many=True)
         return Response(serializer_class.data)
+
+class Sortinsertcnt_yesterday(APIView):
+    #today = datetime.today().date()
+    #yesterday = date.today() - timedelta(days=1)
+    #lastweek = 
+    def get_object(self, sysdate):
+        try:
+            return insertcnt.objects.filter(sysdate=date.today() - timedelta(days=1))
+        except insertcnt.DoesNotExist:
+            raise Http404
+    def get(self, format=None):
+        insertcnt = self.get_object('')
+        serializer_class = insertcntSerializer(insertcnt, many=True)
+        return Response(serializer_class.data)
+
+
+
+
+        
