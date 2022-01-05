@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'post',
+    'insertcnt',
     'rest_framework', #추가
     'corsheaders', # 추가
     'themovieDB', # 추가

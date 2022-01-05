@@ -13,6 +13,7 @@ import Table from "./Routes/Table";
 import Community from "./Routes/Community";
 import Community2 from "./components/board/getboard";
 import Home from "./Routes/Home";
+import insertcnt from "./Routes/insertcnt";
 
 //Routes/board
 import insertboard from "./components/board/insertboard";
@@ -37,6 +38,7 @@ function App() {
         <Switch>
           <Route path="/Community" component={Community} />
           <Route exact path="/Table" component={Table} />
+          <Route path="/insertcnt" component={insertcnt} />
           <Route exact path="/" component={Home} />
           <Route render={() => <div className="error">Error</div>} />
         </Switch>

@@ -7,4 +7,5 @@ urlpatterns = [
     path('api/', include('post.urls')),
     path('apimovie/', include('themovieDB.urls')),
     path('board/', include('board.urls')),
+    path('insertcnt/', include('insertcnt.urls')),
 ]
