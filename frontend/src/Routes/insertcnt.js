@@ -14,7 +14,7 @@ function insertcnt() {
               <div className="row">
                 <div className="col-lg-8 col-md-8 col-sm-8">
                   <div className="section-title">
-                    <h4>This is Community</h4>
+                    <h4>더미데이터를 입력시켜주세요</h4>
                     <Insertcnt />
                   </div>
                 </div>
