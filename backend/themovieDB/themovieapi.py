@@ -20,15 +20,14 @@ def crawling(start_id, finish_id):
 
             # [JSON 형태로 응답받은 데이터를 딕셔너리 데이터로 변환]
             items = r.json()
-
+            print(items['title'])
             data = []
 
             data.append([items['adult'], items['id'], items['imdb_id'], items['original_language'], items['original_title'],
-                         items['overview'], items['release_date'], items['runtime'], items['status'], items['title']])
-            sql = "insert into themoviedb_movie(adult, themovieid, imdb_id, original_language, original_title, overview, release_date, runtime, status, title) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s);"
+                         items['overview'], items['popularity'], items['poster_path'], items['release_date'], items['runtime'], items['status'], items['title']])
+            sql = "insert into themoviedb_movie(adult, themovieid, imdb_id, original_language, original_title, overview, popularity, poster_path, release_date, runtime, status, title) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s);"
             cur.executemany(sql, data)
-            result = cur.fetchall()
-            print(result)  # 값 보기
+            
             """ for n in range(len(items['genres'])):   
                         genreid = items['genres'][n]['id']
                         genrename = items['genres'][n]['name']
@@ -42,6 +41,7 @@ def crawling(start_id, finish_id):
             print(e)
             pass
         finally:
+            print(i)
             print('완료')
 """ 
 cur.close()

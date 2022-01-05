@@ -1,39 +1,63 @@
+from typing_extensions import runtime
 import requests
 from bs4 import BeautifulSoup
+import pymysql
+import requests
+from urllib.error import HTTPError
+import re
+
+conn = pymysql.connect(host='192.168.0.41', port=3306,
+                       user='team1', password='team1', db='otte_dev')
+cur = conn.cursor()
 
 def get_movie_point(start_id, finish_id):
     data = []
     for i in range(start_id, finish_id):
         url = 'https://movie.naver.com/movie/bi/mi/basic.naver?code='+str(i)
-        r = requests.get(url)
-        bs = BeautifulSoup(r.text, "html.parser")
-        print(bs)
-"""         trs = bs.select("table.list_netizen > tbody > tr")
-        for tr in trs:  #다수의 평점
-    
-            number = tr.select_one("td.ac.num").text
-            writer = tr.select_one("td.num > a.author").text
-            tr_data = tr.select_one("td.title")
-            title = tr_data.select_one("a").text
 
+        try:
+            r = requests.get(url)
+            soup = BeautifulSoup(r.text, "html.parser")
 
-            point = tr_data.select_one("div.list_netizen_score > em").text
+            naverid = i
+            navertitle = soup.select_one("h3.h_movie a")
+            naverruntime = soup.select_one("dl.info_spec dd p span:nth-of-type(3)")
+            rnaverscore = soup.select_one("div.main_score div.score a div.star_score span.st_off span.st_on")
+            # (4) skip 처리-1: 평점이 없으면 넘어간다.
+            non_score = "관람객 평점 없음"
+            if (rnaverscore == None) or (non_score in rnaverscore.text):
+                continue
+            # (4-1) score에서 점수 부분만 남기고 숫자로 변환한다.
+            naverscore = rnaverscore.text
+            naverscore = float(naverscore[6:11])
+            
+            
+            
+            nruntime=naverruntime.text[:-2] # 런타임 숫자형으로 정제
 
-            # td class="title" 태그에서 a, div, br 태그 제거
-            # extract() 함수는 태그와 태그의 내용까지 모두 제거
-            [x.extract() for x in tr_data.select("a")]
-            [x.extract() for x in tr_data.select("div")]
-            [x.extract() for x in tr_data.select("br")]
+            sel_sql = "select otteid from themoviedb_movie where title = %s;"
+            cur.execute(sel_sql,navertitle.text)
+            otteids = cur.fetchall()
+            print(otteids)
+            otteid = 0
 
+            for n in otteids:
+                sel_sql = "select runtime, otteid from themoviedb_movie where otteid = %s;"
+                cur.execute(sel_sql,n)
+                result = cur.fetchall()
+                
+                if int(nruntime) == result[0][0]:
+                    otteid = n
+            
+            print(otteid)
+            data.append([int(naverid), naverscore, int(otteid[0])])
+            print(data)
+            updatesql = "UPDATE themoviedb_movie SET naverid = %s, naverscore = %s WHERE otteid = %s;"
+            cur.executemany(updatesql, data)
 
-            content = tr_data.text.strip()
-            data.append({
-                "number": number,
-                "movie": title,
-                "point": point,
-                "writer": writer,
-                "contents": content,
-            })
-    return data
-
-print(get_movie_point(1,1)) """
+            conn.commit()
+        except:
+            pass
+        finally:
+            print(i)
+            print('번 성공!')
