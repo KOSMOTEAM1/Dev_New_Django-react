@@ -24,7 +24,9 @@ def postersaver(start_id, finish_id):
             else:
                 url = "https://image.tmdb.org/t/p/original"+path
                 r = requests.get(url)
-                file = open("D:\otteimgDB"+path,"wb")
+                filename = "\\" + str(i)
+                print(filename)
+                file = open("D:\otteimgDB"+filename+".jpg","wb")
                 file.write(r.content)
                 file.close()
     except:
