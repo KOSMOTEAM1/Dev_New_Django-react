@@ -1,3 +1,3 @@
 from themovieapi import crawling
 
-crawling(602382, 634660)
+crawling(602400, 602700)

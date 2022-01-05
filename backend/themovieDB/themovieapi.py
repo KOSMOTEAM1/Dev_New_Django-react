@@ -20,20 +20,23 @@ def crawling(start_id, finish_id):
 
             # [JSON 형태로 응답받은 데이터를 딕셔너리 데이터로 변환]
             items = r.json()
-            print(items['title'])
-            data = []
 
-            data.append([items['adult'], items['id'], items['imdb_id'], items['original_language'], items['original_title'],
-                         items['overview'], items['popularity'], items['poster_path'], items['release_date'], items['runtime'], items['status'], items['title']])
-            sql = "insert into themoviedb_movie(adult, themovieid, imdb_id, original_language, original_title, overview, popularity, poster_path, release_date, runtime, status, title) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s);"
-            cur.executemany(sql, data)
-            
-            """ for n in range(len(items['genres'])):   
-                        genreid = items['genres'][n]['id']
-                        genrename = items['genres'][n]['name']
-                        genres = [genreid,genrename]
-                    print(genres) """
-            
+            if items['adult'] == False:
+                print(items['title'])
+                data = []
+
+                data.append([items['adult'], items['id'], items['imdb_id'], items['original_language'], items['original_title'],
+                            items['overview'], items['popularity'], items['poster_path'], items['release_date'], items['runtime'], items['status'], items['title']])
+                sql = "insert into themoviedb_movie(adult, themovieid, imdb_id, original_language, original_title, overview, popularity, poster_path, release_date, runtime, status, title) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s);"
+                cur.executemany(sql, data)
+                
+                """ for n in range(len(items['genres'])):   
+                            genreid = items['genres'][n]['id']
+                            genrename = items['genres'][n]['name']
+                            genres = [genreid,genrename]
+                        print(genres) """
+            else:
+                pass            
             conn.commit()
         except KeyError:
             pass
