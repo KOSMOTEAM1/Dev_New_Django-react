@@ -1,4 +1,4 @@
-import adminContents from "../components/adminContents";
+//import adminContents from "../components/adminContents";
 
 const Graph = () => {
     return (
