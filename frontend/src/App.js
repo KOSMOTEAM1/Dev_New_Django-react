@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-
+import './App.css';
 //Header
 import Header from "./components/header/Header";
 //Footer
@@ -10,10 +10,14 @@ import Table from "./Routes/Table";
 import Community from "./Routes/Community";
 import Home from "./Routes/Home";
 
+import adminHeader from "./components/adminHeader";
+import Graph from "./Routes/Graph";
+
 //import Sidebar from "./Components/Sidebar/Sidebar";
 
 //css
 import "./source/css/style.css";
+import Contents from "./components/adminContents";
 
 function App() {
   return (
@@ -27,6 +31,10 @@ function App() {
           <Route render={() => <div className="error">Error</div>} />
         </Switch>
         <Footer />
+      </Router>
+      <Router>
+        <adminHeader />
+        <Route path="/admin1" component={Graph} />
       </Router>
     </>
   );
