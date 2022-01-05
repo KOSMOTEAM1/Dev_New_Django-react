@@ -19,7 +19,8 @@ class movie(models.Model):
     title = models.CharField(max_length=200,null=True)
     naverid = models.IntegerField(null=True)
     naverscore = models.FloatField(null=True)
-    
+    imdbscore = models.FloatField(null=True)
+# 동적쿼리
 
 def __str__(self):
     return self.title
