@@ -1,3 +1,4 @@
 from moviegenres import genrescrawling
 
-genrescrawling(602400, 602420)
+#themovieid
+genrescrawling(602410, 624649)

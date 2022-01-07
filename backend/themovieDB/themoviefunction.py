@@ -1,4 +1,3 @@
 from themovieapi import crawling
-
-#crawling(602400, 602700)
-crawling(602400, 602410)
+#완료
+#crawling(602410, 624649)
