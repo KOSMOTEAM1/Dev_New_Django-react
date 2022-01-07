@@ -13,7 +13,7 @@ class movie(models.Model):
     overview = models.TextField(null=True)
     popularity = models.FloatField(null=True)
     poster_path = models.CharField(max_length=100,null=True)
-    release_date = models.CharField(max_length=10, null=True)
+    release_date = models.DateField(null=True)
     runtime = models.IntegerField(null=True)
     status = models.CharField(max_length=30,null=True)
     title = models.CharField(max_length=300,null=True)

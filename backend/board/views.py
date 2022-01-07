@@ -28,7 +28,8 @@ class DetailBoard(generics.RetrieveUpdateDestroyAPIView):
 class ListComment(generics.ListCreateAPIView):
     queryset = comment.objects.all()
     serializer_class = commentSerializer
-
+    def post(self, request, *args, **kwargs):
+        return self.create(request, *args, **kwargs)
 
 """ class DetailComment(APIView):
     def get(request, pk):

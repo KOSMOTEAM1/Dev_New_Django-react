@@ -5,3 +5,12 @@ class PostSerializer(serializers.ModelSerializer):
     class Meta:
         fields = ('__all__')
         model = movie
+
+
+class RecentSerializer(serializers.ModelSerializer):
+    class Meta:
+        fields = (
+            'otteid',
+            'title',
+        )
+        model = movie
