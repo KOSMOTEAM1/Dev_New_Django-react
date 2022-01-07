@@ -3,13 +3,12 @@ import json
 import requests
 from urllib.error import HTTPError
 from datetime import datetime
-# -*- encoding: cp949 -*-
 
 conn = pymysql.connect(host='192.168.0.41', port=3306,
                        user='team1', password='team1', db='otte_dev')
 cur = conn.cursor()
 
-def crawling(start_id, finish_id):
+def genrescrawling(start_id, finish_id):
 
     for i in range(start_id, finish_id):
         url = "https://api.themoviedb.org/3/movie/" + str(i) + \
@@ -21,19 +20,27 @@ def crawling(start_id, finish_id):
             # [JSON 형태로 응답받은 데이터를 딕셔너리 데이터로 변환]
             items = r.json()
 
-            if items['adult'] == False:
+            if items['genres']:
                 print(items['title'])
-                data = []
+                sel_sql = 'select otteid from themoviedb_movie where themovieid = %s;'
+                cur.execute(sel_sql,i)
+                otteid = cur.fetchone()
+                otteid = int(otteid[0])
+                print(otteid)
 
-                data.append([items['adult'], items['id'], items['imdb_id'], items['original_language'], items['original_title'],
-                            items['overview'], items['popularity'], items['poster_path'], items['release_date'], items['runtime'], items['status'], items['title']])
-                sql = "insert into themoviedb_movie(adult, themovieid, imdb_id, original_language, original_title, overview, popularity, poster_path, release_date, runtime, status, title) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s);"
-                cur.executemany(sql, data)
-                
-                
+                for n in range(len(items['genres'])):   
+                    genredata = []
+                    genreid = items['genres'][n]['id']
+                    genredata.append([otteid, genreid])
+                    print('@@@@@@@@')
+                    print(genredata)
+                    sql = 'INSERT INTO themoviedb_moviegenres(otteid,id) values(%s,%s)'
+                    cur.executemany(sql,genredata)
+                    conn.commit()
+                    
             else:
                 pass            
-            conn.commit()
+            
         except KeyError:
             pass
         except HTTPError as e:
