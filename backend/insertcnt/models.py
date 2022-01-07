@@ -11,3 +11,14 @@ class insertcnt(models.Model):
     def __str__(self):
         """A string representation of the model."""
         return self.title
+class insertcntrank(models.Model):
+    text = models.TextField(max_length=200)
+    #rank = models.DecimalField(max_digits=3,decimal_places=2)
+    def __str__(self):
+        """A string representation of the model."""
+        return self.title
+
+#class insertcnt_top(models.Model):
+#    sysdate = models.DateField(auto_now='sysdate')
+#    systime = models.TimeField(auto_now='sysdate')
+#    text = models.ForeignKey('insercnt.text', related_name='text', on_delete=models.CASCADE)
