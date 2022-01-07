@@ -14,5 +14,5 @@ class DetailPost(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = PostSerializer
 
 class RecentPost(generics.ListCreateAPIView):
-    queryset = movie.objects.filter(status = 'Released').values('otteid','title').order_by('-release_date')[:10]
+    queryset = movie.objects.filter(status = 'Released').values('otteid','title').order_by('-release_date')[:100]
     serializer_class = RecentSerializer
