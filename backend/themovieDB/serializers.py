@@ -7,7 +7,7 @@ class PostSerializer(serializers.ModelSerializer):
         model = movie
 
 
-class RecentSerializer(serializers.ModelSerializer):
+class SortSerializer(serializers.ModelSerializer):
     class Meta:
         fields = (
             'otteid',
