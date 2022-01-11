@@ -6,7 +6,11 @@ function Header() {
       <div className="container">
         <div className="row">
           <div className="col-lg-2">
-            <div className="header__logo"></div>
+            <div className="header__logo">
+              <Link to={"/"}>
+                <img src="/logo.png"></img>
+              </Link>
+            </div>
           </div>
           <div className="col-lg-8">
             <div className="header__nav">
@@ -33,15 +37,12 @@ function Header() {
           </div>
           <div className="col-lg-2">
             <div className="header__right">
-              <a href="/search/" className="search-switch">
-                <span className="icon_search"></span>
-              </a>
-              <a href="../member/profile">
+              <Link to="../member/profile">
                 <span className="icon_profile"></span>
-              </a>
-              <a href="../user/logout">
+              </Link>
+              <Link to="../user/logout">
                 <span className="icon_close_alt"></span>
-              </a>
+              </Link>
             </div>
           </div>
         </div>

@@ -92,13 +92,15 @@
   padding: 56px 0;
 }
 .s_tit1 {
-  font-size: 30px;
+  font-size: 20px;
   line-height: 38px;
-  color: #333;
+  color: #ffffff;
   font-weight: 500;
   letter-spacing: -0.03em;
-  margin-bottom: 27px;
-  margin-left: -3px;
+  margin-bottom: 2px;
+  margin-left: 60px;
+  display: flex;
+  justify-content: left;
 }
 .input_ty1 {
   font-size: 15px;
@@ -118,9 +120,11 @@
 
 /*테이블*/
 .table_ty1 {
-  border-top: 2px solid #2c2c92;
   table-layout: fixed;
   position: relative;
+  display: flex;
+  margin: 10px 60px;
+  justify-content: left;
 }
 
 .table_ty1 tr th {
@@ -170,8 +174,19 @@
 }
 
 .table_ty2 {
-  border: 1px solid #ddd;
-  margin-top: 9px;
+  border: 3px solid #fff;
+  /* 표테두리 */
+  width: 1000px;
+  /* 표크기*/
+  margin: 10px 60px;
+  /* 표 여백 */
+  text-align: center;
+}
+.table_ty2 th {
+  /* 표 헤더 */
+  background: rgb(170, 42, 42);
+  color: #bcbcbc;
+  border-right: 1px solid #ddd;
 }
 .table_ty2 tr {
   background: #fff;
@@ -180,11 +195,15 @@
   background: #f4f7f9;
 }
 .table_ty2 tr td {
+  /* 표 내부 */
+  border-bottom: 1px solid #ddd;
   border-right: 1px solid #ddd;
-  padding: 16px 0px 14px;
+  padding: 10px 0px 10px;
   position: relative;
   font-size: 16px;
-  color: #606060;
+
+  justify-content: center;
+  /* color: #606060; */
 }
 .table_ty2 tr td:after {
   position: absolute;
@@ -235,7 +254,8 @@
   overflow: hidden;
 }
 .table_ty2 tr td:first-child {
-  text-align: left;
+  text-align: center;
+  width: 200px;
 }
 .table_ty3 {
   text-align: left;

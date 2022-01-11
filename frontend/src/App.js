@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import './App.css';
+import "./App.css";
 
 //Header
 import Header from "./components/header/Header";
@@ -27,7 +27,13 @@ import Graph from "./Routes/Graph";
 
 //css
 import "./source/css/style.css";
-//import Contents from "./components/adminContents";
+//import "./source/css/bootstrap.min.css";
+import "./source/css/elegant-icons.css";
+import "./source/css/font-awesome.min.css";
+import "./source/css/nice-select.css";
+//import "./source/css/owl.carousel.min.css";
+import "./source/css/plyr.css";
+import "./source/css/slicknav.min.css";
 
 function App() {
   return (
@@ -36,7 +42,11 @@ function App() {
         <Header />
         <Route exact path="/Community2" component={Community2} />
         <Route exact path="/Community2/Insert" component={insertboard} />
-        <Route exact path="/Community2/boarddetail/:id" component={boarddetail} />
+        <Route
+          exact
+          path="/Community2/boarddetail/:id"
+          component={boarddetail}
+        />
         <Switch>
           <Route path="/Community" component={Community} />
           <Route exact path="/Table" component={Table} />

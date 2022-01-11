@@ -8,6 +8,7 @@ import {
   CartesianGrid,
   Tooltip,
   Legend,
+  ResponsiveContainer,
 } from "recharts";
 // import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
@@ -67,29 +68,47 @@ class floatingPopulationList extends Component {
       //         <Bar dataKey="uv" fill="#8884d8" />
       //         </BarChart>
       // </ResponsiveContainer>
-      <LineChart
-        width={1000}
-        height={600}
-        data={this.state.responseFPList.data}
-        margin={{
-          top: 30,
-          right: 60,
-          left: 40,
-          bottom: 10,
+      <div
+        style={{
+          paddingBottom: "56.25%" /* 16:9 */,
+          position: "relative",
+          //height: 200,
+          //width: 500,
         }}
       >
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="name" />
-        <YAxis dataKey="coin_counter" />
-        <Tooltip />
-        <Legend />
-        <Line
-          type="monotone"
-          dataKey="coin_counter"
-          stroke="#8884d8"
-          activeDot={{ r: 8 }}
-        />
-      </LineChart>
+        <div
+          style={{
+            position: "absolute",
+            top: "0",
+            left: "0",
+            width: "100%",
+            height: "100%",
+          }}
+        >
+          <ResponsiveContainer>
+            <LineChart
+              data={this.state.responseFPList.data}
+              margin={{
+                top: 10,
+                right: 10,
+                left: 10,
+                bottom: 10,
+              }}
+            >
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="name" />
+              <YAxis dataKey="coin_counter" />
+              <Tooltip />
+              <Legend />
+              <Line
+                dataKey="coin_counter"
+                stroke="#8884d8"
+                activeDot={{ r: 8 }}
+              />
+            </LineChart>
+          </ResponsiveContainer>
+        </div>
+      </div>
     );
   }
 }
