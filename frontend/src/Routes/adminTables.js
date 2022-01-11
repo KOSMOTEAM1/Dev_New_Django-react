@@ -1,5 +1,5 @@
 import React from 'react'
-import adminTable from '../compoenets/adminTable'
+import adminTable from '../Compoenets/adminTable'
 
 const Table1 = () => {
     return (

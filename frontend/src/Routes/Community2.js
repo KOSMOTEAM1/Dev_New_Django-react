@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Route } from "react-router-dom";
 
 //board Route
-import Getboard from "../components/board/getboard";
+import Getboard from "../Components/board/getboard";
 
 //import Table from "../Components/Graph/CoinListReactTable";
 class App extends Component {

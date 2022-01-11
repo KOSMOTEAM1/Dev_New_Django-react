@@ -3,23 +3,23 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import './App.css';
 
 //Header
-import Header from "./components/header/Header";
+import Header from "./Components/header/Header";
 
 //Footer
-import Footer from "./components/footer/Footer";
+import Footer from "./Components/footer/Footer";
 
 //Routes
 import Table from "./Routes/Table";
 import Community from "./Routes/Community";
-import Community2 from "./components/board/getboard";
+import Community2 from "./Components/board/getboard";
 import Home from "./Routes/Home";
 import insertcnt from "./Routes/insertcnt";
 import result_today from "./Routes/result_today";
 import result_yesterday from "./Routes/result_yesterday";
 
 //Routes/board
-import insertboard from "./components/board/insertboard";
-import boarddetail from "./components/board/boardview";
+import insertboard from "./Components/board/insertboard";
+import boarddetail from "./Components/board/boardview";
 //import adminHeader from "./components/adminHeader";
 import Graph from "./Routes/Graph";
 
