@@ -1,4 +1,4 @@
-import Result_yesterday from "../components/Graph/Result_yesterday";
+import Result_yesterday from "../Components/Graph/Result_yesterday";
 //import { useMemo, useEffect, useState } from "react";
 //import axios from "axios";
 //import faker from "faker/locale/ko";

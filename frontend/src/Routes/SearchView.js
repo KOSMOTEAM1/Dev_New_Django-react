@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-import TestModal from "../components/Modal/TestModal";
+import TestModal from "../Components/Modal/TestModal";
 //import DataVisual from "../Components/Graph/Table";
 function SearchView(id, coverImg, title, summary, genres) {
   console.log(coverImg);

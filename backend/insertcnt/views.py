@@ -109,7 +109,7 @@ class Sortinsertcnt_top(generics.ListCreateAPIView):
 
     def insertrank(self):
         print('start')
-        for i in range(0, 4):
+        for i in range(0, 5):
             try:
                 a=date.today()
                 print(a)
