@@ -10,6 +10,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
+import pymysql
+from datetime import timedelta
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -40,15 +42,57 @@ INSTALLED_APPS = [
 
     'post',
     'insertcnt',
-    'rest_framework', #추가
-    'corsheaders', # 추가
-    'themovieDB', # 추가
-    'board', # 추가
+    'rest_framework',  # 추가
+    'corsheaders',  # 추가
+    'themovieDB',  # 추가
+    'board',  # 추가
+    'base.apps.BaseConfig',
+    'rest_framework_simplejwt.token_blacklist',
+    'user.apps.UserConfig',
+
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
+}
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=10),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=90),
+    'ROTATE_REFRESH_TOKENS': True,
+    'BLACKLIST_AFTER_ROTATION': True,
+    'UPDATE_LAST_LOGIN': False,
+
+    'ALGORITHM': 'HS256',
+    'VERIFYING_KEY': None,
+    'AUDIENCE': None,
+    'ISSUER': None,
+    'JWK_URL': None,
+    'LEEWAY': 0,
+
+    'AUTH_HEADER_TYPES': ('Bearer',),
+    'AUTH_HEADER_NAME': 'HTTP_AUTHORIZATION',
+    'USER_ID_FIELD': 'id',
+    'USER_ID_CLAIM': 'user_id',
+    'USER_AUTHENTICATION_RULE': 'rest_framework_simplejwt.authentication.default_user_authentication_rule',
+
+    'AUTH_TOKEN_CLASSES': ('rest_framework_simplejwt.tokens.AccessToken',),
+    'TOKEN_TYPE_CLAIM': 'token_type',
+
+    'JTI_CLAIM': 'jti',
+
+    'SLIDING_TOKEN_REFRESH_EXP_CLAIM': 'refresh_exp',
+    'SLIDING_TOKEN_LIFETIME': timedelta(minutes=5),
+    'SLIDING_TOKEN_REFRESH_LIFETIME': timedelta(days=1),
+}
+
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',     # 추가
-    'django.middleware.common.CommonMiddleware', # 추가
+    'django.middleware.common.CommonMiddleware',  # 추가
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -58,11 +102,10 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-# CORS 관련 추가 
+# CORS 관련 추가
 
-CORS_ORIGIN_WHITELIST = ['http://127.0.0.1:3000' 
-                        ,'http://localhost:3000'] 
-                        
+CORS_ORIGIN_WHITELIST = ['http://127.0.0.1:3000', 'http://localhost:3000']
+
 CORS_ALLOW_CREDENTIALS = True
 
 
@@ -91,17 +134,26 @@ WSGI_APPLICATION = 'djangoreactapi.wsgi.application'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {    #변경
-        'ENGINE': 'django.db.backends.mysql', #1
-        'NAME': 'otte_dev', #2
-        'USER': 'team1', #3                      
-        'PASSWORD': 'team1',  #4              
-        'HOST': '192.168.0.41',   #5                
-        'PORT': '3306', #6
+    'default': {  # 변경
+        'ENGINE': 'django.db.backends.mysql',  # 1
+        'NAME': 'otte_dev',  # 2
+        'USER': 'team1',  # 3
+        'PASSWORD': 'team1',  # 4
+        'HOST': '192.168.0.41',  # 5
+        'PORT': '3306',  # 6
     }
 }
 
-import pymysql
+# DATABASES = {
+#     'default': {  # 변경
+#         'ENGINE': 'mysql.connector.django',  # 1
+#         'NAME': 'user',  # 2
+#         'USER': 'user',  # 3
+#         'PASSWORD': 'user',  # 4
+#         'HOST': '127.0.0.1',  # 5
+#         'PORT': '3306',  # 6
+#     }
+# }
 
 pymysql.version_info = (1, 4, 2, "final", 0)
 pymysql.install_as_MySQLdb()
@@ -147,9 +199,4 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.AllowAny',
-    ]
-}
-
+CORS_ALLOW_ALL_ORIGINS = True

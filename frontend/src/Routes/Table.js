@@ -1,4 +1,4 @@
-import ReactTable from "../components/Graph/ReactTable";
+import ReactTable from "../Components/Graph/ReactTable";
 //import { useMemo, useEffect, useState } from "react";
 //import axios from "axios";
 //import faker from "faker/locale/ko";

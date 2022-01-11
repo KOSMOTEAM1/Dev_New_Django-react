@@ -1,4 +1,4 @@
-import LineChart from "../components/Graph/LineChart";
+import LineChart from "../Components/Graph/LineChart";
 
 //import Table from "../Components/Graph/CoinListReactTable";
 function Home() {
