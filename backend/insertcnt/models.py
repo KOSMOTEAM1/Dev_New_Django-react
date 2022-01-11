@@ -18,6 +18,15 @@ class insertcntrank(models.Model):
         """A string representation of the model."""
         return self.title
 
+class totalrank(models.Model):
+    text = models.TextField(max_length=200)
+    rank = models.IntegerField()
+    sysdate = models.DateField()
+    def __str__(self):
+        """A string representation of the model."""
+        return self.title
+
+
 #class insertcnt_top(models.Model):
 #    sysdate = models.DateField(auto_now='sysdate')
 #    systime = models.TimeField(auto_now='sysdate')
