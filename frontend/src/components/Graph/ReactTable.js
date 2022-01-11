@@ -48,12 +48,12 @@ function Table() {
   const columns = useMemo(() => [
     {
       Header: "순위",
-      accessor: "ORGAN_NM",
+      accessor: "id",
     },
 
     {
       Header: "영화제목",
-      accessor: "COLUMN2",
+      accessor: "text",
     },
   ]);
 
@@ -61,12 +61,10 @@ function Table() {
   const getData = async () => {
     console.log("1");
     const json = await (console.log("2-2"),
-    await fetch(
-      `http://openapi.seoul.go.kr:8088/746b4762786170703430676e6e4678/json/IotVdata018/1/5/`
-    )).json();
+    await fetch(`http://127.0.0.1:8000/insertcnt/top`)).json();
     console.log("2-3");
-    setdata(json.IotVdata018.row);
-    console.log("2");
+    setdata(json);
+    console.log(json);
   };
 
   useEffect(() => {
