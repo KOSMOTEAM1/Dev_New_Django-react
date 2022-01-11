@@ -5,30 +5,30 @@ import TestModal from "../Modal/TestModal";
 
 function Movie({ id, title }) {
   //최신영화 호출
-  const [latestmovies, setLatestMovies] = useState([]);
+  const [koreamovies, setkoreaMovies] = useState([]);
 
-  const getMoviesLatest = async () => {
+  const getMovieskorea = async () => {
     const json = await (
       await fetch(`http://127.0.0.1:8000/apimovie/${id}`)
     ).json();
 
-    setLatestMovies(json);
+    setkoreaMovies(json);
     //console.log(json);
   };
   useEffect(() => {
-    getMoviesLatest();
+    getMovieskorea();
   }, []);
 
   return (
     <div className="product__item__text">
       <img
-        src={`https://image.tmdb.org/t/p/original/${latestmovies.poster_path}`}
+        src={`https://image.tmdb.org/t/p/original/${koreamovies.poster_path}`}
       />
       <TestModal
-        title={latestmovies.title}
-        id={latestmovies.otteid}
-        summary={latestmovies.overview}
-        coverImg={latestmovies.poster_path}
+        title={koreamovies.title}
+        id={koreamovies.otteid}
+        summary={koreamovies.overview}
+        coverImg={koreamovies.poster_path}
       />
 
       {/* <TestModal title={title} id={id} /> */}

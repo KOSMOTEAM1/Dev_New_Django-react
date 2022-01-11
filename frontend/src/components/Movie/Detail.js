@@ -32,7 +32,10 @@ function Detail({ title, coverImg, id, summary, genres }) {
           <div class="row">
             <div class="col-lg-5">
               <div class="anime__details__pic set-bg">
-                <img src={coverImg} alt={title} />
+                <img
+                  src={`https://image.tmdb.org/t/p/original/${coverImg}`}
+                  alt={title}
+                />
               </div>
               <div className="anime__details__widget">
                 <div className="row">
@@ -82,7 +85,7 @@ function Detail({ title, coverImg, id, summary, genres }) {
                 <br></br>
                 <h5>검색량 변화</h5>
                 <div className="anime__details__graph">
-                  <LineChart />
+                  <LineChart id={id} />
                 </div>
               </div>
               <div className="row">

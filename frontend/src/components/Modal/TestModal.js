@@ -28,7 +28,7 @@ const customStyles = {
   },
 };
 
-function TestModal({ id, title, summary, genres, coverImg }) {
+function TestModal({ id, title, summary, coverImg }) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   return (
     <div>
@@ -49,7 +49,7 @@ function TestModal({ id, title, summary, genres, coverImg }) {
           title={title}
           id={id}
           summary={summary}
-          genres={genres}
+          // genres={genres}
           coverImg={coverImg}
         />
         <br></br>

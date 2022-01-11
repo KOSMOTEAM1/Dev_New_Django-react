@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
-import MovieLike from "../Components/Movie/MovieLike";
-import MovieRecommand from "../Components/Movie/MovieRecommand";
+//import MovieLike from "../Components/Movie/MovieLike.org";
+//import MovieRecommand from "../Components/Movie/MovieRecommand.org";
 import MovieLatest from "../Components/Movie/MovieLatest";
 import SearchBar from "../Components/Search/SearchBar";
+import MovieKorea from "../Components/Movie/MovieKorea";
 //import TestModal from "../Components/TestModal";
 //import { Button } from "react-bootstrap";
 //import TestModal from "../Components/TestModal";
@@ -16,65 +17,71 @@ function Home() {
   //loading의 변화를 setloading에 저장, useState는 loading의 초기값 설정
   const [totalmovies, setTotalMovies] = useState([]);
   const [latestmovies, setLatestMovies] = useState([]);
-  const [likemovies, setLikeMovies] = useState([]);
-  const [recmovies, setRecMovies] = useState([]);
+  const [koreamovies, setKoreaMovies] = useState([]);
+  //const [likemovies, setLikeMovies] = useState([]);
+  //const [recmovies, setRecMovies] = useState([]);
 
   //검색을 위한 전체 영화 DB 불러오기
   const getMoviesTotal = async () => {
-    const json = await (
-      await fetch(
-        `https://yts.mx/api/v2/list_movies.json?minimum_rating=8.5&sort_by=year`
-      )
-    ).json();
+    const json = await (await fetch(`http://127.0.0.1:8000/apimovie`)).json();
 
-    setTotalMovies(json.data.movies);
+    setTotalMovies(json);
   };
   useEffect(() => {
     getMoviesTotal();
   }, []);
-  console.log(totalmovies);
 
   //최신영화 호출
   const getMoviesLatest = async () => {
     const json = await (
-      await fetch(
-        `https://yts.mx/api/v2/list_movies.json?minimum_rating=8.5&sort_by=year`
-      )
+      await fetch(`http://127.0.0.1:8000/apimovie/recent`)
     ).json();
 
-    setLatestMovies(json.data.movies);
+    setLatestMovies(json);
   };
   useEffect(() => {
     getMoviesLatest();
   }, []);
 
-  //찜한영화 호출
-  const getMoviesLike = async () => {
+  //한국영화
+  const getMoviesKorea = async () => {
     const json = await (
-      await fetch(
-        `https://yts.mx/api/v2/list_movies.json?minimum_rating=8.5&sort_by=year`
-      )
+      await fetch(`http://127.0.0.1:8000/apimovie/korea`)
     ).json();
 
-    setLikeMovies(json.data.movies);
+    setKoreaMovies(json);
+    console.log(json);
   };
   useEffect(() => {
-    getMoviesLike();
+    getMoviesKorea();
   }, []);
+  //찜한영화 호출
+  // const getMoviesLike = async () => {
+  //   const json = await (
+  //     await fetch(
+  //       `https://yts.mx/api/v2/list_movies.json?minimum_rating=8.5&sort_by=year`
+  //     )
+  //   ).json();
+
+  //   setLikeMovies(json.data.movies);
+  // };
+  // useEffect(() => {
+  //   getMoviesLike();
+  // }, []);
 
   //추천영화 호출
-  const getMoviesRecommand = async () => {
-    const json = await (
-      await fetch(
-        `https://yts.mx/api/v2/list_movies.json?minimum_rating=8.5&sort_by=year`
-      )
-    ).json();
+  // const getMoviesRecommand = async () => {
+  //   const json = await (
+  //     await fetch(
+  //       `https://yts.mx/api/v2/list_movies.json?minimum_rating=8.5&sort_by=year`
+  //     )
+  //   ).json();
 
-    setRecMovies(json.data.movies);
-  };
-  useEffect(() => {
-    getMoviesRecommand();
-  }, []);
+  //   setRecMovies(json.data.movies);
+  // };
+  // useEffect(() => {
+  //   getMoviesRecommand();
+  // }, []);
 
   const settings = {
     dots: true,
@@ -96,7 +103,7 @@ function Home() {
               <ReactTable />
               <SearchBar placeholder="Search here" data={totalmovies} />
             </div>
-            <div class="top_contents">
+            {/* <div class="top_contents">
               <div class="row">
                 <div class="col-lg-8 col-md-8 col-sm-8">
                   <div class="section-title">
@@ -122,7 +129,7 @@ function Home() {
                   </div>
                 </div>
               </div>
-            </div>
+            </div> */}
             <div class="top_contents">
               <div class="row">
                 <div class="col-lg-8 col-md-8 col-sm-8">
@@ -136,14 +143,7 @@ function Home() {
                   <div class="product__item">
                     <Slider {...settings}>
                       {latestmovies.map((movie) => (
-                        <MovieLatest
-                          key={movie.id}
-                          id={movie.id}
-                          coverImg={movie.medium_cover_image}
-                          title={movie.title}
-                          summary={movie.summary}
-                          genres={movie.genres}
-                        />
+                        <MovieLatest id={movie.otteid} title={movie.title} />
                       ))}
                     </Slider>
                   </div>
@@ -154,7 +154,7 @@ function Home() {
               <div class="row">
                 <div class="col-lg-8 col-md-8 col-sm-8">
                   <div class="section-title">
-                    <h4>내가 찜한 작품</h4>
+                    <h4>한국 작품</h4>
                   </div>
                 </div>
               </div>
@@ -162,15 +162,8 @@ function Home() {
                 <div class="col-lg-12">
                   <div class="product__item">
                     <Slider {...settings}>
-                      {likemovies.map((movie) => (
-                        <MovieLike
-                          key={movie.id}
-                          id={movie.id}
-                          coverImg={movie.medium_cover_image}
-                          title={movie.title}
-                          summary={movie.summary}
-                          genres={movie.genres}
-                        />
+                      {koreamovies.map((movie) => (
+                        <MovieKorea id={movie.otteid} title={movie.title} />
                       ))}
                     </Slider>
                   </div>

@@ -12,7 +12,7 @@ import {
 } from "recharts";
 // import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
-class floatingPopulationList extends Component {
+class LineCharts extends Component {
   constructor(props) {
     super(props);
 
@@ -27,8 +27,9 @@ class floatingPopulationList extends Component {
   }
 
   callFloatPopulListApi = async () => {
+    const id = this.props;
     axios
-      .get("https://api.coinpaprika.com/v1/tags", {})
+      .get(`http://127.0.0.1:8000/insertcnt/rank/${id}`, {})
       // alert("메롱")
       .then((response) => {
         try {
@@ -44,36 +45,12 @@ class floatingPopulationList extends Component {
       });
   };
 
-  // FloatPopulListAppend = () => {
-  //     // let result = []
-  //     // var FPList = this.state.responseFPList.data
-  //     // for(let i=0; i<FPList.length; i++){
-  //     //     var data = FPList[i]
-  //     //     var idx = i+1
-  //     //     result.push(
-  //     //         <tr class="hidden_type">
-  //     //             <td>{idx}</td>
-  //     //             <td>{data.movieNm}</td>
-  //     //             <td>{data.rank}</td>
-  //     //         </tr>
-  //     //     )
-  //     // }
-  //     // return result
-  // }
-
   render() {
     return (
-      // <ResponsiveContainer width="100%" height="100%">
-      //     <BarChart width={150} height={40} data={data}>
-      //         <Bar dataKey="uv" fill="#8884d8" />
-      //         </BarChart>
-      // </ResponsiveContainer>
       <div
         style={{
           paddingBottom: "56.25%" /* 16:9 */,
           position: "relative",
-          //height: 200,
-          //width: 500,
         }}
       >
         <div
@@ -96,15 +73,11 @@ class floatingPopulationList extends Component {
               }}
             >
               <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="name" />
-              <YAxis dataKey="coin_counter" />
+              <XAxis dataKey="sysdate" />
+              <YAxis dataKey="rank" />
               <Tooltip />
               <Legend />
-              <Line
-                dataKey="coin_counter"
-                stroke="#8884d8"
-                activeDot={{ r: 8 }}
-              />
+              <Line dataKey="rank" stroke="#8884d8" activeDot={{ r: 8 }} />
             </LineChart>
           </ResponsiveContainer>
         </div>
@@ -113,4 +86,4 @@ class floatingPopulationList extends Component {
   }
 }
 
-export default floatingPopulationList;
+export default LineCharts;
