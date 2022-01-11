@@ -11,7 +11,7 @@ const Header = () => {
           <div className="col-lg-2">
             <div className="header__logo">
               <Link to={"/"}>
-                <img src="/logo.png"></img>
+                <img src={require("./logo.png")}></img>
               </Link>
             </div>
           </div>

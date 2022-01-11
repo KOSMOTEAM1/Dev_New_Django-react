@@ -357,6 +357,8 @@ ol {
 
 .header__logo {
   padding: 20px 0 17px;
+  width: 90%;
+  height: 90%;
 }
 
 .header__logo a {

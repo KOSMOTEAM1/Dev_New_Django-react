@@ -16,6 +16,7 @@ import Home from "./Routes/Home";
 import insertcnt from "./Routes/insertcnt";
 import result_today from "./Routes/result_today";
 import result_yesterday from "./Routes/result_yesterday";
+import SearchView from "./Routes/SearchView";
 import test from "./Routes/test";
 
 //Routes/board
@@ -47,7 +48,7 @@ function App() {
           <Route path="/insertcnt" component={insertcnt} />
           <Route path="/result_today" component={result_today} />
           <Route path="/result_yesterday" component={result_yesterday} />
-          <Route path="/test" component={test} />
+          <Route path="/Search" component={SearchView} />
 
           <Route render={() => <div className="error">Error</div>} />
           <Route exact path="/Community2" component={Community2} />

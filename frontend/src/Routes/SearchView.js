@@ -1,42 +1,31 @@
-import PropTypes from "prop-types";
+import React from "react";
 
-import TestModal from "../Components/Modal/TestModal";
-//import DataVisual from "../Components/Graph/Table";
-function SearchView(id, coverImg, title, summary, genres) {
-  console.log(coverImg);
-  console.log(title);
+function SearchView() {
   return (
-    <div class="col-lg-3 col-md-6 col-sm-6">
-      <div className="product__item">
-        {/* <div className="product__item__pic set-bg"> */}
-
-        <img src={coverImg} alt={title} />
-
-        <TestModal
-          title={title}
-          id={id}
-          summary={summary}
-          genres={genres}
-          coverImg={coverImg}
-        />
-
-        {/* <Link to={`/movie/${id}`}> */}
-
-        {/* </Link> */}
-
-        {/* <p>{summary}</p>
-        <ul>{genres && genres.map((g) => <li key={g}>{g}</li>)}</ul> */}
+    <section class="product spad">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="section-title">
+              <h5>검색창 들어갈 곳</h5>
+            </div>
+            <div class="top_contents">
+              <div class="row">
+                <div class="col-lg-8 col-md-8 col-sm-8">
+                  <div class="section-title">
+                    <h4>검색 결과</h4>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <p>검색결과 나열할 곳</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
+    </section>
   );
 }
-
-SearchView.propTypes = {
-  id: PropTypes.number.isRequired,
-  coverImg: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  summary: PropTypes.string.isRequired,
-  genres: PropTypes.arrayOf(PropTypes.string).isRequired, //배열이므로
-};
 
 export default SearchView;
