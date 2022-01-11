@@ -59,8 +59,11 @@ function App() {
         <Footer />
       </Router>
       <Router>
-        <adminHeader />
-        <Route path="/admin1" component={Graph} />
+        <AuthProvider>
+          <PrivateRoute component={Main} path="/" exact />
+          <Route component={LoginPage} path="/login" />
+        </AuthProvider>
+        <Route component={Signup} path="/signup" />
       </Router>
     </>
   );

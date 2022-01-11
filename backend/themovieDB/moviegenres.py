@@ -34,7 +34,7 @@ def genrescrawling(start_id, finish_id):
                     genredata.append([otteid, genreid])
                     print('@@@@@@@@')
                     print(genredata)
-                    sql = 'INSERT INTO themoviedb_moviegenres(otteid,id) values(%s,%s)'
+                    sql = 'INSERT INTO themoviedb_moviegenres(otteid,genreid) values(%s,%s)'
                     cur.executemany(sql,genredata)
                     conn.commit()
                     
@@ -43,9 +43,13 @@ def genrescrawling(start_id, finish_id):
             
         except KeyError:
             pass
+        except TypeError:
+            pass
         except HTTPError as e:
             print(e)
             pass
+        except MySQLdb.OperationalError:
+               pass
         finally:
             print(i)
             print('완료')

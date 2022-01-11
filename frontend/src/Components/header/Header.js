@@ -1,6 +1,9 @@
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import AuthContext from "../../context/AuthContext";
 
-function Header() {
+const Header = () => {
+  let { user, logoutUser } = useContext(AuthContext);
   return (
     <header className="header">
       <div className="container">
@@ -31,6 +34,14 @@ function Header() {
                   <li>
                     <Link to={"/insertcnt"}>원태테스트</Link>
                   </li>
+                  <li>{user && <p> Welcome {user.username} </p>}</li>
+                  <li>
+                    {user ? (
+                      <p onClick={logoutUser}> Logout </p>
+                    ) : (
+                      <Link to="/login">Login</Link>
+                    )}
+                  </li>
                 </ul>
               </nav>
             </div>
@@ -50,6 +61,6 @@ function Header() {
       </div>
     </header>
   );
-}
+};
 
 export default Header;

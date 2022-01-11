@@ -24,7 +24,9 @@ def crawling(start_id, finish_id):
             if items['adult'] == False and items['original_language'] == 'ko':
                 print(items['title'])
                 data = []
-
+                if items['release_date'] == "":
+                    items['release_date'] = None
+                    print(items['release_date'])
                 data.append([items['adult'], items['id'], items['imdb_id'], items['original_language'], items['original_title'],
                             items['overview'], items['popularity'], items['poster_path'], items['release_date'], items['runtime'], items['status'], items['title']])
                 sql = "insert into themoviedb_movie(adult, themovieid, imdb_id, original_language, original_title, overview, popularity, poster_path, release_date, runtime, status, title) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s);"
