@@ -1,4 +1,5 @@
 from posterdb import postersaver
 
 #otteid
-postersaver(1,17048)
+#postersaver(10136,17048)
+postersaver(15634,17887)
