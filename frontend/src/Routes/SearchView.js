@@ -1,56 +1,40 @@
-import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
+
 import TestModal from "../components/Modal/TestModal";
-import { id } from "../components/Graph/Search"
-
-function SearchView({id}) {
-  const [searchmovies, setSearchMovies] = useState([]);
-
-  const getMovieskorea = async () => {
-    const json = await (await fetch(`http://127.0.0.1:8000/apimovie/${id}`)).json();
-    // `http://127.0.0.1:8000/insertcnt/search/${id}`
-    setSearchMovies(json);
-    //console.log(json);
-  };
-  useEffect(() => {
-    getMovieskorea();
-  }, []);
-
+//import DataVisual from "../Components/Graph/Table";
+function SearchView(id, coverImg, title, summary, genres) {
+  console.log(coverImg);
+  console.log(title);
   return (
-    <section class="product spad">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="section-title">
-              <h5>검색창 들어갈 곳</h5>
-            </div>
-            <div class="top_contents">
-              <div class="row">
-                <div class="col-lg-8 col-md-8 col-sm-8">
-                  <div class="section-title">
-                    <h4>검색 결과</h4>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="product__item">
-                  {searchmovies.map((searchmovie) => (
-                    <div class="col-lg-3 col-md-6 col-sm-6">
-                      <TestModal
-                        title={searchmovie.title}
-                        id={searchmovie.otteid}
-                        summary={searchmovie.overview}
-                        coverImg={searchmovie.poster_path}
-                      />
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+    <>
+      <div class="col-lg-3 col-md-6 col-sm-6">
+        {/* <div className="product__item__pic set-bg"> */}
+
+        <TestModal
+          title={title}
+          id={id}
+          summary={summary}
+          genres={genres}
+          coverImg={coverImg}
+        />
+
+        {/* <Link to={`/movie/${id}`}> */}
+
+        {/* </Link> */}
+
+        {/* <p>{summary}</p>
+        <ul>{genres && genres.map((g) => <li key={g}>{g}</li>)}</ul> */}
       </div>
-    </section>
+    </>
   );
 }
+
+SearchView.propTypes = {
+  id: PropTypes.number.isRequired,
+  coverImg: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  overview: PropTypes.string.isRequired,
+  genres: PropTypes.arrayOf(PropTypes.string).isRequired, //배열이므로
+};
 
 export default SearchView;

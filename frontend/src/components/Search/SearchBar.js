@@ -63,22 +63,17 @@ function SearchBar({ placeholder, data }) {
               </div>
             </div>
             <div className="row">
-              {/* <div className="col-lg-12">
-                <div class="col-lg-3 col-md-6 col-sm-6"> */}
               {filteredData.map((value) => {
                 return (
                   <SearchView
-                    key={value.id}
-                    id={value.id}
-                    coverImg={value.medium_cover_image}
+                    id={value.otteid}
+                    coverImg={value.poster_path}
                     title={value.title}
-                    summary={value.summary}
+                    summary={value.overview}
                     genres={value.genres}
                   />
                 );
               })}
-              {/* </div>
-              </div> */}
             </div>
           </div>
         </section>
@@ -91,7 +86,7 @@ SearchBar.propTypes = {
   id: PropTypes.number.isRequired,
   coverImg: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  summary: PropTypes.string.isRequired,
+  overview: PropTypes.string.isRequired,
   genres: PropTypes.arrayOf(PropTypes.string).isRequired, //배열이므로
 };
 
