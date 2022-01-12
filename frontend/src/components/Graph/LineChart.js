@@ -15,7 +15,7 @@ import {
 class LineCharts extends Component {
   constructor(props) {
     super(props);
-
+    console.log(props);
     this.state = {
       responseFPList: "",
       append_FPList: "",
@@ -28,8 +28,10 @@ class LineCharts extends Component {
 
   callFloatPopulListApi = async () => {
     const id = this.props;
+    console.log(id);
     axios
-      .get(`http://127.0.0.1:8000/insertcnt/rank/${id}`, {})
+      .get(`http://127.0.0.1:8000/insertcnt/rank`, {})
+      //데이터 나오는곳
       // alert("메롱")
       .then((response) => {
         try {
@@ -74,7 +76,7 @@ class LineCharts extends Component {
             >
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis dataKey="sysdate" />
-              <YAxis dataKey="rank" />
+              <YAxis dataKey="rank" reversed="true" />
               <Tooltip />
               <Legend align="center" verticalAlign="bottom" height={10} />
               <Line dataKey="rank" stroke="#8884d8" activeDot={{ r: 8 }} />

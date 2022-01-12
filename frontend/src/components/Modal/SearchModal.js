@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 //import { Modal, Button } from "react-bootstrap";
 import Modal from "react-modal";
+import $ from "jquery";
 import Detail from "../Movie/Detail";
+import axios from "axios";
 
 const customStyles = {
   overlay: {
@@ -29,20 +31,42 @@ const customStyles = {
 };
 
 function TestModal({ id, title, summary, coverImg }) {
+  const submitClick = (e) => {
+    this.title = title;
+    this.sysdate = $("#sysdate").val();
+    if (this.text === "" && this.sysdate === "") {
+    } else {
+      axios.post("http://127.0.0.1:8000/insertcnt/", {
+        title: this.title,
+        sysdate: this.sysdate,
+      });
+    }
+  };
+
   const [modalIsOpen, setModalIsOpen] = useState(false);
   return (
     <div>
       <div className="row">
         <div className="anime__details__pic ">
           <img
-            onClick={() => setModalIsOpen(true)}
+            onClick={() => {
+              setModalIsOpen(true);
+              this.submitClick();
+            }}
             src={`https://image.tmdb.org/t/p/original/${coverImg}`}
           />
         </div>
       </div>
       <div className="product__item__text">
         <h5>
-          <a onClick={() => setModalIsOpen(true)}>{title}</a>
+          <a
+            onClick={() => {
+              setModalIsOpen(true);
+              this.submitClick();
+            }}
+          >
+            {title}
+          </a>
         </h5>
       </div>
       {/* <button onClick={() => setModalIsOpen(true)}>Modal Open</button> */}
