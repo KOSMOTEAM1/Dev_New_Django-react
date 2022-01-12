@@ -4,7 +4,8 @@ from rest_framework import generics
 from themovieDB.models import moviegenres
 from themovieDB.models import movie 
 from themovieDB.models import genresinmovie
-from .serializers import PostSerializer, SortSerializer, GenreSerializer
+from django.db.models import F
+from .serializers import PostSerializer, SortSerializer, AllGenreSerializer
 from rest_framework.response import Response
 from django.http import Http404
 from rest_framework.views import APIView
@@ -31,13 +32,12 @@ class KoreaPost(generics.ListCreateAPIView):
     serializer_class = SortSerializer
 
 class GenredetailPost(APIView):   
-
     def get(self, request, pk):
         try:
-            queryset = genresinmovie.objects.select_related('genreid').filter(otteid=pk)
+            queryset = moviegenres.objects.filter(otteid=pk).select_related('genreid').values('genreid__name','genreid__id').annotate(name =F('genreid__name'),id=F('genreid__id'))
             print("@@@@@@@",queryset.query)
-            serializer = GenreSerializer(queryset, many=True)
-
-            return Response({'detail': serializer.data})
+            print(queryset)
+            serializer = AllGenreSerializer(queryset, many=True)
+            return Response(serializer.data)
         except moviegenres.DoesNotExist:
             raise Http404
