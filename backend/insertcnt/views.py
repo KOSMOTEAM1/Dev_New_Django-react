@@ -45,7 +45,7 @@ class Listinsertcnt(generics.ListCreateAPIView):
     #else:
     #    filter_str="text='fddddddffff'"
     #queryset = insertcnt.objects.filter(filter_str)
-    queryset = insertcnt.objects.filter()
+    queryset = insertcnt.objects.all()
     serializer_class = insertcntSerializer
 
 class Detailinsertcnt(generics.RetrieveUpdateDestroyAPIView):
