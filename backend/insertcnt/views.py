@@ -120,10 +120,10 @@ class Sortinsertcnt_top(generics.ListCreateAPIView):
                 print('완료')
 
 class Inserttotalrank(generics.ListCreateAPIView):
-    queryset = totalrank.objects.filter(text='요석공주')
+    queryset = totalrank.objects.filter(text='인질')
     serializer_class = totalrankSerializer
-    def __init__(self):
-        self.inserttotalrank()
+    #def __init__(self):
+    #    self.inserttotalrank()
     def inserttotalrank(self):
         print('start222222')
         try:

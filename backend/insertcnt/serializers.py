@@ -34,7 +34,7 @@ class searchSerializer(serializers.ModelSerializer):
 class totalrankSerializer(serializers.ModelSerializer):
     class Meta:
         fields = (
-            'id',
+            
             'text',
             'rank',
             'sysdate',
