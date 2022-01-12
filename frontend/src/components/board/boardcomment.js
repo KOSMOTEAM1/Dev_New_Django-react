@@ -1,13 +1,22 @@
 import $ from "jquery";
 import axios from "axios";
 import { Component } from "react";
-import { Link } from "react-router-dom";
+import Modal from 'react-modal';
 
+
+Modal.setAppElement("#root");
 class boardview extends Component {
 
     deleteClick = (e) => {
         this.board_id = $('#org_id').val();
-        axios.delete('http://127.0.0.1:8000/board/comment/delete/'+this.board_id+'/')
+        this.comment_user = $('#comment_user').val();
+        this.delete_user = $('#delete_user').val();
+        if(this.comment_user == this.delete_user){
+            alert("두 값이 일치합니다.")
+        }else{
+            alert("다른 사용자입니다.")
+        }
+        /* axios.delete('http://127.0.0.1:8000/board/comment/delete/'+this.board_id+'/') */
     }
 
     submitClick = (e) => {
@@ -30,7 +39,8 @@ class boardview extends Component {
     }
     
     state = {
-        posts: []
+        posts: [],
+        display : 'none'
     };
 
     async componentDidMount() {
@@ -47,6 +57,7 @@ class boardview extends Component {
         }
     }
     render() {
+        const id = this.props.id;
         return (
             <div class='card-footer'>  
                 <form>
@@ -65,10 +76,10 @@ class boardview extends Component {
                     <div key={item.id}>
                         <h5>{item.title}</h5>
                         <span>{item.comment_content}
-                        <from>
-                            <input type="hidden" id="org_id" placeholder={item.id} defaultValue={item.id}></input>
-                            <button type="submit" onClick={(e) => this.deleteClick(e)}>삭제</button>
-                        </from> 
+                        <input type="hidden" id="org_id" defaultValue={item.id}></input>
+                        <input type="hidden" id="comment_user" defaultValue={item.comment_user}></input>
+                        <input  id="delete_user" ></input>
+                        <button type="submit" onClick={(e) => this.deleteClick(e)}>삭제</button>
                         </span>
                     </div>
                 ))}

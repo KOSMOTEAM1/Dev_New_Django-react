@@ -3,15 +3,15 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import "./App.css";
 
 //Header
-import Header from "./Components/header/Header";
+import Header from "./components/header/Header";
 
 //Footer
-import Footer from "./Components/footer/Footer";
+import Footer from "./components/footer/Footer";
 
 //Routes
 //import Table from "./Routes/Table";
 //import Community from "./Routes/Community";
-import Community2 from "./Components/board/getboard";
+import Community2 from "./components/board/getboard";
 import Home from "./Routes/Home";
 import insertcnt from "./Routes/insertcnt";
 import result_today from "./Routes/result_today";
@@ -20,12 +20,12 @@ import SearchView from "./Routes/SearchView";
 import test from "./Routes/test";
 
 //Routes/board
-import insertboard from "./Components/board/insertboard";
-import boarddetail from "./Components/board/boardview";
+import insertboard from "./components/board/insertboard";
+import boarddetail from "./components/board/boardview";
 //import adminHeader from "./components/adminHeader";
 import Graph from "./Routes/Graph";
 
-//import Sidebar from "./Components/Sidebar/Sidebar";
+//import Sidebar from "./components/Sidebar/Sidebar";
 
 //css
 import "./source/css/style.css";
@@ -42,7 +42,9 @@ function App() {
     <>
       <Router>
         <Header />
-
+        <Route exact path="/Community2" component={Community2} />
+        <Route exact path="/Community2/Insert" component={insertboard} />
+        <Route exact path="/Community2/boarddetail/:id" component={boarddetail} />
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/insertcnt" component={insertcnt} />
@@ -51,8 +53,6 @@ function App() {
           <Route path="/Search/:id" component={SearchView} />
 
           <Route render={() => <div className="error">Error</div>} />
-          <Route exact path="/Community2" component={Community2} />
-          <Route exact path="/Community2/Insert" component={insertboard} />
           <Route
             exact
             path="/Community2/boarddetail/:id"

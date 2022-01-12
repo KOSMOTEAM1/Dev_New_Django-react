@@ -2,10 +2,19 @@ from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework import generics
 from rest_framework.response import Response
-from .models import Board, comment
-from .serializers import BoardSerializer, commentSerializer
+from .models import Board, comment, UploadFileModel
+from .serializers import BoardSerializer, commentSerializer, imageSerializer
 import logging
 from django.http import Http404
+
+
+import json
+
+from django.http import HttpResponse
+from django.views.decorators.csrf import csrf_exempt
+from django.utils.decorators import method_decorator
+
+from . forms import DocumentForm
 
 logger = logging.getLogger(__name__)
 
@@ -25,16 +34,34 @@ class DetailBoard(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = BoardSerializer
 
 
+class DetailLastBoard(generics.ListCreateAPIView):
+    queryset = Board.objects.order_by('-id')[:1]
+    serializer_class = BoardSerializer
+
+
 class ListComment(generics.ListCreateAPIView):
     queryset = comment.objects.all()
     serializer_class = commentSerializer
-    def post(self, request, *args, **kwargs):
-        return self.create(request, *args, **kwargs)
+
 
 """ class DetailComment(APIView):
     def get(request, pk):
         return comment.objects.filter(board_id=pk)
  """
+
+
+class ListImage(APIView):
+
+    def get_object(self, pk):
+        try:
+            return UploadFileModel.objects.filter(description=pk)
+        except UploadFileModel.DoesNotExist:
+            raise Http404
+
+    def get(self, request, pk, format=None):
+        images = self.get_object(pk)
+        serializer = imageSerializer(images, many=True)
+        return Response(serializer.data)
 
 
 class deleteComment(generics.RetrieveUpdateDestroyAPIView):
@@ -53,3 +80,14 @@ class DetailComment(APIView):
         comment = self.get_object(pk)
         serializer = commentSerializer(comment, many=True)
         return Response(serializer.data)
+
+
+@method_decorator(csrf_exempt, name="dispatch")
+def model_form_upload(request):
+    if request.method == "POST":
+        form = DocumentForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return HttpResponse(json.dumps({"Status": "Success"}))
+        else:
+            return HttpResponse(json.dumps({"Status": "Success"}))

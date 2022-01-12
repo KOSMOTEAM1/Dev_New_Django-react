@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from .models import Board
 from .models import comment
+from .models import UploadFileModel
 
 
 class commentSerializer(serializers.ModelSerializer):
@@ -13,6 +14,16 @@ class commentSerializer(serializers.ModelSerializer):
             'comment_content',
         )
         model = comment
+
+
+class imageSerializer(serializers.ModelSerializer):
+    class Meta:
+        fields = (
+            'id',
+            'description',
+            'images'
+        )
+        model = UploadFileModel
 
 
 class BoardSerializer(serializers.ModelSerializer):

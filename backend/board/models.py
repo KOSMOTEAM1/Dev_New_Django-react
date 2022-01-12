@@ -6,11 +6,17 @@ class Board(models.Model):
     username = models.CharField(max_length=200)
     content = models.TextField()
     readcount = models.IntegerField()
-    writedate = models.DateField()
+    writedate = models.DateField(auto_now=True)
 
     def __str__(self):
         """A string representation of the model."""
         return self.title
+
+
+class UploadFileModel(models.Model):
+    description = models.CharField(max_length=255)
+    images = models.ImageField(blank=True, upload_to='images/')
+    upload_at = models.DateField(auto_now=True)
 
 
 class comment(models.Model):
