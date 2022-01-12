@@ -1,6 +1,19 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import TestModal from "../Components/Modal/TestModal";
 
 function SearchView() {
+  const [searchmovies, setSearchMovies] = useState([]);
+
+  const getMovieskorea = async () => {
+    const json = await (await fetch(`http://127.0.0.1:8000/apimovie/`)).json();
+
+    setSearchMovies(json);
+    //console.log(json);
+  };
+  useEffect(() => {
+    getMovieskorea();
+  }, []);
+
   return (
     <section class="product spad">
       <div class="container">
@@ -18,7 +31,18 @@ function SearchView() {
                 </div>
               </div>
               <div class="row">
-                <p>검색결과 나열할 곳</p>
+                <div class="product__item">
+                  {searchmovies.map((searchmovie) => (
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                      <TestModal
+                        title={searchmovie.title}
+                        id={searchmovie.otteid}
+                        summary={searchmovie.overview}
+                        coverImg={searchmovie.poster_path}
+                      />
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
