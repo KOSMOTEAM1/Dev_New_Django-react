@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import SearchView from "../../Routes/SearchView";
+import SearchModal from "../Modal/SearchModal";
 import PropTypes from "prop-types";
 
 function SearchBar({ placeholder, data }) {
@@ -65,7 +65,7 @@ function SearchBar({ placeholder, data }) {
             <div className="row">
               {filteredData.map((value) => {
                 return (
-                  <SearchView
+                  <SearchModal
                     id={value.otteid}
                     coverImg={value.poster_path}
                     title={value.title}

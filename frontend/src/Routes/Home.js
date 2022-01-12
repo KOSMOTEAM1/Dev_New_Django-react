@@ -11,7 +11,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "../source/css/bootstrap.min.css";
-import ReactTable from "../Components/Graph/ReactTable";
+import ReactTable from "../components/Graph/ReactTable";
 
 function Home() {
   //loading의 변화를 setloading에 저장, useState는 loading의 초기값 설정
