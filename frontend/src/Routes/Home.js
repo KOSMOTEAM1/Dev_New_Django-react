@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 //import MovieLike from "../Components/Movie/MovieLike.org";
 //import MovieRecommand from "../Components/Movie/MovieRecommand.org";
-import MovieLatest from "../components/Movie/MovieLatest";
-import Search from "../components/Graph/Search";
-import MovieKorea from "../components/Movie/MovieKorea";
+import MovieLatest from "../Components/Movie/MovieLatest";
+import Search from "../Components/Graph/Search";
+import MovieKorea from "../Components/Movie/MovieKorea";
 //import TestModal from "../Components/TestModal";
 //import { Button } from "react-bootstrap";
 //import TestModal from "../Components/TestModal";
@@ -11,7 +11,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "../source/css/bootstrap.min.css";
-import ReactTable from "../components/Graph/ReactTable";
+import ReactTable from "../Components/Graph/ReactTable";
 
 function Home() {
   //loading의 변화를 setloading에 저장, useState는 loading의 초기값 설정

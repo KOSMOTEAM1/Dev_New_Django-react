@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import TestModal from "../components/Modal/TestModal";
-import { id } from "../components/Graph/Search"
+import TestModal from "../Components/Modal/TestModal";
+import { id } from "../Components/Graph/Search"
 
 function SearchView({id}) {
   const [searchmovies, setSearchMovies] = useState([]);
