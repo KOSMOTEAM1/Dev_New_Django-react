@@ -21,9 +21,6 @@ function Movie({ id, title }) {
 
   return (
     <div className="product__item__text">
-      <img
-        src={`https://image.tmdb.org/t/p/original/${koreamovies.poster_path}`}
-      />
       <TestModal
         title={koreamovies.title}
         id={koreamovies.otteid}

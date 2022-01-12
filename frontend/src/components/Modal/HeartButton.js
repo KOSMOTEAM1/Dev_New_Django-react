@@ -4,9 +4,13 @@ import HeartImg from "../../source/img/heart.png";
 import EmptyHeartImg from "../../source/img/heart.png";
 
 const Heart = styled.img`
-  //css
-    }`;
+  object-fit: scale-down;
+`;
 const HeartButton = ({ like, onClick }) => {
-  return <Heart src={like ? HeartImg : EmptyHeartImg} onClick={onClick} />;
+  return (
+    <div className="product__item__pic__detail">
+      <Heart src={like ? HeartImg : EmptyHeartImg} onClick={onClick} />
+    </div>
+  );
 };
 export default HeartButton;

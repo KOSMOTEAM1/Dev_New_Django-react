@@ -20,10 +20,7 @@ function Movie({ id, title }) {
   }, []);
 
   return (
-    <div className="product__item__text">
-      <img
-        src={`https://image.tmdb.org/t/p/original/${latestmovies.poster_path}`}
-      />
+    <>
       <TestModal
         title={latestmovies.title}
         id={latestmovies.otteid}
@@ -35,7 +32,7 @@ function Movie({ id, title }) {
 
       {/* <p>{summary}</p>
       <ul>{genres && genres.map((g) => <li key={g}>{g}</li>)}</ul> */}
-    </div>
+    </>
   );
 }
 

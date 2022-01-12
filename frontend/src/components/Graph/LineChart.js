@@ -68,7 +68,7 @@ class LineCharts extends Component {
               margin={{
                 top: 10,
                 right: 10,
-                left: 10,
+                left: 0,
                 bottom: 10,
               }}
             >
@@ -76,7 +76,7 @@ class LineCharts extends Component {
               <XAxis dataKey="sysdate" />
               <YAxis dataKey="rank" />
               <Tooltip />
-              <Legend />
+              <Legend align="center" verticalAlign="bottom" height={10} />
               <Line dataKey="rank" stroke="#8884d8" activeDot={{ r: 8 }} />
             </LineChart>
           </ResponsiveContainer>
