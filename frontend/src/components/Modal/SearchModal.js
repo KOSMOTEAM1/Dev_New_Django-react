@@ -31,17 +31,18 @@ const customStyles = {
 };
 
 function TestModal({ id, title, summary, coverImg }) {
-  const submitClick = (e) => {
-    this.title = title;
-    this.sysdate = $("#sysdate").val();
-    if (this.text === "" && this.sysdate === "") {
-    } else {
-      axios.post("http://127.0.0.1:8000/insertcnt/", {
+  function submitClick() {
+    var title = title;
+    var sysdate = $("#sysdate").val();
+    axios
+      .post("http://127.0.0.1:8000/insertcnt/", {
         title: this.title,
         sysdate: this.sysdate,
+      })
+      .then((res) => {
+        console.log(res.this);
       });
-    }
-  };
+  }
 
   const [modalIsOpen, setModalIsOpen] = useState(false);
   return (
@@ -50,9 +51,10 @@ function TestModal({ id, title, summary, coverImg }) {
         <div className="anime__details__pic ">
           <img
             onClick={() => {
+              submitClick();
               setModalIsOpen(true);
-              this.submitClick();
             }}
+            value={title}
             src={`https://image.tmdb.org/t/p/original/${coverImg}`}
           />
         </div>
@@ -61,9 +63,10 @@ function TestModal({ id, title, summary, coverImg }) {
         <h5>
           <a
             onClick={() => {
+              submitClick();
               setModalIsOpen(true);
-              this.submitClick();
             }}
+            value={title}
           >
             {title}
           </a>
