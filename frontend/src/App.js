@@ -48,7 +48,7 @@ function App() {
           <Route path="/insertcnt" component={insertcnt} />
           <Route path="/result_today" component={result_today} />
           <Route path="/result_yesterday" component={result_yesterday} />
-          <Route path="/Search" component={SearchView} />
+          <Route path="/Search/:id" component={SearchView} />
 
           <Route render={() => <div className="error">Error</div>} />
           <Route exact path="/Community2" component={Community2} />

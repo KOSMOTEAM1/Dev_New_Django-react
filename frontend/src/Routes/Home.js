@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 //import MovieLike from "../Components/Movie/MovieLike.org";
 //import MovieRecommand from "../Components/Movie/MovieRecommand.org";
 import MovieLatest from "../Components/Movie/MovieLatest";
-import SearchBar from "../Components/Search/SearchBar";
+import Search from "../Components/Graph/Search";
 import MovieKorea from "../Components/Movie/MovieKorea";
 //import TestModal from "../Components/TestModal";
 //import { Button } from "react-bootstrap";
@@ -101,7 +101,7 @@ function Home() {
             <div class="section-title">
               {/* <Search /> */}
               <ReactTable />
-              <SearchBar placeholder="Search here" data={totalmovies} />
+              <Search placeholder="Search here"/>
             </div>
             {/* <div class="top_contents">
               <div class="row">

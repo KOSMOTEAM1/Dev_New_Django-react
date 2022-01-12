@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import TestModal from "../Components/Modal/TestModal";
+import { id } from "../Components/Graph/Search"
 
-function SearchView() {
+function SearchView({id}) {
   const [searchmovies, setSearchMovies] = useState([]);
 
   const getMovieskorea = async () => {
-    const json = await (await fetch(`http://127.0.0.1:8000/apimovie/`)).json();
-
+    const json = await (await fetch(`http://127.0.0.1:8000/apimovie/${id}`)).json();
+    // `http://127.0.0.1:8000/insertcnt/search/${id}`
     setSearchMovies(json);
     //console.log(json);
   };
