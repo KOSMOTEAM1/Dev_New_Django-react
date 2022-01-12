@@ -26,7 +26,6 @@ class searchSerializer(serializers.ModelSerializer):
     class Meta:
         fields = (
             'otteid',
-            'original_title',
             'title',
         )
         model = movie
