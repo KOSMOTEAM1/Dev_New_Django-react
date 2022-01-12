@@ -26,13 +26,25 @@ conn = pymysql.connect(host='192.168.0.41', port=3306,
 cur = conn.cursor()
 
 class Search(APIView):
-    def get_object(self, text):
+    def post(self, request, id):
+        print("post execute...")
+        print("post", id)
+        search = self.get_object(id)
+        print(search)
+        serializer_class = searchSerializer(search, many=True)
+        return Response(serializer_class.data)
+    def get_object(self, id):
+        queryset = movie.objects.filter(title=id)
+        print(queryset)
+        print("get start")
+        print("get + ",id)
         try:
-            return movie.objects.filter(title='인질') | movie.objects.filter(original_title='영웅')
+            return movie.objects.filter(title=id)
         except movie.DoesNotExist:
             raise Http404
-    def get(self, format=None):
-        search = self.get_object('')
+    def get(self, request, id, format=None):
+        search = self.get_object(id)
+        #print(insertcnt.type)
         serializer_class = searchSerializer(search, many=True)
         return Response(serializer_class.data)
 
@@ -108,11 +120,10 @@ class Sortinsertcnt_top(generics.ListCreateAPIView):
                 print('완료')
 
 class Inserttotalrank(generics.ListCreateAPIView):
-    
     queryset = totalrank.objects.filter(text='요석공주')
     serializer_class = totalrankSerializer
-    #def __init__(self):
-    #    self.inserttotalrank()
+    def __init__(self):
+        self.inserttotalrank()
     def inserttotalrank(self):
         print('start222222')
         try:
