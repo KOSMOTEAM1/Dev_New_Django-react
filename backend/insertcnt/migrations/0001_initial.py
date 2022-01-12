@@ -20,7 +20,7 @@ class Migration(migrations.Migration):
                 ('systime', models.TimeField(auto_now='sysdate')),
             ],
         ),
-        migrations.CreateModel(
+        migrations.CreateModel( 
             name='insertcntrank',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
