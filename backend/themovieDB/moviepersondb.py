@@ -34,7 +34,7 @@ def moviepersoncrawling(start_id, finish_id):
                         sql = "insert into themoviedb_movieactors(themovieid, ottepersonid) VALUES(%s,%s);"
                         cur.executemany(sql, idslist)
 
-            elif items['crew'] is not None:
+            if items['crew'] is not None:
                 for j in range(len(items['cast'])):
                     idslist = []
                     if items['cast'][j]["department"] == "Directing":
@@ -48,7 +48,8 @@ def moviepersoncrawling(start_id, finish_id):
             conn.commit()
 
         except KeyError:
-            print('안대에에에ㅔ')
+            pass
+        except IndexError:
             pass
         except HTTPError as e:
             

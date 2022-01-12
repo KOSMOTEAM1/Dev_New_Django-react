@@ -48,10 +48,56 @@ def genrescrawling(start_id, finish_id):
         except HTTPError as e:
             print(e)
             pass
-        except MySQLdb.OperationalError:
-               pass
+        
         finally:
             print(i)
+            print('완료')
+""" 
+cur.close()
+conn.close() """
+
+
+def genrescrawling(id):
+
+        url = "https://api.themoviedb.org/3/movie/" + str(id) + \
+            "?api_key=5605da5e202977c4ef4b7125796e1173&language=ko-KR"
+        try:
+            # [데이터 요청]
+            r = requests.get(url)
+
+            # [JSON 형태로 응답받은 데이터를 딕셔너리 데이터로 변환]
+            items = r.json()
+
+            if items['genres']:
+                print(items['title'])
+                sel_sql = 'select otteid from themoviedb_movie where themovieid = %s;'
+                cur.execute(sel_sql,id)
+                otteid = cur.fetchone()
+                otteid = int(otteid[0])
+                print(otteid)
+
+                for n in range(len(items['genres'])):   
+                    genredata = []
+                    genreid = items['genres'][n]['id']
+                    genredata.append([otteid, genreid])
+                    print('@@@@@@@@')
+                    print(genredata)
+                    sql = 'INSERT INTO themoviedb_moviegenres(otteid,genreid) values(%s,%s)'
+                    cur.executemany(sql,genredata)
+                    conn.commit()
+                    
+            else:
+                pass            
+            
+        except KeyError:
+            pass
+        except TypeError:
+            pass
+        except HTTPError as e:
+            print(e)
+            pass
+        finally:
+            print(id)
             print('완료')
 """ 
 cur.close()

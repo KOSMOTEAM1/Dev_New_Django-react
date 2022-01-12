@@ -1,4 +1,9 @@
-test = "1234"
-print(test)
-test = "2345"
-print(test)
+import pymysql
+from urllib.error import HTTPError
+import requests
+from datetime import datetime
+
+url = 'http://localhost:8000/apimovie/recent?format=json'
+r = requests.get(url)
+
+print(r.json())

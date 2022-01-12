@@ -22,7 +22,7 @@ class movie(models.Model):
     imdbscore = models.FloatField(null=True)
     ottescore = models.FloatField(null=True)
     
-class genres(models.Model):
+class genresinmovie(models.Model):
     id = models.IntegerField(null=False, primary_key=True)
     name = models.CharField(max_length=10,null=False)
 
@@ -41,12 +41,11 @@ class person(models.Model):
     themovieid = models.IntegerField(null=False)
     name = models.CharField(max_length=100,null=False)
 
+
 class moviegenres(models.Model):
     combineid = models.AutoField(primary_key=True)
-    """ otteid = models.ForeignKey('movie', on_delete=models.CASCADE, db_column='otteid')
-    genreid = models.ForeignKey('genres', on_delete=models.CASCADE, db_column='id') """
     otteid = models.IntegerField(null=False)
-    genreid = models.IntegerField(null=False)
+    genreid = models.ForeignKey('genresinmovie', on_delete=models.SET_NULL, null=True, db_column='genreid')
 
 class movieactors(models.Model):
     maid = models.AutoField(primary_key=True)
