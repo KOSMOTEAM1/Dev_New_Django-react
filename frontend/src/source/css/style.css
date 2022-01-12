@@ -683,6 +683,13 @@ ol {
   height: 325px;
   position: relative;
   border-radius: 5px;
+  margin: 20px;
+}
+
+.product__item__pic__detail {
+  height: 50px;
+  width: 50px;
+  position: relative;
 }
 
 .product__item__pic .ep {
@@ -2151,7 +2158,7 @@ ol {
     width: 90px;
   }
   .anime__details__pic {
-    margin-bottom: 40px;
+    margin-right: 50px;
   }
   .anime__details__sidebar {
     padding-top: 50px;

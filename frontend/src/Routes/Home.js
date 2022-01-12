@@ -140,13 +140,13 @@ function Home() {
               </div>
               <div class="row">
                 <div class="col-lg-12 ">
-                  <div class="product__item">
-                    <Slider {...settings}>
-                      {latestmovies.map((movie) => (
-                        <MovieLatest id={movie.otteid} title={movie.title} />
-                      ))}
-                    </Slider>
-                  </div>
+                  {/* <div class="product__item"> */}
+                  <Slider {...settings}>
+                    {latestmovies.map((movie) => (
+                      <MovieLatest id={movie.otteid} title={movie.title} />
+                    ))}
+                  </Slider>
+                  {/* </div> */}
                 </div>
               </div>
             </div>

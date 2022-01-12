@@ -32,18 +32,30 @@ function TestModal({ id, title, summary, coverImg }) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   return (
     <div>
-      <a onClick={() => setModalIsOpen(true)}>{title}</a>
+      <div className="row">
+        <div className="anime__details__pic ">
+          <img
+            onClick={() => setModalIsOpen(true)}
+            src={`https://image.tmdb.org/t/p/original/${coverImg}`}
+          />
+        </div>
+      </div>
+      <div className="product__item__text">
+        <h5>
+          <a onClick={() => setModalIsOpen(true)}>{title}</a>
+        </h5>
+      </div>
       {/* <button onClick={() => setModalIsOpen(true)}>Modal Open</button> */}
       <Modal
         style={customStyles}
         isOpen={modalIsOpen}
         onRequestClose={() => setModalIsOpen(false)}
       >
-        <div className="btn__all">
+        {/* <div className="btn__all">
           <button onClick={() => setModalIsOpen(false)}>
             <span class="arrow_right"></span>
           </button>
-        </div>
+        </div> */}
 
         <Detail
           title={title}
