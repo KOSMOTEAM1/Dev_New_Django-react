@@ -22,9 +22,9 @@ const LoginPage = () => {
              <hr/>
             <input type="submit"/>
           </form>
-          <button>
+          {/* <button>
            <Link to={"/signup"}>회원가입</Link>
-          </button>
+          </button> */}
         </h3>
       </div>
     </div>

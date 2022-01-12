@@ -1,74 +1,23 @@
-import React from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import "./App.css";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import PrivateRoute from "./utils/PrivateRoute";
+import { AuthProvider } from "./context/AuthContext";
 
-//Header
-import Header from "./components/header/Header";
-
-//Footer
-import Footer from "./components/footer/Footer";
-
-//Routes
-//import Table from "./Routes/Table";
-//import Community from "./Routes/Community";
-import Community2 from "./components/board/getboard";
-import Home from "./Routes/Home";
-import insertcnt from "./Routes/insertcnt";
-import result_today from "./Routes/result_today";
-import result_yesterday from "./Routes/result_yesterday";
-import SearchView from "./Routes/SearchView";
-import test from "./Routes/test";
-
-//Routes/board
-import insertboard from "./components/board/insertboard";
-import boarddetail from "./components/board/boardview";
-//import adminHeader from "./components/adminHeader";
-import Graph from "./Routes/Graph";
-
-//import Sidebar from "./components/Sidebar/Sidebar";
-
-//css
-import "./source/css/style.css";
-//import "./source/css/bootstrap.min.css";
-import "./source/css/elegant-icons.css";
-import "./source/css/font-awesome.min.css";
-import "./source/css/nice-select.css";
-//import "./source/css/owl.carousel.min.css";
-import "./source/css/plyr.css";
-import "./source/css/slicknav.min.css";
+import Main from "./pages/Main";
+import LoginPage from "./pages/LoginPage";
+import Signup from "./pages/Signup";
 
 function App() {
   return (
-    <>
+    <div className="App">
       <Router>
-        <Header />
-        <Route exact path="/Community2" component={Community2} />
-        <Route exact path="/Community2/Insert" component={insertboard} />
-        <Route exact path="/Community2/boarddetail/:id" component={boarddetail} />
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route path="/insertcnt" component={insertcnt} />
-          <Route path="/result_today" component={result_today} />
-          <Route path="/result_yesterday" component={result_yesterday} />
-          <Route path="/Search/:id" component={SearchView} />
-
-          <Route render={() => <div className="error">Error</div>} />
-          <Route
-            exact
-            path="/Community2/boarddetail/:id"
-            component={boarddetail}
-          />
-        </Switch>
-        <Footer />
-      </Router>
-      {/* <Router>
         <AuthProvider>
           <PrivateRoute component={Main} path="/" exact />
           <Route component={LoginPage} path="/login" />
         </AuthProvider>
         <Route component={Signup} path="/signup" />
-      </Router> */}
-    </>
+      </Router>
+    </div>
   );
 }
 

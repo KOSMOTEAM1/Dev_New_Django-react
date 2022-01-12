@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router";
-import SignupForm from "../Components/auth/SignupForm";
+import SignupForm from "../components/auth/SignupForm";
 
 // 구글 계정으로 로그인하지 않는 경우 회원 생성 로직을 수행하는 컴포넌트
 export default class Signup extends Component {

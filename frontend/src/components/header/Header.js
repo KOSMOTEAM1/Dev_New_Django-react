@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import AuthContext from "../../context/AuthContext";
 
 const Header = () => {
-  //let { user, logoutUser } = useContext(AuthContext);
+  let { user, logoutUser } = useContext(AuthContext);
   return (
     <header className="header">
       <div className="container">
@@ -34,14 +34,14 @@ const Header = () => {
                   <li>
                     <Link to={"/insertcnt"}>원태테스트</Link>
                   </li>
-                  {/* <li>{user && <p> Welcome {user.username} </p>}</li>
+                  <li>{user && <p> Welcome {user.username} </p>}</li>
                   <li>
                     {user ? (
                       <p onClick={logoutUser}> Logout </p>
                     ) : (
                       <Link to="/login">Login</Link>
                     )}
-                  </li> */}
+                  </li>
                 </ul>
               </nav>
             </div>
