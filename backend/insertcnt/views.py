@@ -107,8 +107,8 @@ class Sortinsertcnt_top(generics.ListCreateAPIView):
                 a=date.today()
                 print(a)
                 data = []
-                data.append([a, i,i+1])
-                sql = "update otte_dev.insertcnt_insertcntrank set text =(select text from (SELECT id, text, count(text)as cnt FrOM otte_dev.insertcnt_insertcnt where sysdate =%s group by text having count(text)>0)as a order by a.cnt desc limit %s,1)where id =%s;"
+                data.append([i,i+1])
+                sql = "update otte_dev.insertcnt_insertcntrank set text =(select text from (SELECT text FROM otte_dev.insertcnt_insertcnt where sysdate = CURDATE() or(sysdate >= CURDATE()-1 and systime > sysdate()) GROUP BY text HAVING COUNT(text) > 0 ORDER BY COUNT(text) DESC)as a limit %s,1)where id =%s;"
                 cur.executemany(sql, data)         
                 conn.commit()
             except KeyError:
