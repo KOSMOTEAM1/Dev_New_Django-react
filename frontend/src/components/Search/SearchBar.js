@@ -8,7 +8,7 @@ function SearchBar({ placeholder, data }) {
   // console.log(data);
   // console.log("1");
   const handleFilter = (event) => {
-    var text =''
+    var text = "";
     const searchWord = event.target.value;
     setWordEntered(searchWord);
     // console.log("2");
@@ -52,30 +52,34 @@ function SearchBar({ placeholder, data }) {
           <div className="container">
             <div className="row">
               <div className="col-lg-12">
-                <div className="trending__product">
-                  <div className="row">
-                    <div className="col-lg-8 col-md-8 col-sm-8">
-                      <div className="section-title">
-                        <h4>SearchView</h4>
-                      </div>
+                <div className="row">
+                  <div className="col-lg-8 col-md-8 col-sm-8">
+                    <div className="section-title">
+                      <h4>검색결과</h4>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div className="row">
-              {filteredData.map((value) => {
-                return (
+          </div>
+          <div className="row">
+            {filteredData.map((value) => {
+              return (
+                <div className="col-lg-3">
                   <SearchModal
                     id={value.otteid}
                     coverImg={value.poster_path}
                     title={value.title}
                     summary={value.overview}
-                    genres={value.genres}
+                    release={value.release_date}
+                    runtime={value.runtime}
+                    naver={value.naverid}
+                    imdb={value.imdbscore}
+                    nation={value.original_language}
                   />
-                );
-              })}
-            </div>
+                </div>
+              );
+            })}
           </div>
         </section>
       )}
@@ -88,7 +92,6 @@ SearchBar.propTypes = {
   coverImg: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   overview: PropTypes.string.isRequired,
-  genres: PropTypes.arrayOf(PropTypes.string).isRequired, //배열이므로
 };
 
 export default SearchBar;

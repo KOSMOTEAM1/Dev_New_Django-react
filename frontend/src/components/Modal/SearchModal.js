@@ -30,7 +30,17 @@ const customStyles = {
   },
 };
 
-function SearchModal({ id, title, summary, coverImg }) {
+function SearchModal({
+  id,
+  title,
+  summary,
+  coverImg,
+  release,
+  runtime,
+  naver,
+  imdb,
+  nation,
+}) {
   //  const [like, setLike] = useState();
 
   // useEffect(async () => {
@@ -45,14 +55,14 @@ function SearchModal({ id, title, summary, coverImg }) {
   //   }
 
   function submitClick(e) {
-    console.log("클릭 이벤트가 실행 되었습니다.")
-    console.log(title)
-    console.log(summary)
-    console.log(coverImg)
-    axios.post(`http://127.0.0.1:8000/insertcnt/`,{
+    console.log("클릭 이벤트가 실행 되었습니다.");
+    console.log(title);
+    console.log(summary);
+    console.log(coverImg);
+    axios.post(`http://127.0.0.1:8000/insertcnt/`, {
       text: title,
-    })
-/*     var id = $("id").val;
+    });
+    /*     var id = $("id").val;
     var sysdate = $("#sysdate").val();
     axios
       .post("http://127.0.0.1:8000/insertcnt/", {
@@ -76,7 +86,6 @@ function SearchModal({ id, title, summary, coverImg }) {
               setModalIsOpen(true);
               submitClick(e);
             }}
-            value={title}
             src={`https://image.tmdb.org/t/p/original/${coverImg}`}
           />
         </div>
@@ -89,7 +98,6 @@ function SearchModal({ id, title, summary, coverImg }) {
               setModalIsOpen(true);
               submitClick(e);
             }}
-            value={title}
           >
             {title}
           </a>
@@ -110,8 +118,12 @@ function SearchModal({ id, title, summary, coverImg }) {
         <Detail
           title={title}
           id={id}
+          release={release}
+          runtime={runtime}
+          naver={naver}
+          imdb={imdb}
+          nation={nation}
           summary={summary}
-          // genres={genres}
           coverImg={coverImg}
         />
         <br></br>

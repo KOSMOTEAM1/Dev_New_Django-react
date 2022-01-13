@@ -20,11 +20,16 @@ function Movie({ id, title }) {
   }, []);
 
   return (
-    <>
+    <div className="product__item__text">
       <TestModal
         key={latestmovies.otteid}
         title={latestmovies.title}
         id={latestmovies.otteid}
+        release={latestmovies.release_date}
+        runtime={latestmovies.runtime}
+        naver={latestmovies.naverid}
+        imdb={latestmovies.imdbscore}
+        nation={latestmovies.original_language}
         summary={latestmovies.overview}
         coverImg={latestmovies.poster_path}
       />
@@ -33,7 +38,7 @@ function Movie({ id, title }) {
 
       {/* <p>{summary}</p>
       <ul>{genres && genres.map((g) => <li key={g}>{g}</li>)}</ul> */}
-    </>
+    </div>
   );
 }
 

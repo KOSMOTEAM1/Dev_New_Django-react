@@ -2,23 +2,62 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import LineChart from "../Graph/LineChart";
 import HeartButton from "../Modal/HeartButton";
+import PropTypes from "prop-types";
 import "../../source/css/bootstrap.min.css";
 import "../Modal/modal.css";
 
-function Detail({ title, coverImg, id, summary, genres }) {
-  // const [like, setLike] = useState();
+function Detail({
+  title,
+  coverImg,
+  id,
+  summary,
+  release,
+  runtime,
+  naver,
+  imdb,
+  nation,
+}) {
+  const [genres, setGenres] = useState([]);
+  const [actors, setActors] = useState([]);
+  const [directors, setDirectors] = useState([]);
+  //장르
+  const getGenre = async () => {
+    const json = await (
+      await fetch(`http://127.0.0.1:8000/apimovie/genre/${id}`)
+    ).json();
 
-  // useEffect(async () => {
-  //   const fetchData = async () => { const res = await axios.get(...)
-  //      if (res.data.type === 'liked') setLike(true)
-  //     }
-  //     fetchData()
-  //   }, []);
-  //   const toggleLike = async (e) => {
-  //     const res = await axios.post(...)
-  //     setLike(!like)
-  //   }
-  // [POST] 사용자가 좋아요를 누름 -> DB 갱신 setLike(!like) }
+    setGenres(json.name);
+    console.log(json[0].name);
+  };
+  useEffect(() => {
+    getGenre();
+  }, []);
+
+  //배우
+  const getActor = async () => {
+    const json = await (
+      await fetch(`http://127.0.0.1:8000/apimovie/actor/${id}`)
+    ).json();
+
+    setActors(json.personname);
+    console.log(json);
+  };
+  useEffect(() => {
+    getActor();
+  }, []);
+
+  //감독
+  const getDirector = async () => {
+    const json = await (
+      await fetch(`http://127.0.0.1:8000/apimovie/director/${id}`)
+    ).json();
+
+    setDirectors(json.personname);
+    console.log(json);
+  };
+  useEffect(() => {
+    getDirector();
+  }, []);
 
   return (
     <section className="anime-details spad">
@@ -54,34 +93,40 @@ function Detail({ title, coverImg, id, summary, genres }) {
                   <div className="col-lg-6 col-md-6 ">
                     <ul>
                       <li>
-                        <span>Type: </span> {title}
+                        <span>장르 : </span>
+                        {genres &&
+                          genres.map((g) => <li key={g.name}>{g.name}</li>)}
                       </li>
                       <li>
-                        <span>Genre: </span>{" "}
-                        {genres && genres.map((g) => <li key={g}>{g}</li>)}
+                        <span>감독 : </span>
+                        {directors &&
+                          directors.map((d) => (
+                            <li key={d.personname}>{d.personname}</li>
+                          ))}
                       </li>
                       <li>
-                        <span>Nation: </span> {title}
+                        <span>배우 : </span>
+                        {actors && actors.map((a) => <li key={a}>{a}</li>)}
                       </li>
                       <li>
-                        <span>서비스중인 OTT: </span> {title}
+                        <span>개봉일 : </span> {release}
                       </li>
                     </ul>
                   </div>
                   <div className="col-lg-6 col-md-6">
                     <ul>
                       <li>
-                        <span>Type: </span> {title}
+                        <span>상영시간 : </span>
+                        {runtime}
                       </li>
                       <li>
-                        <span>Genre: </span>{" "}
-                        {genres && genres.map((g) => <li key={g}>{g}</li>)}
+                        <span>Naver 평점 : </span> {naver}
                       </li>
                       <li>
-                        <span>Nation: </span> {title}
+                        <span>IMDB 평점 : </span> {imdb}
                       </li>
                       <li>
-                        <span>서비스중인 OTT: </span> {title}
+                        <span>언어 : </span> {nation}
                       </li>
                     </ul>
                   </div>
@@ -110,6 +155,12 @@ function Detail({ title, coverImg, id, summary, genres }) {
   );
 }
 
+Detail.propTypes = {
+  genres: PropTypes.arrayOf(PropTypes.string).isRequired,
+  actors: PropTypes.arrayOf(PropTypes.string).isRequired,
+  directors: PropTypes.arrayOf(PropTypes.string).isRequired,
+};
+
 // Movie.propTypes = {
 //   id: PropTypes.number.isRequired,
 //   coverImg: PropTypes.string.isRequired,
@@ -117,5 +168,19 @@ function Detail({ title, coverImg, id, summary, genres }) {
 //   summary: PropTypes.string.isRequired,
 //   genres: PropTypes.arrayOf(PropTypes.string).isRequired, //배열이므로
 // };
+
+// const [like, setLike] = useState();
+
+// useEffect(async () => {
+//   const fetchData = async () => { const res = await axios.get(...)
+//      if (res.data.type === 'liked') setLike(true)
+//     }
+//     fetchData()
+//   }, []);
+//   const toggleLike = async (e) => {
+//     const res = await axios.post(...)
+//     setLike(!like)
+//   }
+// [POST] 사용자가 좋아요를 누름 -> DB 갱신 setLike(!like) }
 
 export default Detail;

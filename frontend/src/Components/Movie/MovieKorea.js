@@ -25,6 +25,11 @@ function Movie({ id, title }) {
         key={koreamovies.otteid}
         title={koreamovies.title}
         id={koreamovies.otteid}
+        release={koreamovies.release_date}
+        runtime={koreamovies.runtime}
+        naver={koreamovies.naverid}
+        imdb={koreamovies.imdbscore}
+        nation={koreamovies.original_language}
         summary={koreamovies.overview}
         coverImg={koreamovies.poster_path}
       />

@@ -28,7 +28,17 @@ const customStyles = {
   },
 };
 
-function TestModal({ id, title, summary, coverImg }) {
+function TestModal({
+  id,
+  title,
+  summary,
+  coverImg,
+  release,
+  runtime,
+  naver,
+  imdb,
+  nation,
+}) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   return (
     <div>
@@ -60,8 +70,12 @@ function TestModal({ id, title, summary, coverImg }) {
         <Detail
           title={title}
           id={id}
+          release={release}
+          runtime={runtime}
+          naver={naver}
+          imdb={imdb}
+          nation={nation}
           summary={summary}
-          // genres={genres}
           coverImg={coverImg}
         />
         <br></br>
