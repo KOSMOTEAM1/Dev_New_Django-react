@@ -43,7 +43,7 @@ function Detail({ title, coverImg, id, summary, genres }) {
                 <br></br>
                 <h5>검색량 변화</h5>
                 <div className="anime__details__graph">
-                  <LineChart id={id} />
+                  <LineChart title={title} />
                 </div>
               </div>
               <br></br>
