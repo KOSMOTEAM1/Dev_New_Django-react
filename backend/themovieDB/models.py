@@ -26,16 +26,6 @@ class genresinmovie(models.Model):
     id = models.IntegerField(null=False, primary_key=True)
     name = models.CharField(max_length=10,null=False)
 
-""" class actors(models.Model):
-    actorid = models.AutoField(primary_key=True)
-    themovieid = models.IntegerField(null=False)
-    name = models.CharField(max_length=100,null=False)
-
-class directors(models.Model):
-    directorid = models.AutoField(primary_key=True)
-    themovieid = models.IntegerField(null=False)
-    name = models.CharField(max_length=100,null=False) """
-
 class person(models.Model):
     ottepersonid = models.AutoField(primary_key=True)
     themovieid = models.IntegerField(null=False)
@@ -49,15 +39,13 @@ class moviegenres(models.Model):
 
 class movieactors(models.Model):
     maid = models.AutoField(primary_key=True)
-    """ ottepersonid = models.ForeignKey('person', on_delete=models.CASCADE, db_column='personid',null=True) """
-    ottepersonid = models.IntegerField(null=False)
-    themovieid = models.IntegerField(null=False)
+    personname = models.CharField(max_length=100,null = True)
+    otteid = models.ForeignKey('movie', on_delete=models.SET_NULL, null=True, db_column='otteid')
 
 class moviedirectors(models.Model):
     mdid = models.AutoField(primary_key=True)
-    """ ottepersonid = models.ForeignKey('person', on_delete=models.CASCADE, db_column='personid',null=True) """
-    ottepersonid = models.IntegerField(null=False)
-    themovieid = models.IntegerField(null=False)
+    personname = models.CharField(max_length=100,null = True)
+    otteid = models.ForeignKey('movie', on_delete=models.SET_NULL, null=True, db_column='otteid')
 
 def __str__(self):
     return self.title

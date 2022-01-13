@@ -1,23 +1,27 @@
 from rest_framework import serializers
-from themovieDB.models import genresinmovie, movie, moviegenres
+from themovieDB.models import genresinmovie, movie, movieactors
 
 class PostSerializer(serializers.ModelSerializer):
     class Meta:
         fields = ('__all__')
         model = movie
 
-class GenreSerializer(serializers.ModelSerializer):
+class AllGenreSerializer(serializers.ModelSerializer):
     class Meta:
         fields = ('__all__')
-        model = moviegenres
-
-class AllGenreSerializer(serializers.ModelSerializer):
-    """ id = GenreSerializer(read_only=True) """
-    class Meta:
-        fields = ('id','name')
         model = genresinmovie
 
 class SortSerializer(serializers.ModelSerializer):
     class Meta:
         fields = ('__all__')
         model = movie
+
+class ActorSerializer(serializers.ModelSerializer):
+    class Meta:
+        fields = ('personname',)
+        model = movieactors
+
+class DirectorSerializer(serializers.ModelSerializer):
+    class Meta:
+        fields = ('personname',)
+        model = movieactors

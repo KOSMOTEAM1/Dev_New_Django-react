@@ -1,11 +1,9 @@
 from django.db.models import query
 from django.views import generic
 from rest_framework import generics
-from themovieDB.models import moviegenres
-from themovieDB.models import movie 
-from themovieDB.models import genresinmovie
+from themovieDB.models import movie, moviegenres, movieactors, moviedirectors
 from django.db.models import F
-from .serializers import PostSerializer, SortSerializer, AllGenreSerializer
+from .serializers import PostSerializer, SortSerializer, AllGenreSerializer, ActorSerializer, DirectorSerializer
 from rest_framework.response import Response
 from django.http import Http404
 from rest_framework.views import APIView
@@ -38,6 +36,28 @@ class GenredetailPost(APIView):
             print("@@@@@@@",queryset.query)
             print(queryset)
             serializer = AllGenreSerializer(queryset, many=True)
+            return Response(serializer.data)
+        except moviegenres.DoesNotExist:
+            raise Http404
+
+class ActordetailPost(APIView):   
+    def get(self, request, pk):
+        try:
+            queryset = movieactors.objects.filter(otteid=pk).values('personname')
+            print("@@@@@@@",queryset.query)
+            print(queryset)
+            serializer = DirectorSerializer(queryset, many=True)
+            return Response(serializer.data)
+        except moviegenres.DoesNotExist:
+            raise Http404
+
+class DirectordetailPost(APIView):   
+    def get(self, request, pk):
+        try:
+            queryset = moviedirectors.objects.filter(otteid=pk).values('personname')
+            print("@@@@@@@",queryset.query)
+            print(queryset)
+            serializer = ActorSerializer(queryset, many=True)
             return Response(serializer.data)
         except moviegenres.DoesNotExist:
             raise Http404

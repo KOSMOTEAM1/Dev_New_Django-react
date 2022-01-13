@@ -10,4 +10,8 @@ urlpatterns = [
     path('korea', views.KoreaPost.as_view()),
     # 오떼아이디 장르
     path('genre/<int:pk>/', views.GenredetailPost.as_view(), name="otteid"),
+    # 오떼아이디 배우
+    path('actor/<int:pk>/', views.ActordetailPost.as_view(), name="otteid"),
+    # 오떼아이디 감독
+    path('director/<int:pk>/', views.DirectordetailPost.as_view(), name="otteid"),
 ]
