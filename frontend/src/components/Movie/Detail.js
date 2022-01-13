@@ -25,9 +25,12 @@ function Detail({
     const json = await (
       await fetch(`http://127.0.0.1:8000/apimovie/genre/${id}`)
     ).json();
-
-    setGenres(json.name);
-    console.log(json[0].name);
+    const jsonarray = [];
+    for (let i = 0; i < json.length; i++) {
+      jsonarray.push(json[i].name);
+    }
+    setGenres(jsonarray);
+    console.log(jsonarray);
   };
   useEffect(() => {
     getGenre();
@@ -38,9 +41,12 @@ function Detail({
     const json = await (
       await fetch(`http://127.0.0.1:8000/apimovie/actor/${id}`)
     ).json();
-
-    setActors(json.personname);
-    console.log(json);
+    const jsonarray = [];
+    for (let i = 0; i < json.length; i++) {
+      jsonarray.push(json[i].personname);
+    }
+    setActors(jsonarray);
+    console.log(jsonarray);
   };
   useEffect(() => {
     getActor();
@@ -51,9 +57,12 @@ function Detail({
     const json = await (
       await fetch(`http://127.0.0.1:8000/apimovie/director/${id}`)
     ).json();
-
-    setDirectors(json.personname);
-    console.log(json);
+    const jsonarray = [];
+    for (let i = 0; i < json.length; i++) {
+      jsonarray.push(json[i].personname);
+    }
+    setDirectors(jsonarray);
+    console.log(jsonarray);
   };
   useEffect(() => {
     getDirector();
@@ -94,15 +103,12 @@ function Detail({
                     <ul>
                       <li>
                         <span>장르 : </span>
-                        {genres &&
-                          genres.map((g) => <li key={g.name}>{g.name}</li>)}
+                        {genres && genres.map((g) => <li key={g}>{g}</li>)}
                       </li>
                       <li>
                         <span>감독 : </span>
                         {directors &&
-                          directors.map((d) => (
-                            <li key={d.personname}>{d.personname}</li>
-                          ))}
+                          directors.map((d) => <li key={d}>{d}</li>)}
                       </li>
                       <li>
                         <span>배우 : </span>
