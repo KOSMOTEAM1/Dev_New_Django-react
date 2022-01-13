@@ -22,6 +22,7 @@ function Movie({ id, title }) {
   return (
     <>
       <TestModal
+        key={latestmovies.otteid}
         title={latestmovies.title}
         id={latestmovies.otteid}
         summary={latestmovies.overview}

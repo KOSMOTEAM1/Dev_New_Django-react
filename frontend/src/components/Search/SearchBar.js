@@ -66,6 +66,7 @@ function SearchBar({ placeholder, data }) {
               {filteredData.map((value) => {
                 return (
                   <SearchModal
+                    key={value.otteid}
                     id={value.otteid}
                     coverImg={value.poster_path}
                     title={value.title}

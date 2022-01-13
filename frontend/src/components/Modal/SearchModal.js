@@ -31,12 +31,25 @@ const customStyles = {
 };
 
 function TestModal({ id, title, summary, coverImg }) {
-  function submitClick() {
-    var title = title;
+  //  const [like, setLike] = useState();
+
+  // useEffect(async () => {
+  //   const fetchData = async () => { const res = await axios.get(...)
+  //      if (res.data.type === 'liked') setLike(true)
+  //     }
+  //     fetchData()
+  //   }, []);
+  //   const toggleLike = async (e) => {
+  //     const res = await axios.post(...)
+  //     setLike(!like)
+  //   }
+
+  function submitClick(e) {
+    var id = $("id").val;
     var sysdate = $("#sysdate").val();
     axios
       .post("http://127.0.0.1:8000/insertcnt/", {
-        title: this.title,
+        id: this.id,
         sysdate: this.sysdate,
       })
       .then((res) => {
@@ -44,15 +57,17 @@ function TestModal({ id, title, summary, coverImg }) {
       });
   }
 
+  // setModalIsOpen(true)
   const [modalIsOpen, setModalIsOpen] = useState(false);
   return (
     <div>
       <div className="row">
         <div className="anime__details__pic ">
           <img
-            onClick={() => {
-              submitClick();
+            id={id}
+            onClick={(e) => {
               setModalIsOpen(true);
+              submitClick(e);
             }}
             value={title}
             src={`https://image.tmdb.org/t/p/original/${coverImg}`}
@@ -62,9 +77,10 @@ function TestModal({ id, title, summary, coverImg }) {
       <div className="product__item__text">
         <h5>
           <a
-            onClick={() => {
-              submitClick();
+            id={id}
+            onClick={(e) => {
               setModalIsOpen(true);
+              submitClick(e);
             }}
             value={title}
           >

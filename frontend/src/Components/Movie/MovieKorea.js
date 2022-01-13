@@ -22,6 +22,7 @@ function Movie({ id, title }) {
   return (
     <div className="product__item__text">
       <TestModal
+        key={koreamovies.otteid}
         title={koreamovies.title}
         id={koreamovies.otteid}
         summary={koreamovies.overview}
