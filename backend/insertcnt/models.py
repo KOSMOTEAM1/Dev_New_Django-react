@@ -24,7 +24,7 @@ class totalrank(models.Model):
     sysdate = models.DateField(null=True)
     def __str__(self):
         """A string representation of the model."""
-        return self.title
+        return self.text
 
 
 #class insertcnt_top(models.Model):

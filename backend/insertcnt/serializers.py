@@ -37,6 +37,5 @@ class totalrankSerializer(serializers.ModelSerializer):
             
             'text',
             'rank',
-            'sysdate',
         )
         model = totalrank

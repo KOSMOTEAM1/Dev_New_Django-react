@@ -27,10 +27,11 @@ class LineCharts extends Component {
   }
 
   callFloatPopulListApi = async () => {
-    const id = this.props;
-    console.log(id);
-    axios
-      .get(`http://127.0.0.1:8000/insertcnt/rank`, {})
+    const id_props = this.props;
+    console.log("모달 파라미터 = ",id_props.title);
+    axios.post(`http://127.0.0.1:8000/insertcnt/rank/`, {
+        id:id_props.title,
+      })
       //데이터 나오는곳
       // alert("메롱")
       .then((response) => {

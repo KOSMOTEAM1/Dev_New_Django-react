@@ -119,7 +119,66 @@ class Sortinsertcnt_top(generics.ListCreateAPIView):
                 print(i)
                 print('완료')
 
-class Inserttotalrank(generics.ListCreateAPIView):
+class Inserttotalrank(APIView):
+    def post(self, request):
+        a=request.data.get('id')
+        print("post execute...")
+        print("post=", a)
+        rank = self.get_object(a)
+        print("qqqq", rank)
+        serializer_class = totalrankSerializer(rank, many=True)
+        return Response(serializer_class.data)
+    def get_object(self, a):
+        print("get start")
+        print("get + ", a)
+        queryset = totalrank.objects.filter(text=a)
+        print(queryset)
+        try:
+            return queryset
+        except totalrank.DoesNotExist:
+            raise Http404
+
+
+    def inserttotalrank(self):
+        print('start222222')
+        try:
+            a=date.today() - timedelta(days=1)
+            print(a)
+            data = []
+            data.append([a])
+            #어제날짜 까지만
+            sql = "insert into otte_dev.insertcnt_totalrank (text, rank, sysdate)select a.text, @rownum := @rownum+1 as rank, a.sysdate from (SELECT id, text, count(text)as cnt, sysdate FrOM otte_dev.insertcnt_insertcnt as insertcnt, otte_dev.themoviedb_movie as movie  where sysdate = %s and insertcnt.text=movie.title and not exists(select sysdate from otte_dev.insertcnt_totalrank where sysdate=%s) group by text having count(text)>0 order by cnt desc limit 0,20) as a, (select @rownum:=0) as b;"
+            #insertcnt_totalrank 테이블에 어제날짜의 데이터가 없을경우 
+            #어제날짜의 검색기록을 카운트해서 1-100순위로 나눈후 insert한다.
+
+            cur.executemany(sql, data)        
+            conn.commit()
+        except KeyError:
+            pass
+        except HTTPError as e:
+            pass
+        finally:
+            print('완료')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+""" class Inserttotalrank(generics.ListCreateAPIView):
     queryset = totalrank.objects.filter(text='인질')
     serializer_class = totalrankSerializer
     #def __init__(self):
@@ -143,7 +202,7 @@ class Inserttotalrank(generics.ListCreateAPIView):
         except HTTPError as e:
             pass
         finally:
-            print('완료')
+            print('완료') """
 
 
 

@@ -11,4 +11,5 @@ urlpatterns = [
     path('top/', views.Sortinsertcnt_top.as_view()),
     path('search/<str:id>', views.Search.as_view()),
     path('rank/', views.Inserttotalrank.as_view()),
+    #path('rank/<str:id>', views.Inserttotalrank.as_view()),
 ]
