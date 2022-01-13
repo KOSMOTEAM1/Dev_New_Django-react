@@ -30,7 +30,7 @@ const customStyles = {
   },
 };
 
-function TestModal({ id, title, summary, coverImg }) {
+function SearchModal({ id, title, summary, coverImg }) {
   //  const [like, setLike] = useState();
 
   // useEffect(async () => {
@@ -45,7 +45,14 @@ function TestModal({ id, title, summary, coverImg }) {
   //   }
 
   function submitClick(e) {
-    var id = $("id").val;
+    console.log("클릭 이벤트가 실행 되었습니다.")
+    console.log(title)
+    console.log(summary)
+    console.log(coverImg)
+    axios.post(`http://127.0.0.1:8000/insertcnt/`,{
+      text: title,
+    })
+/*     var id = $("id").val;
     var sysdate = $("#sysdate").val();
     axios
       .post("http://127.0.0.1:8000/insertcnt/", {
@@ -54,7 +61,7 @@ function TestModal({ id, title, summary, coverImg }) {
       })
       .then((res) => {
         console.log(res.this);
-      });
+      }); */
   }
 
   // setModalIsOpen(true)
@@ -114,4 +121,4 @@ function TestModal({ id, title, summary, coverImg }) {
   );
 }
 
-export default TestModal;
+export default SearchModal;

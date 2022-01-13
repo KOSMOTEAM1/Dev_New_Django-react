@@ -8,6 +8,7 @@ function SearchBar({ placeholder, data }) {
   // console.log(data);
   // console.log("1");
   const handleFilter = (event) => {
+    var text =''
     const searchWord = event.target.value;
     setWordEntered(searchWord);
     // console.log("2");
@@ -66,7 +67,6 @@ function SearchBar({ placeholder, data }) {
               {filteredData.map((value) => {
                 return (
                   <SearchModal
-                    key={value.otteid}
                     id={value.otteid}
                     coverImg={value.poster_path}
                     title={value.title}
