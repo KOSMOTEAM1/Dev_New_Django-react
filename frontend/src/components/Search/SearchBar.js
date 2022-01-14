@@ -5,18 +5,16 @@ import PropTypes from "prop-types";
 function SearchBar({ placeholder, data }) {
   const [filteredData, setFilteredData] = useState([]);
   const [wordEntered, setWordEntered] = useState("");
-  // console.log(data);
-  // console.log("1");
+
   const handleFilter = (event) => {
     var text = "";
     const searchWord = event.target.value;
     setWordEntered(searchWord);
-    // console.log("2");
+
     const newFilter = data.filter((value) => {
       return value.title.toLowerCase().includes(searchWord.toLowerCase());
     });
     console.log(newFilter);
-    // console.log("3");
 
     if (searchWord === "") {
       setFilteredData([]);
@@ -39,13 +37,6 @@ function SearchBar({ placeholder, data }) {
           value={wordEntered}
           onChange={handleFilter}
         />
-        {/* <div className="searchIcon">
-          {filteredData.length === 0 ? (
-            <SearchIcon />
-          ) : (
-            <CloseIcon id="clearBtn" onClick={clearInput} />
-          )}
-        </div> */}
       </form>
       {filteredData.length !== 0 && (
         <section className="product spad">

@@ -10,8 +10,14 @@ function ReactTable({ columns, data }) {
     useTable({ columns, data });
   return (
     <>
-      <div class="li_top">
-        <h3 class="s_tit1">실시간 검색어</h3>
+      <div class="product__page__title">
+        <div class="row">
+          <div class="col-lg-8 col-md-8 col-sm-8">
+            <div class="section-title">
+              <h4>실시간 검색어</h4>
+            </div>
+          </div>
+        </div>
       </div>
       <div>
         <table class="table_ty2" {...getTableProps()}>

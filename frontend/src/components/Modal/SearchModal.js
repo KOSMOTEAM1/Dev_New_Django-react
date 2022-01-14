@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-//import { Modal, Button } from "react-bootstrap";
 import Modal from "react-modal";
 import $ from "jquery";
 import Detail from "../Movie/Detail";
@@ -41,19 +40,6 @@ function SearchModal({
   imdb,
   nation,
 }) {
-  //  const [like, setLike] = useState();
-
-  // useEffect(async () => {
-  //   const fetchData = async () => { const res = await axios.get(...)
-  //      if (res.data.type === 'liked') setLike(true)
-  //     }
-  //     fetchData()
-  //   }, []);
-  //   const toggleLike = async (e) => {
-  //     const res = await axios.post(...)
-  //     setLike(!like)
-  //   }
-
   function submitClick(e) {
     console.log("클릭 이벤트가 실행 되었습니다.");
     console.log(title);
@@ -62,24 +48,13 @@ function SearchModal({
     axios.post(`http://127.0.0.1:8000/insertcnt/`, {
       text: title,
     });
-    /*     var id = $("id").val;
-    var sysdate = $("#sysdate").val();
-    axios
-      .post("http://127.0.0.1:8000/insertcnt/", {
-        id: this.id,
-        sysdate: this.sysdate,
-      })
-      .then((res) => {
-        console.log(res.this);
-      }); */
   }
 
-  // setModalIsOpen(true)
   const [modalIsOpen, setModalIsOpen] = useState(false);
   return (
     <div>
       <div className="row">
-        <div className="anime__details__pic ">
+        <div className="product__item__pic">
           <img
             id={id}
             onClick={(e) => {
@@ -103,18 +78,11 @@ function SearchModal({
           </a>
         </h5>
       </div>
-      {/* <button onClick={() => setModalIsOpen(true)}>Modal Open</button> */}
       <Modal
         style={customStyles}
         isOpen={modalIsOpen}
         onRequestClose={() => setModalIsOpen(false)}
       >
-        {/* <div className="btn__all">
-          <button onClick={() => setModalIsOpen(false)}>
-            <span class="arrow_right"></span>
-          </button>
-        </div> */}
-
         <Detail
           title={title}
           id={id}
@@ -126,8 +94,6 @@ function SearchModal({
           summary={summary}
           coverImg={coverImg}
         />
-        <br></br>
-        {/*닫기 버든 만들면 될듯*/}
       </Modal>
     </div>
   );
