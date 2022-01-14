@@ -40,12 +40,12 @@ class moviegenres(models.Model):
 class movieactors(models.Model):
     maid = models.AutoField(primary_key=True)
     personname = models.CharField(max_length=100,null = True)
-    otteid = models.ForeignKey('movie', on_delete=models.SET_NULL, null=True, db_column='otteid')
+    otteid = models.IntegerField(null=True)
 
 class moviedirectors(models.Model):
     mdid = models.AutoField(primary_key=True)
     personname = models.CharField(max_length=100,null = True)
-    otteid = models.ForeignKey('movie', on_delete=models.SET_NULL, null=True, db_column='otteid')
+    otteid = models.IntegerField(null=True)
 
 def __str__(self):
     return self.title
