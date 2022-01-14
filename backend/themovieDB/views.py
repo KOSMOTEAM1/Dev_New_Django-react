@@ -13,26 +13,6 @@ from rest_framework.pagination import PageNumberPagination
 class ListPost(generics.ListCreateAPIView):
     queryset = movie.objects.all()
     serializer_class = PostSerializer
-    paginate_by = 50        # 한페이지에 나오는 객체 수
-    paginate_orphans = 5    # 짜투리 객체 처리
-    page_kwarg = "page"     # 페이징할 argument
-    pagination_class = PageNumberPagination
-    def list(self, request, *args, **kwargs): 
-        queryset = self.set_filters( self.get_queryset(), request ) 
-        """ paginate_queryset 내장 함수에 queryset 객채를 전달한다. 이때 paginator
-        라는 페이징 클래스를 인스턴스화한 속성에 size_query_param을 "page_size"를 적용한다.
-        이는 한번에 보여줄 게시물의 갯수를 어떤 파라미터를 통해 전달하는지 설정하는 속성이다. """ 
-        self.paginator.page_size_query_param = "page" 
-        page = self.paginate_queryset(queryset) 
-        """ page 객체가 존재한다면 get_paginated_response 내장함수를 이용해 응답한다. 200 Success로 
-        응답한다. """ 
-        if page is not None: 
-            serializer = self.get_serializer(page, many=True) 
-            return self.get_paginated_response(serializer.data) 
-
-        serializer = self.get_serializer(queryset, many=True) 
-        return Response(serializer.data)
-
 
 # 디테일뷰
 class DetailPost(generics.RetrieveUpdateDestroyAPIView):
