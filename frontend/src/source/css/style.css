@@ -113,13 +113,14 @@ ol {
 -----------------------*/
 
 .section-title {
+  margin-top: 10px;
   margin-bottom: 30px;
 }
 
 .section-title h4,
 .section-title h5 {
   color: #ffffff;
-  font-weight: 600;
+  font-weight: 700;
   line-height: 21px;
   text-transform: uppercase;
   padding-left: 20px;
@@ -680,7 +681,10 @@ ol {
 }
 
 .product__item__pic {
-  height: 325px;
+  width: 100%;
+  height: 100%;
+  max-width: 350px;
+  max-height: 325px;
   position: relative;
   border-radius: 5px;
   margin: 20px;
@@ -985,12 +989,18 @@ ol {
   padding-top: 60px;
 }
 
+.anime__details__graph {
+  display: flex;
+  justify-content: center;
+}
+
 .anime__details__content {
   margin-bottom: 65px;
 }
 
 .anime__details__text {
   position: relative;
+  margin-bottom: 50px;
 }
 
 .anime__details__text p {
@@ -1001,6 +1011,7 @@ ol {
 .anime__details__text h5 {
   color: #ffffff;
   font-weight: 700;
+  margin-top: 30px;
   margin-bottom: 13px;
 }
 
@@ -1039,6 +1050,12 @@ ol {
   margin-bottom: 20px;
 }
 
+.anime__details__title h2 {
+  color: #ffffff;
+  font-weight: 900;
+  margin-bottom: 13px;
+}
+
 .anime__details__title h3 {
   color: #ffffff;
   font-weight: 700;
@@ -1072,8 +1089,6 @@ ol {
 
 .anime__details__widget {
   margin-bottom: 15px;
-  justify-content: center;
-  display: flex;
 }
 
 .anime__details__widget ul {

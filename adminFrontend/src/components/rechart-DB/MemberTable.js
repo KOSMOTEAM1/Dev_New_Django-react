@@ -25,19 +25,19 @@ const DataTable = () => {
     const ITEMS_PER_PAGE = 10;
 
     const headers = [
-        {name: 'No', field: 'id', sortable: false},
-        {name: 'Date', field: 'date', sortable: true},
-        {name: 'Title', field: 'movieNm', sortable: true},
-        {name: 'openDT', field: 'openDT', sortable: true},
-        {name: 'salesAcc', field: 'salesAcc', sortable: true},
-        {name: 'audiAcc', field: 'audiAcc', sortable: true}
+        {name: 'ID', field: 'otteid', sortable: true},
+        {name: '제목', field: 'title', sortable: true},
+        {name: '개봉일', field: 'release_date', sortable: true},
+        {name: '러닝타임', field: 'runtime', sortable: true},
+        {name: '평점', field: 'popularity', sortable: true},
+        {name: '국가', field: 'original_language', sortable: true}
     ];
 
     useEffect(() => {
         const getData = () => {
             showLoader();
 
-            fetch('http://localhost:8000/boxapi/')
+            fetch('http://localhost:8000/apimovie/')
                 .then((response) => response.json())
                 .then((json) => {
                     hideLoader();
@@ -53,23 +53,21 @@ const DataTable = () => {
         let computedComments = comments;
 
         if (search) {
-            computedComments = computedComments.filter(
-                (comment) =>
-                    comment.openDT
-                        .toLowerCase()
-                        .includes(search.toLowerCase()) ||
-                    comment.movieNm
-                        .toLowerCase()
-                        .includes(search.toLowerCase()) ||
-                    comment.date.includes(search)
+            computedComments = computedComments.filter((comment) =>
+                comment.title.toLowerCase().includes(search.toLowerCase())
             );
         }
         setTotalItems(computedComments.length);
         if (sorting.field) {
+            console.log(sorting.field);
+            console.log(sorting.order);
             const reversed = sorting.order === 'asc' ? 1 : -1;
             computedComments = computedComments.sort(
                 (a, b) =>
-                    reversed * a[sorting.field].localeCompare(b[sorting.field])
+                    reversed *
+                    String(a[sorting.field]).localeCompare(
+                        String(b[sorting.field])
+                    )
             );
         }
         return computedComments.slice(
@@ -118,14 +116,14 @@ const DataTable = () => {
                         <tbody>
                             {commentsData.map((comment) => (
                                 <tr>
-                                    <th scope="row" key={comment.id}>
-                                        {comment.id}
+                                    <th scope="row" key={comment.otteid}>
+                                        {comment.otteid}
                                     </th>
-                                    <td>{comment.date}</td>
-                                    <td>{comment.movieNm}</td>
-                                    <td>{comment.openDT}</td>
-                                    <td>{comment.salesAcc}</td>
-                                    <td>{comment.audiAcc}</td>
+                                    <td>{comment.title}</td>
+                                    <td>{comment.release_date}</td>
+                                    <td>{comment.runtime}</td>
+                                    <td>{comment.popularity}</td>
+                                    <td>{comment.original_language}</td>
                                 </tr>
                             ))}
                         </tbody>

@@ -63,7 +63,7 @@ const MenuSidebar = () => {
     const user = useSelector((state) => state.auth.currentUser);
 
     return (
-        <aside className="main-sidebar sidebar-dark-primary elevation-4">
+        <aside className="main-sidebar sidebar-dark-yellow elevation-4">
             <Link to="/" className="brand-link">
                 <img
                     src="/img/logo.png"
@@ -91,6 +91,7 @@ const MenuSidebar = () => {
                 <nav className="mt-2" style={{overflowY: 'hidden'}}>
                     <ul
                         className="nav nav-pills nav-sidebar flex-column"
+                        data-widget="treeview"
                         role="menu"
                     >
                         {MENU.map((menuItem) => (

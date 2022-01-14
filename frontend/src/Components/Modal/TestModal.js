@@ -15,7 +15,7 @@ const customStyles = {
     position: "absolute",
     top: "40px",
     left: "15%",
-    right: "15%",
+    right: "20%",
     bottom: "40px",
     border: "1px solid #ccc",
     background: "#0b0c2a",
