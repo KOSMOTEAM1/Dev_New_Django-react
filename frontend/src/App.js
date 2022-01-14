@@ -60,13 +60,6 @@ function App() {
         </Switch>
         <Footer />
       </Router>
-      {/* <Router>
-        <AuthProvider>
-          <PrivateRoute component={Main} path="/" exact />
-          <Route component={LoginPage} path="/login" />
-        </AuthProvider>
-        <Route component={Signup} path="/signup" />
-      </Router> */}
     </>
   );
 }

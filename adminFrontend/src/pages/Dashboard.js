@@ -7,35 +7,34 @@ const Dashboard = () => {
             <div className="row">
                 <div className="col-lg-3 col-6">
                     <SmallBox
-                        count={150}
-                        title="New Orders"
+                        title="회원 정보"
                         type="info"
                         icon="ion-android-people"
-                        navigateTo="/"
+                        navigateTo="/table1"
                     />
                 </div>
                 <div className="col-lg-3 col-6">
                     <SmallBox
-                        count={53}
-                        title="Bounce Rate"
+                        title="일일 박스오피스 정보"
                         type="success"
-                        navigateTo="/"
+                        icon="ion-ios-pie-outline"
+                        navigateTo="/daily-chart1"
                     />
                 </div>
                 <div className="col-lg-3 col-6">
                     <SmallBox
-                        count={44}
-                        title="User Registrations"
+                        title="주간 박스오피스 정보"
                         type="warning"
-                        navigateTo="/"
+                        navigateTo="/weekly-chart1"
+                        icon="ion-ios-pie"
                     />
                 </div>
                 <div className="col-lg-3 col-6">
                     <SmallBox
-                        count={65}
-                        title="Unique Visitors"
+                        icon="ion-android-film"
+                        title="오늘의 OTT / TOP10"
                         type="danger"
-                        navigateTo="/"
+                        navigateTo="/table2"
                     />
                 </div>
             </div>

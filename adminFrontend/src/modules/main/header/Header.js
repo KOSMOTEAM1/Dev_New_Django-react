@@ -3,7 +3,6 @@ import {Link} from 'react-router-dom';
 import {useTranslation} from 'react-i18next';
 import Messages from './messages-dropdown/MessagesDropdown';
 import Notifications from './notifications-dropdown/NotificationsDropdown';
-import Languages from './languages-dropdown/LanguagesDropdown';
 import User from './user-dropdown/UserDropdown';
 
 const Header = ({toggleMenuSidebar}) => {
@@ -67,7 +66,6 @@ const Header = ({toggleMenuSidebar}) => {
                 </li> */}
                 <Messages />
                 <Notifications />
-                <Languages />
                 <User />
             </ul>
         </nav>

@@ -27,14 +27,12 @@ const MessagesDropdown = () => {
                             />
                             <div className="media-body">
                                 <h3 className="dropdown-item-title">
-                                    Brad Diesel
+                                    김원태
                                     <span className="float-right text-sm text-danger">
                                         <i className="fas fa-star" />
                                     </span>
                                 </h3>
-                                <p className="text-sm">
-                                    Call me whenever you can...
-                                </p>
+                                <p className="text-sm">오늘 점심 뭐드실?</p>
                                 <p className="text-sm text-muted">
                                     <i className="far fa-clock mr-1" />
                                     <span>
@@ -57,14 +55,12 @@ const MessagesDropdown = () => {
                             />
                             <div className="media-body">
                                 <h3 className="dropdown-item-title">
-                                    John Pierce
+                                    오세준
                                     <span className="float-right text-sm text-muted">
                                         <i className="fas fa-star" />
                                     </span>
                                 </h3>
-                                <p className="text-sm">
-                                    I got your message bro
-                                </p>
+                                <p className="text-sm">초고속하실분</p>
                                 <p className="text-sm text-muted">
                                     <i className="far fa-clock mr-1" />
                                     <span>
@@ -87,12 +83,12 @@ const MessagesDropdown = () => {
                             />
                             <div className="media-body">
                                 <h3 className="dropdown-item-title">
-                                    Nora Silvester
+                                    이원민
                                     <span className="float-right text-sm text-warning">
                                         <i className="fas fa-star" />
                                     </span>
                                 </h3>
-                                <p className="text-sm">The subject goes here</p>
+                                <p className="text-sm">음~ 맛있다~</p>
                                 <p className="text-sm text-muted">
                                     <i className="far fa-clock mr-1" />
                                     <span>

@@ -13,8 +13,6 @@ import * as AuthService from '../../services/auth';
 
 const Register = () => {
     const [isAuthLoading, setAuthLoading] = useState(false);
-    const [isGoogleAuthLoading, setGoogleAuthLoading] = useState(false);
-    const [isFacebookAuthLoading, setFacebookAuthLoading] = useState(false);
     const [t] = useTranslation();
     const dispatch = useDispatch();
 
@@ -31,35 +29,6 @@ const Register = () => {
         } catch (error) {
             toast.error(error.message || 'Failed');
             setAuthLoading(false);
-        }
-    };
-
-    const registerByGoogle = async () => {
-        try {
-            setGoogleAuthLoading(true);
-            const token = await AuthService.registerByGoogle();
-            setGoogleAuthLoading(false);
-            dispatch(loginUser(token));
-            toast.success('Authentication is succeed!');
-            history.push('/');
-        } catch (error) {
-            toast.error(error.message || 'Failed');
-            setGoogleAuthLoading(false);
-        }
-    };
-
-    const registerByFacebook = async () => {
-        try {
-            setFacebookAuthLoading(true);
-
-            const token = await AuthService.registerByFacebook();
-            setFacebookAuthLoading(false);
-            dispatch(loginUser(token));
-            toast.success('Register is succeeded!');
-            history.push('/');
-        } catch (error) {
-            setFacebookAuthLoading(false);
-            toast.error(error.message || 'Failed');
         }
     };
 
@@ -101,12 +70,12 @@ const Register = () => {
             <div className="card card-outline card-primary">
                 <div className="card-header text-center">
                     <Link to="/" className="h1">
-                        <b>Admin</b>
-                        <span>LTE</span>
+                        <b>OTTE</b>
+                        <span>admin</span>
                     </Link>
                 </div>
                 <div className="card-body">
-                    <p className="login-box-msg">{t('register.registerNew')}</p>
+                    <p className="login-box-msg">{t('회원가입')}</p>
                     <form onSubmit={formik.handleSubmit}>
                         <div className="mb-3">
                             <Input
@@ -146,8 +115,8 @@ const Register = () => {
                                     checked={false}
                                     label={
                                         <>
-                                            <span>I agree to the </span>
-                                            <Link to="/">terms</Link>
+                                            <Link to="/">약관</Link>
+                                            <span> 동의 </span>
                                         </>
                                     }
                                 />
@@ -157,41 +126,15 @@ const Register = () => {
                                     type="submit"
                                     block
                                     isLoading={isAuthLoading}
-                                    disabled={
-                                        isFacebookAuthLoading ||
-                                        isGoogleAuthLoading
-                                    }
                                 >
-                                    {t('register.label')}
+                                    {t('가입하기')}
                                 </Button>
                             </div>
                         </div>
                     </form>
-                    <div className="social-auth-links text-center">
-                        <Button
-                            block
-                            icon="facebook"
-                            onClick={registerByFacebook}
-                            isLoading={isFacebookAuthLoading}
-                            disabled={isAuthLoading || isGoogleAuthLoading}
-                        >
-                            {t('login.button.signUp.social', {
-                                what: 'Facebook'
-                            })}
-                        </Button>
-                        <Button
-                            block
-                            icon="google"
-                            theme="danger"
-                            onClick={registerByGoogle}
-                            isLoading={isGoogleAuthLoading}
-                            disabled={isAuthLoading || isFacebookAuthLoading}
-                        >
-                            {t('login.button.signUp.social', {what: 'Google'})}
-                        </Button>
-                    </div>
+
                     <Link to="/login" className="text-center">
-                        {t('register.alreadyHave')}
+                        {t('이미 계정이 있습니다.')}
                     </Link>
                 </div>
             </div>
