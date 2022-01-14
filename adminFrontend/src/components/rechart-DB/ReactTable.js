@@ -1,68 +1,102 @@
-import React, {useState, useEffect} from 'react';
-import axios from 'axios';
-import {
-    BarChart,
-    Bar,
-    XAxis,
-    YAxis,
-    CartesianGrid,
-    Tooltip,
-    Legend,
-    ReferenceLine
-} from 'recharts';
+import {useTable} from 'react-table';
+import React, {useMemo, useEffect, useState} from 'react';
 
-const date = new Date();
-const year = date.getFullYear();
-const zero = '0';
-const a = zero + String(1 + date.getMonth()).slice(-2);
-const b = date.getDate() - 1;
-const c = zero + b;
-const d = c.slice(-2);
-const todaydate = year + a + d;
-
-const ReactTable = () => {
-    const [data, setData] = useState('');
-    useEffect(() => {
-        axios
-            .get(
-                `https://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=f5eef3421c602c6cb7ea224104795888&targetDt=${todaydate}`
-            )
-            .then((res) =>
-                setData(res.data.boxOfficeResult.dailyBoxOfficeList)
-            );
-        // console.log(data);
-    }, []);
-
+function ReactTable({columns, data}) {
+    const {getTableProps, getTableBodyProps, headerGroups, rows, prepareRow} =
+        useTable({columns, data});
     return (
-        <div>
-            <BarChart
-                width={800}
-                height={500}
-                data={data}
-                margin={{
-                    top: 5,
-                    right: 30,
-                    left: 20,
-                    bottom: 5
-                }}
-            >
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis
-                    dataKey="movieNm"
-                    interval={0}
-                    angle={15}
-                    dx={0}
-                    fontSize={10}
-                />
-                <YAxis interval={0} dx={0} max={40} />
-                <Tooltip />
-                <Legend />
-                <ReferenceLine y={0} stroke="#000" />
-                <Bar dataKey="salesChange" fill="#58D3F7" name="매출액 증감" />
-                <Bar dataKey="audiChange" fill="#0101DF" name="관객 수 증감" />
-            </BarChart>
-        </div>
+        <section>
+            <article>
+                <div>
+                    <div>
+                        <h2>This is where Table will come</h2>
+                    </div>
+                </div>
+                <div>
+                    <table {...getTableProps()}>
+                        <thead>
+                            {headerGroups.map((headerGroup) => (
+                                <tr {...headerGroup.getHeaderGroupProps()}>
+                                    {headerGroup.headers.map((column) => (
+                                        <th {...column.getHeaderProps()}>
+                                            {column.render('Header')}
+                                        </th>
+                                    ))}
+                                </tr>
+                            ))}
+                        </thead>
+                        <tbody {...getTableBodyProps()}>
+                            {rows.map((row) => {
+                                prepareRow(row);
+                                return (
+                                    <tr {...row.getRowProps()}>
+                                        {row.cells.map((cell) => (
+                                            <td {...cell.getCellProps()}>
+                                                {cell.render('Cell')}
+                                            </td>
+                                        ))}
+                                    </tr>
+                                );
+                            })}
+                        </tbody>
+                    </table>
+                </div>
+            </article>
+        </section>
     );
-};
+}
 
-export default ReactTable;
+function Table() {
+    const columns = useMemo(() => [
+        {
+            Header: 'ORGAN',
+            accessor: 'ORGAN_NM'
+        },
+        {
+            Header: 'TRANSMIT',
+            accessor: 'TRANSMIT_SERVER_NO'
+        },
+        {
+            Header: 'DATA',
+            accessor: 'DATA_NO'
+        },
+        {
+            Header: 'COLUMN0',
+            accessor: 'COLUMN0'
+        },
+
+        {
+            Header: 'COLUMN1',
+            accessor: 'COLUMN1'
+        },
+        {
+            Header: 'COLUMN2',
+            accessor: 'COLUMN2'
+        },
+        {
+            Header: 'COLUMN3',
+            accessor: 'COLUMN3'
+        }
+    ]);
+
+    const [peopleData, setdata] = useState([]);
+    const getData = async () => {
+        console.log('1');
+        const json = await (console.log('2-2'),
+        await fetch(
+            `http://openapi.seoul.go.kr:8088/746b4762786170703430676e6e4678/json/IotVdata018/1/5/`
+        )).json();
+        console.log('2-3');
+        setdata(json.IotVdata018.row);
+        console.log('2');
+    };
+
+    useEffect(() => {
+        getData();
+    }, [{}]);
+
+    console.log('3');
+
+    return <ReactTable columns={columns} data={peopleData} />;
+}
+export default Table;

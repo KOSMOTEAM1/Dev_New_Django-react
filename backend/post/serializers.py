@@ -1,20 +1,12 @@
+#backend/post/serializers.py
 from rest_framework import serializers
-from .models import Todo, CommentTodo, ReCommentTodo
+from .models import Post
 
-class TodoSerializer(serializers.ModelSerializer):
-
+class PostSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Todo
-        fields = '__all__'
-
-class CommentTodoSerializer(serializers.ModelSerializer):
-
-    class Meta:
-        model = CommentTodo
-        fields = '__all__'
-
-class ReCommentTodoSerializer(serializers.ModelSerializer):
-
-    class Meta:
-        model = ReCommentTodo
-        fields = '__all__'
+        fields = (
+            'id',
+            'title',
+            'content',
+        )
+        model = Post

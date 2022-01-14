@@ -14,6 +14,8 @@ import * as AuthService from '../../services/auth';
 
 const Login = () => {
     const [isAuthLoading, setAuthLoading] = useState(false);
+    const [isGoogleAuthLoading, setGoogleAuthLoading] = useState(false);
+    const [isFacebookAuthLoading, setFacebookAuthLoading] = useState(false);
     const dispatch = useDispatch();
 
     const history = useHistory();
@@ -29,6 +31,34 @@ const Login = () => {
             history.push('/');
         } catch (error) {
             setAuthLoading(false);
+            toast.error(error.message || 'Failed');
+        }
+    };
+
+    const loginByGoogle = async () => {
+        try {
+            setGoogleAuthLoading(true);
+            const token = await AuthService.loginByGoogle();
+            toast.success('Login is succeeded!');
+            setGoogleAuthLoading(false);
+            dispatch(loginUser(token));
+            history.push('/');
+        } catch (error) {
+            setGoogleAuthLoading(false);
+            toast.error(error.message || 'Failed');
+        }
+    };
+
+    const loginByFacebook = async () => {
+        try {
+            setFacebookAuthLoading(true);
+            const token = await AuthService.loginByFacebook();
+            toast.success('Login is succeeded!');
+            setFacebookAuthLoading(false);
+            dispatch(loginUser(token));
+            history.push('/');
+        } catch (error) {
+            setFacebookAuthLoading(false);
             toast.error(error.message || 'Failed');
         }
     };
@@ -59,12 +89,12 @@ const Login = () => {
             <div className="card card-outline card-primary">
                 <div className="card-header text-center">
                     <Link to="/" className="h1">
-                        <b>OTTE</b>
-                        <span>admin</span>
+                        <b>Admin</b>
+                        <span>LTE</span>
                     </Link>
                 </div>
                 <div className="card-body">
-                    <p className="login-box-msg">{t('관리자 페이지 로그인')}</p>
+                    <p className="login-box-msg">{t('login.label.signIn')}</p>
                     <form onSubmit={formik.handleSubmit}>
                         <div className="mb-3">
                             <Input
@@ -99,16 +129,47 @@ const Login = () => {
                                     block
                                     type="submit"
                                     isLoading={isAuthLoading}
+                                    disabled={
+                                        isFacebookAuthLoading ||
+                                        isGoogleAuthLoading
+                                    }
                                 >
-                                    {t('로그인')}
+                                    {t('login.button.signIn.label')}
                                 </Button>
                             </div>
                         </div>
                     </form>
-
+                    <div className="social-auth-links text-center mt-2 mb-3">
+                        <Button
+                            block
+                            icon="facebook"
+                            onClick={loginByFacebook}
+                            isLoading={isFacebookAuthLoading}
+                            disabled={isAuthLoading || isGoogleAuthLoading}
+                        >
+                            {t('login.button.signIn.social', {
+                                what: 'Facebook'
+                            })}
+                        </Button>
+                        <Button
+                            block
+                            icon="google"
+                            theme="danger"
+                            onClick={loginByGoogle}
+                            isLoading={isGoogleAuthLoading}
+                            disabled={isAuthLoading || isFacebookAuthLoading}
+                        >
+                            {t('login.button.signIn.social', {what: 'Google'})}
+                        </Button>
+                    </div>
+                    <p className="mb-1">
+                        <Link to="/forgot-password">
+                            {t('login.label.forgotPass')}
+                        </Link>
+                    </p>
                     <p className="mb-0">
                         <Link to="/register" className="text-center">
-                            {t('회원가입하기')}
+                            {t('login.label.registerNew')}
                         </Link>
                     </p>
                 </div>

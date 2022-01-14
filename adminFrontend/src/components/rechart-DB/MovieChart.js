@@ -16,8 +16,9 @@ const MovieChart = () => {
         axios
             .get('http://localhost:8000/boxapi/')
             .then((res) => setData(res.data));
+        // console.log(data);
     }, []);
-    console.log(JSON.stringify(data));
+
     return (
         <div>
             <LineChart

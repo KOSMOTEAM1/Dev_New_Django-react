@@ -5,15 +5,12 @@ import {ContentHeader, ReactTable} from '@components';
 const Blank = () => {
     return (
         <div>
-            <ContentHeader title="일일 박스오피스 데이터" />
+            <ContentHeader title="Table Page" />
             <section className="content">
                 <div className="container-fluid">
                     <div className="card">
                         <div className="card-header">
-                            <h3 className="card-title">
-                                {' '}
-                                전일 대비 매출액 / 관객수 증감 비율
-                            </h3>
+                            <h3 className="card-title"> 외부 API 보여주기</h3>
                             <div className="card-tools">
                                 <button
                                     type="button"
@@ -38,7 +35,7 @@ const Blank = () => {
                         <div className="card-body">
                             <ReactTable />
                         </div>
-                        <div className="card-footer">Footer</div>
+                        <div className="card-footer">Footer</div>x
                     </div>
                 </div>
             </section>

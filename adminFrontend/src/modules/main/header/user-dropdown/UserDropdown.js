@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {useHistory} from 'react-router-dom';
+import {useHistory, Link} from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux';
 import {DateTime} from 'luxon';
 import {useTranslation} from 'react-i18next';
@@ -59,7 +59,19 @@ const UserDropdown = () => {
                             </small>
                         </p>
                     </li>
-
+                    <li className="user-body">
+                        <div className="row">
+                            <div className="col-4 text-center">
+                                <Link to="/">{t('header.user.followers')}</Link>
+                            </div>
+                            <div className="col-4 text-center">
+                                <Link to="/">{t('header.user.sales')}</Link>
+                            </div>
+                            <div className="col-4 text-center">
+                                <Link to="/">{t('header.user.friends')}</Link>
+                            </div>
+                        </div>
+                    </li>
                     <li className="user-footer">
                         <button
                             type="button"

@@ -5,55 +5,28 @@ import {MenuItem} from '@components';
 
 export const MENU = [
     {
-        name: '메인 페이지',
+        name: 'menusidebar.label.dashboard',
         path: '/'
     },
     {
-        name: '일일 박스오피스',
+        name: 'Charts',
+        path: '/charts'
+    },
+    {
+        name: 'Table',
+        path: '/blank'
+    },
+    {
+        name: 'menusidebar.label.mainMenu',
         children: [
             {
-                name: ' 전일 관람객 수',
-                path: '/daily-chart1'
+                name: 'menusidebar.label.subMenu',
+                path: '/sub-menu-1'
             },
 
             {
-                name: ' 총 관객수 / 당일 관객수',
-                path: '/daily-chart2'
-            },
-            {
-                name: ' 전일 대비 매출액 / 관객수 증감 비율',
-                path: '/daily-chart3'
-            }
-        ]
-    },
-    {
-        name: '주간 박스오피스',
-        children: [
-            {
-                name: ' 주간 매출비율 / 순위',
-                path: '/weekly-chart1'
-            },
-
-            {
-                name: ' 전주대비 순위 변화',
-                path: '/weekly-chart2'
-            },
-            {
-                name: ' 주간 탑3 관람객 수',
-                path: '/weekly-chart3'
-            }
-        ]
-    },
-    {
-        name: '회원 관리',
-        children: [
-            {
-                name: ' 회원 테이블',
-                path: '/table1'
-            },
-            {
-                name: ' OTT TOP10 테이블',
-                path: '/table2'
+                name: 'Table',
+                path: '/sub-menu-2'
             }
         ]
     }

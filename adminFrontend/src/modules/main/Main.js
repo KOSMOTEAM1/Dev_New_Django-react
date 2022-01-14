@@ -8,14 +8,9 @@ import {toggleSidebarMenu} from '@app/store/reducers/ui';
 import Dashboard from '@pages/Dashboard';
 import Charts from '@pages/Charts';
 import Blank from '@pages/Blank';
-import Barcharts from '@pages/Barcharts';
 import SubMenu from '@pages/SubMenu';
 import Profile from '@pages/profile/Profile';
-import Graph from '@pages/Graph';
-import Datas from '@pages/Datas';
-import Tests from '@pages/Tests';
-import Member from '@pages/Member';
-import Ott from '@pages/Ott';
+
 import Header from './header/Header';
 import Footer from './footer/Footer';
 import MenuSidebar from './menu-sidebar/MenuSidebar';
@@ -93,41 +88,10 @@ const Main = () => {
                                 path="/sub-menu-1"
                                 component={SubMenu}
                             />
-
+                            <Route exact path="/blank" component={Blank} />
                             <Route exact path="/profile" component={Profile} />
                             <Route exact path="/" component={Dashboard} />
-                            <Route
-                                exact
-                                path="/daily-chart1"
-                                component={Charts}
-                            />
-                            <Route
-                                exact
-                                path="/daily-chart2"
-                                component={Barcharts}
-                            />
-                            <Route
-                                exact
-                                path="/daily-chart3"
-                                component={Blank}
-                            />
-                            <Route
-                                exact
-                                path="/weekly-chart1"
-                                component={Graph}
-                            />
-                            <Route
-                                exact
-                                path="/weekly-chart2"
-                                component={Datas}
-                            />
-                            <Route
-                                exact
-                                path="/weekly-chart3"
-                                component={Tests}
-                            />
-                            <Route exact path="/table1" component={Member} />
-                            <Route exact path="/table2" component={Ott} />
+                            <Route exact path="/charts" component={Charts} />
                         </Switch>
                     </section>
                 </div>

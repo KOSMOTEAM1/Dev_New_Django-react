@@ -12,7 +12,7 @@ class insertcnt(models.Model):
         """A string representation of the model."""
         return self.title
 class insertcntrank(models.Model):
-    text = models.TextField(max_length=200)
+    text = models.TextField(max_length=200, null=True)
     #rank = models.DecimalField(max_digits=3,decimal_places=2)
     def __str__(self):
         """A string representation of the model."""

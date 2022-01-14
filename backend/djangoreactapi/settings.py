@@ -11,8 +11,8 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 import pymysql
+from datetime import timedelta
 from pathlib import Path
-import datetime  # JWT_AUTH 의 토큰 유효기간을 설정하기 위한 datetime import
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -30,20 +30,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-APPEND_SLASH = False
-
-
-JWT_AUTH = {  # 추가
-    'JWT_SECRET_KEY': SECRET_KEY,
-    'JWT_ALGORITHM': 'HS256',
-    'JWT_VERIFY_EXPIRATION': True,  # 토큰검증
-    'JWT_ALLOW_REFRESH': True,  # 유효기간이 지나면 새로운 토큰반환의 refresh
-    # Access Token의 만료 시간
-    'JWT_EXPIRATION_DELTA': datetime.timedelta(minutes=30),
-    # Refresh Token의 만료 시간
-    'JWT_REFRESH_EXPIRATION_DELTA': datetime.timedelta(days=3),
-    'JWT_RESPONSE_PAYLOAD_HANDLER': 'djangoreactapi.custom_responses.my_jwt_response_handler'
-}
 
 # Application definition
 
@@ -58,17 +44,52 @@ INSTALLED_APPS = [
     'post',
     'insertcnt',
     'rest_framework',  # 추가
-    'rest_framework_jwt',  # 추가
     'corsheaders',  # 추가
     'themovieDB',  # 추가
     'board',  # 추가
-    'user',
-    'Box',
-    'Charts',
-    'weeklytop3',
-    'graph',
-    
+    'base.apps.BaseConfig',
+    'rest_framework_simplejwt.token_blacklist',
+    'user.apps.UserConfig',
+
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
+}
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=10),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=90),
+    'ROTATE_REFRESH_TOKENS': True,
+    'BLACKLIST_AFTER_ROTATION': True,
+    'UPDATE_LAST_LOGIN': False,
+
+    'ALGORITHM': 'HS256',
+    'VERIFYING_KEY': None,
+    'AUDIENCE': None,
+    'ISSUER': None,
+    'JWK_URL': None,
+    'LEEWAY': 0,
+
+    'AUTH_HEADER_TYPES': ('Bearer',),
+    'AUTH_HEADER_NAME': 'HTTP_AUTHORIZATION',
+    'USER_ID_FIELD': 'id',
+    'USER_ID_CLAIM': 'user_id',
+    'USER_AUTHENTICATION_RULE': 'rest_framework_simplejwt.authentication.default_user_authentication_rule',
+
+    'AUTH_TOKEN_CLASSES': ('rest_framework_simplejwt.tokens.AccessToken',),
+    'TOKEN_TYPE_CLAIM': 'token_type',
+
+    'JTI_CLAIM': 'jti',
+
+    'SLIDING_TOKEN_REFRESH_EXP_CLAIM': 'refresh_exp',
+    'SLIDING_TOKEN_LIFETIME': timedelta(minutes=5),
+    'SLIDING_TOKEN_REFRESH_LIFETIME': timedelta(days=1),
+}
+
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',     # 추가
@@ -83,17 +104,6 @@ MIDDLEWARE = [
 ]
 
 # CORS 관련 추가
-
-REST_FRAMEWORK = {  # 추가
-    'DEFAULT_PERMISSION_CLASSES': [
-        # 'rest_framework.permissions.IsAuthenticated',  #인증된 회원만 액세스 허용
-        'rest_framework.permissions.AllowAny',  # 모든 회원 액세스 허용
-    ],
-    'DEFAULT_AUTHENTICATION_CLASSES': (  # api가 실행됬을 때 인증할 클래스를 정의해주는데 우리는 JWT를 쓰기로 했으니
-        # 이와 같이 추가해준 모습이다.
-        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
-    ),
-}
 
 CORS_ORIGIN_WHITELIST = ['http://127.0.0.1:3000', 'http://localhost:3000']
 

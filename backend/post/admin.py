@@ -1,8 +1,6 @@
+#backend/post/admin.py
 from django.contrib import admin
-from .models import Todo, CommentTodo, ReCommentTodo
 
-# Register your models here.
+from .models import Post
 
-admin.site.register(Todo)
-admin.site.register(CommentTodo)
-admin.site.register(ReCommentTodo)
+admin.site.register(Post)
