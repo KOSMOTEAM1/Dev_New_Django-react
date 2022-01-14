@@ -50,11 +50,6 @@ function App() {
         />
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route path="/insertcnt" component={insertcnt} />
-          <Route path="/result_today" component={result_today} />
-          <Route path="/result_yesterday" component={result_yesterday} />
-          <Route path="/test" component={test} />
-
           <Route render={() => <div className="error">Error</div>} />
         </Switch>
         <Footer />
