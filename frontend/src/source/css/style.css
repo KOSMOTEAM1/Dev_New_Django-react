@@ -1000,6 +1000,7 @@ ol {
 
 .anime__details__text {
   position: relative;
+  margin-bottom: 50px;
 }
 
 .anime__details__text p {

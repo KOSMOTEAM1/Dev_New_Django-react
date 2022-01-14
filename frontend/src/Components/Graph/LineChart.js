@@ -64,15 +64,15 @@ class LineCharts extends Component {
             position: "absolute",
             top: "0",
             left: "0",
-            width: "120%",
-            height: "90%",
+            width: "150%",
+            height: "100%",
           }}
         >
           <ResponsiveContainer>
             <LineChart
               data={this.state.responseFPList.data}
               margin={{
-                top: 10,
+                top: 30,
                 right: 10,
                 left: 0,
                 bottom: 10,

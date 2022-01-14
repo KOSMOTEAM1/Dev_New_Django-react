@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import LineChart from "../Graph/LineChart";
-import HeartButton from "../Modal/HeartButton";
+
 import PropTypes from "prop-types";
 import "../../source/css/bootstrap.min.css";
 
@@ -128,16 +128,15 @@ function Detail({
                 </div>
               </div>
               <div className="col-lg-7">
-                <div class="anime__details__title">
-                  <br></br>
-                  <h5>검색량 변화</h5>
-                  <div className="anime__details__graph">
-                    <LineChart title={title} />
-                  </div>
+                <div class="section-title">
+                  <h4>검색량 변화</h4>
+
+                  <LineChart title={title} />
                 </div>
               </div>
             </div>
           </div>
+          <br></br>
           <div className="row">
             <div className="col-lg-1"></div>
             <div className="col-lg-10">
