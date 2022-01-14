@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 
-import MovieLatest from "../components/Movie/MovieLatest";
-import SearchBar from "../components/Search/SearchBar";
-import MovieKorea from "../components/Movie/MovieKorea";
+import MovieLatest from "../Components/Movie/MovieLatest";
+import SearchBar from "../Components/Search/SearchBar";
+import MovieKorea from "../Components/Movie/MovieKorea";
 
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
