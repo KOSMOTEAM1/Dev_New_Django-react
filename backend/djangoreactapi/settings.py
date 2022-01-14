@@ -126,12 +126,16 @@ WSGI_APPLICATION = 'djangoreactapi.wsgi.application'
 
 DATABASES = {
     'default': {  # 변경
-        'ENGINE': 'django.db.backends.mysql',  # 1
+        'ENGINE': 'dj_db_conn_pool.backends.mysql',  # 1
         'NAME': 'otte_dev',  # 2
         'USER': 'team1',  # 3
         'PASSWORD': 'team1',  # 4
         'HOST': '192.168.0.41',  # 5
         'PORT': '3306',  # 6
+        'POOL_OPTIONS' : {
+            'POOL_SIZE': 10,
+            'MAX_OVERFLOW': 10
+        },
     }
 }
 
