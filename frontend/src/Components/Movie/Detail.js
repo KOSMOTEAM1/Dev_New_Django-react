@@ -137,8 +137,6 @@ function Detail({
                     </ul>
                   </div>
                 </div>
-                <HeartButton />
-                {/* <HeartButton like={like} onClick={toggleLike}/> */}
               </div>
             </div>
           </div>

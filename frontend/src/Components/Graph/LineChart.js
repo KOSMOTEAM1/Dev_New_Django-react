@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+
 import {
   LineChart,
   Line,
@@ -28,15 +29,17 @@ class LineCharts extends Component {
 
   callFloatPopulListApi = async () => {
     const id_props = this.props;
-    console.log("모달 파라미터 = ",id_props.title);
-    axios.post(`http://127.0.0.1:8000/insertcnt/rank/`, {
-        id:id_props.title,
+    console.log("모달 파라미터 = ", id_props.title);
+    axios
+      .post(`http://127.0.0.1:8000/insertcnt/rank/`, {
+        id: id_props.title,
       })
       //데이터 나오는곳
       // alert("메롱")
       .then((response) => {
         try {
           this.setState({ responseFPList: response });
+          console.log(response);
           // this.setState({ append_FPList: this.FloatPopulListAppend() });
         } catch (error) {
           alert(error);
@@ -61,8 +64,8 @@ class LineCharts extends Component {
             position: "absolute",
             top: "0",
             left: "0",
-            width: "100%",
-            height: "100%",
+            width: "90%",
+            height: "90%",
           }}
         >
           <ResponsiveContainer>
@@ -77,7 +80,7 @@ class LineCharts extends Component {
             >
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis dataKey="sysdate" />
-              <YAxis dataKey="rank" reversed="true" />
+              <YAxis dataKey="rank" domain={[0, "auto"]} reversed="true" />
               <Tooltip />
               <Legend align="center" verticalAlign="bottom" height={10} />
               <Line dataKey="rank" stroke="#8884d8" activeDot={{ r: 8 }} />
