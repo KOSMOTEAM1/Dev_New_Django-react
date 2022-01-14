@@ -41,21 +41,28 @@ function App() {
     <>
       <Router>
         <Header />
-        <Route exact path="/Community2" component={Community2} />
-        <Route exact path="/Community2/Insert" component={insertboard} />
-        <Route
-          exact
-          path="/Community2/boarddetail/:id"
-          component={boarddetail}
-        />
+
         <Switch>
           <Route exact path="/" component={Home} />
+          <Route path="/insertcnt" component={insertcnt} />
+          <Route path="/result_today" component={result_today} />
+          <Route path="/result_yesterday" component={result_yesterday} />
+          <Route path="/test" component={test} />
+
           <Route render={() => <div className="error">Error</div>} />
+          <Route exact path="/Community2" component={Community2} />
+          <Route exact path="/Community2/Insert" component={insertboard} />
+          <Route
+            exact
+            path="/Community2/boarddetail/:id"
+            component={boarddetail}
+          />
         </Switch>
         <Footer />
       </Router>
     </>
   );
 }
+
 
 export default App;

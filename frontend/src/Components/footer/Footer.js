@@ -17,7 +17,7 @@ function Footer() {
             <div className="footer__nav">
               <ul>
                 <li>
-                  <a href ="http://localhost:3001/">관리자 페이지</a>
+                  <Link to={"/Community"}>자유게시판</Link>
                 </li>
               </ul>
             </div>

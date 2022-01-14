@@ -18,7 +18,19 @@ const Header = () => {
               <nav className="header__menu mobile-menu">
                 <ul>
                   <li>
-                    <Link to={"/Community2"}>자유게시판</Link>
+                    <Link to={"/"}>홈</Link>
+                  </li>
+                  <li>
+                    <Link to={"/Table"}>표</Link>
+                  </li>
+                  <li>
+                    <Link to={"/Community"}>자유게시판</Link>
+                  </li>
+                  <li>
+                    <Link to={"/Community2"}>자유게시판(작업중)</Link>
+                  </li>
+                  <li>
+                    <Link to={"/insertcnt"}>원태테스트</Link>
                   </li>
                 </ul>
               </nav>
