@@ -2,7 +2,6 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('/page(?P<page>[0-9]+/$', views.ListPost.as_view()),
     path('', views.ListPost.as_view()),
     path('<int:pk>/', views.DetailPost.as_view()),
     # 최신 영화이름, 오떼아이디 100개만 출력
