@@ -28,9 +28,10 @@ class LineCharts extends Component {
 
   callFloatPopulListApi = async () => {
     const id_props = this.props;
-    console.log("모달 파라미터 = ",id_props.title);
-    axios.post(`http://127.0.0.1:8000/insertcnt/rank/`, {
-        id:id_props.title,
+    console.log("모달 파라미터 = ", id_props.title);
+    axios
+      .post(`http://127.0.0.1:8000/insertcnt/rank/`, {
+        id: id_props.title,
       })
       //데이터 나오는곳
       // alert("메롱")
@@ -61,7 +62,7 @@ class LineCharts extends Component {
             position: "absolute",
             top: "0",
             left: "0",
-            width: "100%",
+            width: "130%",
             height: "100%",
           }}
         >
@@ -69,9 +70,9 @@ class LineCharts extends Component {
             <LineChart
               data={this.state.responseFPList.data}
               margin={{
-                top: 10,
+                top: 30,
                 right: 10,
-                left: 0,
+                left: -20,
                 bottom: 10,
               }}
             >
