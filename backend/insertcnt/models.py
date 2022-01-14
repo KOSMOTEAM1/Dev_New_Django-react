@@ -21,7 +21,7 @@ class insertcntrank(models.Model):
 class totalrank(models.Model):
     text = models.TextField(max_length=200)
     rank = models.IntegerField(null=True)
-    sysdate = models.DateField(null=True)
+    sysdate = models.TextField(null=True)
     def __str__(self):
         """A string representation of the model."""
         return self.text
