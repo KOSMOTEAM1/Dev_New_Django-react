@@ -2,7 +2,6 @@ import Result_today from "../Components/Graph/Result_today";
 //import { useMemo, useEffect, useState } from "react";
 //import axios from "axios";
 //import faker from "faker/locale/ko";
-
 //faker.seed(100);
 function result_today() {
   return (

@@ -2,7 +2,6 @@ import Insertcnt from "../Components/Graph/insertcnt";
 //import { useMemo, useEffect, useState } from "react";
 //import axios from "axios";
 //import faker from "faker/locale/ko";
-
 //faker.seed(100);
 function insertcnt() {
   return (
