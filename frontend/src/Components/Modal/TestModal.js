@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-//import { Modal, Button } from "react-bootstrap";
 import Modal from "react-modal";
 import Detail from "../Movie/Detail";
 
@@ -43,7 +42,7 @@ function TestModal({
   return (
     <div>
       <div className="row">
-        <div className="anime__details__pic ">
+        <div className="product__item__pic">
           <img
             onClick={() => setModalIsOpen(true)}
             src={`https://image.tmdb.org/t/p/original/${coverImg}`}
@@ -55,18 +54,11 @@ function TestModal({
           <a onClick={() => setModalIsOpen(true)}>{title}</a>
         </h5>
       </div>
-      {/* <button onClick={() => setModalIsOpen(true)}>Modal Open</button> */}
       <Modal
         style={customStyles}
         isOpen={modalIsOpen}
         onRequestClose={() => setModalIsOpen(false)}
       >
-        {/* <div className="btn__all">
-          <button onClick={() => setModalIsOpen(false)}>
-            <span class="arrow_right"></span>
-          </button>
-        </div> */}
-
         <Detail
           title={title}
           id={id}
@@ -78,8 +70,6 @@ function TestModal({
           summary={summary}
           coverImg={coverImg}
         />
-        <br></br>
-        {/*닫기 버든 만들면 될듯*/}
       </Modal>
     </div>
   );
