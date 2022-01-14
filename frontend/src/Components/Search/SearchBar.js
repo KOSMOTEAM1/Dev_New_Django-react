@@ -38,15 +38,18 @@ function SearchBar({ placeholder, data }) {
           onChange={handleFilter}
         />
       </form>
+
       {filteredData.length !== 0 && (
         <section className="product spad">
           <div className="container">
             <div className="row">
               <div className="col-lg-12">
-                <div className="row">
-                  <div className="col-lg-8 col-md-8 col-sm-8">
-                    <div className="section-title">
-                      <h4>검색결과</h4>
+                <div class="product__page__title">
+                  <div class="row">
+                    <div class="col-lg-8 col-md-8 col-sm-8">
+                      <div class="section-title">
+                        <h4>검색 결과</h4>
+                      </div>
                     </div>
                   </div>
                 </div>
