@@ -85,7 +85,7 @@ class boardview extends Component {
                         <input class="form-control" id="writedate" placeholder={this.state.posts.writedate} defaultValue={this.state.posts.writedate} readOnly="readOnly"></input>
                     </p>
 					<input class="form-control" id="reuser" ></input> 
-                    <Link to="/">
+                    <Link to="/community2">
 					<button type="submit" onClick={(e) => this.submitClick(e)}>수정</button>
                     </Link>
                 </div>
