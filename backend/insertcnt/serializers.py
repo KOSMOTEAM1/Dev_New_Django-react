@@ -2,7 +2,10 @@
 from rest_framework import serializers
 from .models import insertcnt, insertcntrank, totalrank
 from themovieDB.models import movie
+##################################################################
 
+
+#검색기록
 class insertcntSerializer(serializers.ModelSerializer):
     class Meta:
         fields = (
@@ -13,6 +16,7 @@ class insertcntSerializer(serializers.ModelSerializer):
         )
         model = insertcnt
 
+#실시간 검색어
 class insertcntrankSerializer(serializers.ModelSerializer):
     class Meta:
         fields = (
@@ -21,22 +25,23 @@ class insertcntrankSerializer(serializers.ModelSerializer):
         )
         model = insertcntrank
 
+#항목별(영상) 순위추적 
+class totalrankSerializer(serializers.ModelSerializer):
+    class Meta:
+        fields = (
+            'text',
+            'rank',
+            'sysdate',
+        )
+        model = totalrank
 
-class searchSerializer(serializers.ModelSerializer):
+
+#검색 (미사용)
+""" class searchSerializer(serializers.ModelSerializer):
     class Meta:
         fields = (
             'otteid',
             'title',
         )
         model = movie
-
-
-class totalrankSerializer(serializers.ModelSerializer):
-    class Meta:
-        fields = (
-            
-            'text',
-            'rank',
-            'sysdate',
-        )
-        model = totalrank
+ """
