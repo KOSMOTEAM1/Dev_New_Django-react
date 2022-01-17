@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import axios from "axios";
-
 import {
   LineChart,
   Line,
@@ -39,7 +38,6 @@ class LineCharts extends Component {
       .then((response) => {
         try {
           this.setState({ responseFPList: response });
-          console.log(response);
           // this.setState({ append_FPList: this.FloatPopulListAppend() });
         } catch (error) {
           alert(error);
@@ -64,23 +62,23 @@ class LineCharts extends Component {
             position: "absolute",
             top: "0",
             left: "0",
-            width: "90%",
-            height: "90%",
+            width: "130%",
+            height: "100%",
           }}
         >
           <ResponsiveContainer>
             <LineChart
               data={this.state.responseFPList.data}
               margin={{
-                top: 10,
+                top: 30,
                 right: 10,
-                left: 0,
+                left: -20,
                 bottom: 10,
               }}
             >
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis dataKey="sysdate" />
-              <YAxis dataKey="rank" domain={[0, "auto"]} reversed="true" />
+              <YAxis dataKey="rank" reversed="true" />
               <Tooltip />
               <Legend align="center" verticalAlign="bottom" height={10} />
               <Line dataKey="rank" stroke="#8884d8" activeDot={{ r: 8 }} />

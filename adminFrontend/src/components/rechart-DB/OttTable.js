@@ -1,12 +1,22 @@
 import React, {useEffect, useState, useMemo} from 'react';
+import Pagination1 from 'react-js-pagination';
 import Header from '../Header';
 import {TableHeader, Search} from '../DataTable';
 import useFullPageLoader from '../../hooks/useFullPageLoader';
 // import ExternalInfo from "components/ExternalInfo";
 // import AppConfig from "App.config";
-
+function countpage(totalItems, ITEMS_PER_PAGE) {
+    let result;
+    if (totalItems % ITEMS_PER_PAGE === 0) {
+        result = totalItems / ITEMS_PER_PAGE;
+    } else {
+        result = parseInt(totalItems / ITEMS_PER_PAGE + 1, 10);
+    }
+    return result;
+}
 const OttTable = () => {
     const [comments, setComments] = useState([]);
+    const [totalItems, setTotalItems] = useState(0);
     const [loader, showLoader, hideLoader] = useFullPageLoader();
     const [currentPage, setCurrentPage] = useState(1);
     const [search, setSearch] = useState('');
@@ -16,6 +26,7 @@ const OttTable = () => {
     const ITEMS_PER_PAGE = 10;
 
     const headers = [
+        {name: '날짜', field: 'date', sortable: true},
         {name: 'OTT 서비스', field: 'OTT', sortable: true},
         {name: '순위', field: 'rank', sortable: true},
         {name: '영상제목', field: 'name', sortable: true}
@@ -45,7 +56,8 @@ const OttTable = () => {
                 (comment) =>
                     comment.OTT.toLowerCase().includes(search.toLowerCase()) ||
                     comment.name.toLowerCase().includes(search.toLowerCase()) ||
-                    comment.rank.toLowerCase().includes(search.toLowerCase())
+                    comment.rank.toLowerCase().includes(search.toLowerCase()) ||
+                    comment.date.includes(search)
             );
         }
         if (ottsearch) {
@@ -57,6 +69,7 @@ const OttTable = () => {
                     comment.name.toLowerCase().includes(ottsearch.toLowerCase())
             );
         }
+        setTotalItems(computedComments.length);
         if (sorting.field) {
             const reversed = sorting.order === 'asc' ? 1 : -1;
             computedComments = computedComments.sort(
@@ -77,7 +90,20 @@ const OttTable = () => {
             <div className="row w-100">
                 <div className="col mb-3 col-12 text-center">
                     <div className="row">
-                        <div className="col-md-10">
+                        <div className="col-md-6">
+                            <Pagination1
+                                activePage={currentPage}
+                                itemsCountPerPage={ITEMS_PER_PAGE}
+                                totalItemsCount={totalItems}
+                                pageRangeDisplayed={5}
+                                prevPageText="‹"
+                                nextPageText="›"
+                                onChange={(page) => setCurrentPage(page)}
+                            />
+                            총 {totalItems}개 데이터,{'  '}
+                            {countpage(totalItems, ITEMS_PER_PAGE)} 페이지
+                        </div>
+                        <div className="col-md-6 d-flex flex-row-reverse">
                             <input
                                 type="radio"
                                 name="ottservice"
@@ -177,6 +203,7 @@ const OttTable = () => {
                         <tbody>
                             {commentsData.map((comment) => (
                                 <tr>
+                                    <th key={comment.date}>{comment.date}</th>
                                     <td>{comment.OTT}</td>
                                     <td>{comment.rank}</td>
                                     <td>{comment.name}</td>

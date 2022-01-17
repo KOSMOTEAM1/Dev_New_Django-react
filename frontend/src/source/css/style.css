@@ -113,13 +113,14 @@ ol {
 -----------------------*/
 
 .section-title {
+  margin-top: 10px;
   margin-bottom: 30px;
 }
 
 .section-title h4,
 .section-title h5 {
   color: #ffffff;
-  font-weight: 600;
+  font-weight: 700;
   line-height: 21px;
   text-transform: uppercase;
   padding-left: 20px;
@@ -357,8 +358,6 @@ ol {
 
 .header__logo {
   padding: 20px 0 17px;
-  width: 90%;
-  height: 90%;
 }
 
 .header__logo a {
@@ -428,20 +427,19 @@ ol {
 }
 
 .header__menu ul li a {
-  font-size: 24px;
+  font-size: 25px;
   color: #b7b7b7;
-  display: flex;
-  font-weight: 700;
+  display: block;
+  font-weight: 900;
   -webkit-transition: all, 0.5s;
   -o-transition: all, 0.5s;
   transition: all, 0.5s;
   padding: 20px;
-  justify-content: center;
 }
 
 .header__menu ul li a span {
   position: relative;
-  font-size: 17px;
+  font-size: 25px;
   top: 2px;
 }
 
@@ -988,12 +986,18 @@ ol {
   padding-top: 60px;
 }
 
+.anime__details__graph {
+  display: flex;
+  justify-content: center;
+}
+
 .anime__details__content {
   margin-bottom: 65px;
 }
 
 .anime__details__text {
   position: relative;
+  margin-bottom: 50px;
 }
 
 .anime__details__text p {
@@ -1004,6 +1008,7 @@ ol {
 .anime__details__text h5 {
   color: #ffffff;
   font-weight: 700;
+  margin-top: 30px;
   margin-bottom: 13px;
 }
 
@@ -1042,6 +1047,12 @@ ol {
   margin-bottom: 20px;
 }
 
+.anime__details__title h2 {
+  color: #ffffff;
+  font-weight: 900;
+  margin-bottom: 13px;
+}
+
 .anime__details__title h3 {
   color: #ffffff;
   font-weight: 700;
@@ -1075,8 +1086,6 @@ ol {
 
 .anime__details__widget {
   margin-bottom: 15px;
-  justify-content: center;
-  display: flex;
 }
 
 .anime__details__widget ul {
@@ -2098,7 +2107,7 @@ ol {
     padding: 0;
   }
   .header__menu {
-    display: none;
+    display: flex;
   }
   .slicknav_menu {
     background: transparent;
@@ -2161,7 +2170,7 @@ ol {
     width: 90px;
   }
   .anime__details__pic {
-    margin-right: 50px;
+    margin-bottom: 40px;
   }
   .anime__details__sidebar {
     padding-top: 50px;
@@ -2203,7 +2212,7 @@ ol {
     padding: 0;
   }
   .header__menu {
-    display: none;
+    display: flex;
   }
   .slicknav_menu {
     background: transparent;
