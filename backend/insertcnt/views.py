@@ -7,7 +7,7 @@ from rest_framework.response import Response
 from .models import totalrank
 from .models import insertcnt
 from .models import insertcntrank
-from .serializers import insertcntSerializer, searchSerializer, totalrankSerializer
+from .serializers import insertcntSerializer, totalrankSerializer
 from rest_framework.views import APIView
 from datetime import datetime, timedelta, time, date
 from django.db import models
