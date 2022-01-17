@@ -46,7 +46,6 @@ INSTALLED_APPS = [
     'corsheaders',  # 추가
     'themovieDB',  # 추가
     'board',  # 추가
-    'user',
     'Box',
     'Charts',
     'weeklytop3',

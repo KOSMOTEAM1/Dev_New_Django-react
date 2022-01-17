@@ -10,7 +10,6 @@ urlpatterns = [
     path('apimovie/', include('themovieDB.urls')),
     path('board/', include('board.urls')),
     path('insertcnt/', include('insertcnt.urls')),
-    path('user/', include('user.urls')),
     path('api/', include('post.urls')),
     path('chartapi/', include('Charts.urls')),
     path('boxapi/', include('Box.urls')),
