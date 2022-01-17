@@ -14,6 +14,7 @@ import Profile from '@pages/profile/Profile';
 import Graph from '@pages/Graph';
 import Datas from '@pages/Datas';
 import Tests from '@pages/Tests';
+import Movie from '@pages/Movie';
 import Member from '@pages/Member';
 import Ott from '@pages/Ott';
 import Header from './header/Header';
@@ -128,6 +129,7 @@ const Main = () => {
                             />
                             <Route exact path="/table1" component={Member} />
                             <Route exact path="/table2" component={Ott} />
+                            <Route exact path="/table3" component={Movie} />
                         </Switch>
                     </section>
                 </div>

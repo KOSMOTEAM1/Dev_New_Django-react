@@ -38,7 +38,7 @@ const Blank = () => {
                         <div className="card-body">
                             <ReactTable />
                         </div>
-                        <div className="card-footer">Footer</div>
+                        <div className="card-footer"> </div>
                     </div>
                 </div>
             </section>

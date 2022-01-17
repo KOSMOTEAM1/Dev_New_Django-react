@@ -36,7 +36,7 @@ const BarChart1 = () => {
     return (
         <div>
             <BarChart
-                width={800}
+                width={1000}
                 height={400}
                 data={data}
                 margin={{
@@ -58,8 +58,18 @@ const BarChart1 = () => {
                 <Tooltip />
                 <Legend />
 
-                <Bar dataKey="audiCnt" fill="#8884d8" name="당일 관객수" />
-                <Bar dataKey="audiAcc" fill="#82ca9d" name="총 관객수" />
+                <Bar
+                    dataKey="audiCnt"
+                    fill="#8884d8"
+                    name="당일 관객수"
+                    label={{position: 'top'}}
+                />
+                <Bar
+                    dataKey="audiAcc"
+                    fill="#82ca9d"
+                    name="총 관객수"
+                    label={{position: 'top'}}
+                />
             </BarChart>
         </div>
     );

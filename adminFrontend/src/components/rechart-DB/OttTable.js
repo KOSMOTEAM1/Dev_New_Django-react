@@ -1,22 +1,12 @@
 import React, {useEffect, useState, useMemo} from 'react';
-import Pagination1 from 'react-js-pagination';
 import Header from '../Header';
 import {TableHeader, Search} from '../DataTable';
 import useFullPageLoader from '../../hooks/useFullPageLoader';
 // import ExternalInfo from "components/ExternalInfo";
 // import AppConfig from "App.config";
-function countpage(totalItems, ITEMS_PER_PAGE) {
-    let result;
-    if (totalItems % ITEMS_PER_PAGE === 0) {
-        result = totalItems / ITEMS_PER_PAGE;
-    } else {
-        result = parseInt(totalItems / ITEMS_PER_PAGE + 1, 10);
-    }
-    return result;
-}
+
 const OttTable = () => {
     const [comments, setComments] = useState([]);
-    const [totalItems, setTotalItems] = useState(0);
     const [loader, showLoader, hideLoader] = useFullPageLoader();
     const [currentPage, setCurrentPage] = useState(1);
     const [search, setSearch] = useState('');
@@ -26,7 +16,6 @@ const OttTable = () => {
     const ITEMS_PER_PAGE = 10;
 
     const headers = [
-        {name: '날짜', field: 'date', sortable: true},
         {name: 'OTT 서비스', field: 'OTT', sortable: true},
         {name: '순위', field: 'rank', sortable: true},
         {name: '영상제목', field: 'name', sortable: true}
@@ -56,8 +45,7 @@ const OttTable = () => {
                 (comment) =>
                     comment.OTT.toLowerCase().includes(search.toLowerCase()) ||
                     comment.name.toLowerCase().includes(search.toLowerCase()) ||
-                    comment.rank.toLowerCase().includes(search.toLowerCase()) ||
-                    comment.date.includes(search)
+                    comment.rank.toLowerCase().includes(search.toLowerCase())
             );
         }
         if (ottsearch) {
@@ -69,7 +57,6 @@ const OttTable = () => {
                     comment.name.toLowerCase().includes(ottsearch.toLowerCase())
             );
         }
-        setTotalItems(computedComments.length);
         if (sorting.field) {
             const reversed = sorting.order === 'asc' ? 1 : -1;
             computedComments = computedComments.sort(
@@ -90,22 +77,9 @@ const OttTable = () => {
             <div className="row w-100">
                 <div className="col mb-3 col-12 text-center">
                     <div className="row">
-                        <div className="col-md-6">
-                            <Pagination1
-                                activePage={currentPage}
-                                itemsCountPerPage={ITEMS_PER_PAGE}
-                                totalItemsCount={totalItems}
-                                pageRangeDisplayed={5}
-                                prevPageText="‹"
-                                nextPageText="›"
-                                onChange={(page) => setCurrentPage(page)}
-                            />
-                            총 {totalItems}개 데이터,{'  '}
-                            {countpage(totalItems, ITEMS_PER_PAGE)} 페이지
-                        </div>
-                        <div className="col-md-6 d-flex flex-row-reverse">
+                        <div className="col-md-10">
                             <input
-                                type="radio"
+                                type="image"
                                 name="ottservice"
                                 value="netflix"
                                 onClick={(value) => {
@@ -113,10 +87,14 @@ const OttTable = () => {
                                     setottSearch(value.target.value);
                                     setCurrentPage(1);
                                 }}
+                                src="https://preview.redd.it/gj1t3nckxyx61.png?auto=webp&s=a0925041ccf11f7453ba4b27cfec24afa0f34594"
+                                alt="netflix"
+                                width="50"
+                                height="50"
                             />
-                            넷플릭스
+                            넷플릭스　
                             <input
-                                type="radio"
+                                type="image"
                                 name="ottservice"
                                 value="wavve"
                                 onClick={(value) => {
@@ -124,10 +102,14 @@ const OttTable = () => {
                                     setottSearch(value.target.value);
                                     setCurrentPage(1);
                                 }}
+                                src="https://t1.daumcdn.net/cfile/tistory/99403F4B5F5F37EC08"
+                                alt="wavve"
+                                width="50"
+                                height="50"
                             />
-                            웨이브
+                            웨이브　
                             <input
-                                type="radio"
+                                type="image"
                                 name="ottservice"
                                 value="tving"
                                 onClick={(value) => {
@@ -135,10 +117,14 @@ const OttTable = () => {
                                     setottSearch(value.target.value);
                                     setCurrentPage(1);
                                 }}
+                                src="https://img.etnews.com/photonews/1912/1248413_20191202184100_942_0002.jpg"
+                                alt="Tving"
+                                width="50"
+                                height="50"
                             />
-                            티빙
+                            티빙　
                             <input
-                                type="radio"
+                                type="image"
                                 name="ottservice"
                                 value="disney"
                                 onClick={(value) => {
@@ -146,10 +132,14 @@ const OttTable = () => {
                                     setottSearch(value.target.value);
                                     setCurrentPage(1);
                                 }}
+                                src="https://img.icons8.com/wired/512/disney-plus.png"
+                                alt="disney"
+                                width="50"
+                                height="50"
                             />
-                            디즈니플러스
+                            디즈니플러스　
                             <input
-                                type="radio"
+                                type="image"
                                 name="ottservice"
                                 value="watcha"
                                 onClick={(value) => {
@@ -157,10 +147,14 @@ const OttTable = () => {
                                     setottSearch(value.target.value);
                                     setCurrentPage(1);
                                 }}
+                                src="https://www.shinhancard.com/pconts/images/dx/contents/logo_watcha_rd.png"
+                                alt="watcha"
+                                width="50"
+                                height="50"
                             />
-                            왓챠
+                            왓챠　
                             <input
-                                type="radio"
+                                type="image"
                                 name="ottservice"
                                 value="kino"
                                 onClick={(value) => {
@@ -168,10 +162,14 @@ const OttTable = () => {
                                     setottSearch(value.target.value);
                                     setCurrentPage(1);
                                 }}
+                                src="https://is2-ssl.mzstatic.com/image/thumb/Purple116/v4/50/4c/9e/504c9e88-37b0-f0a0-456a-6c93a1c65efc/source/512x512bb.jpg"
+                                alt="kino"
+                                width="50"
+                                height="50"
                             />
-                            종합(KINOLIGHTS)
+                            키노(종합)　
                             <input
-                                type="radio"
+                                type="image"
                                 name="ottservice"
                                 value=""
                                 onClick={(value) => {
@@ -179,6 +177,10 @@ const OttTable = () => {
                                     setottSearch(value.target.value);
                                     setCurrentPage(1);
                                 }}
+                                src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Republic_Of_Korea_Broadcasting-TV_Rating_System%28ALL%29.svg/1200px-Republic_Of_Korea_Broadcasting-TV_Rating_System%28ALL%29.svg.png"
+                                alt="all"
+                                width="50"
+                                height="50"
                             />
                             전체
                         </div>
@@ -203,7 +205,6 @@ const OttTable = () => {
                         <tbody>
                             {commentsData.map((comment) => (
                                 <tr>
-                                    <th key={comment.date}>{comment.date}</th>
                                     <td>{comment.OTT}</td>
                                     <td>{comment.rank}</td>
                                     <td>{comment.name}</td>

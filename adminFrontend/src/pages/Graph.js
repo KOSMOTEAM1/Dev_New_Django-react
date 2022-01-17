@@ -37,7 +37,7 @@ const Graph = () => {
                         <div className="card-body">
                             <Graph1 />
                         </div>
-                        <div className="card-footer">Footer</div>
+                        <div className="card-footer"> </div>
                     </div>
                 </div>
             </section>

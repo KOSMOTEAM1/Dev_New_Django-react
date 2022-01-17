@@ -10,7 +10,7 @@ const Member = () => {
                 <div className="container-fluid">
                     <div className="card">
                         <div className="card-header">
-                            <h3 className="card-title">박스오피스 데이터</h3>
+                            <h3 className="card-title">영상물 데이터</h3>
                             <div className="card-tools">
                                 <button
                                     type="button"
@@ -35,7 +35,7 @@ const Member = () => {
                         <div className="card-body">
                             <MemberTable />
                         </div>
-                        <div className="card-footer">Footer</div>x
+                        <div className="card-footer"> </div>
                     </div>
                 </div>
             </section>

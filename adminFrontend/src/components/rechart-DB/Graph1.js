@@ -13,8 +13,8 @@ import {
 const date = new Date();
 const year = date.getFullYear();
 const zero = '0';
-const a = zero + String(1 + date.getMonth()).slice(-2);
-const b = zero + String(date.getDate() - 7).slice(-2);
+const a = (zero + String(1 + date.getMonth())).slice(-2);
+const b = (zero + String(date.getDate() - 7)).slice(-2);
 const todaydate = year + a + b;
 const BarChart1 = () => {
     const [data, setData] = useState('');
@@ -32,7 +32,7 @@ const BarChart1 = () => {
     return (
         <div>
             <AreaChart
-                width={800}
+                width={1000}
                 height={500}
                 data={data}
                 margin={{
@@ -50,7 +50,7 @@ const BarChart1 = () => {
                     dx={0}
                     fontSize={10}
                 />
-                <YAxis />
+                <YAxis domain={[0, 30]} />
                 <Tooltip />
                 <Area
                     type="monotone"
@@ -58,6 +58,7 @@ const BarChart1 = () => {
                     stroke="#8884d8"
                     fill="#8884d8"
                     name="총매출대비 매출비율"
+                    domain={[0, 30]}
                 />
 
                 <Area

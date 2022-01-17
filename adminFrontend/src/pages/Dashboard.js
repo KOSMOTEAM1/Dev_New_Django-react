@@ -7,9 +7,9 @@ const Dashboard = () => {
             <div className="row">
                 <div className="col-lg-3 col-6">
                     <SmallBox
-                        title="회원 정보"
+                        title="영화 정보"
                         type="info"
-                        icon="ion-android-people"
+                        icon="ion-clipboard"
                         navigateTo="/table1"
                     />
                 </div>

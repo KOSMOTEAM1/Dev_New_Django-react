@@ -14,7 +14,7 @@ function countpage(totalItems, ITEMS_PER_PAGE) {
     }
     return result;
 }
-const DataTable1 = () => {
+const DataTable = () => {
     const [comments, setComments] = useState([]);
     const [totalItems, setTotalItems] = useState(0);
     const [loader, showLoader, hideLoader] = useFullPageLoader();
@@ -60,6 +60,8 @@ const DataTable1 = () => {
         setTotalItems(computedComments.length);
         if (sorting.field) {
             console.log(sorting.field);
+            console.log(typeof sorting.field);
+            console.log(typeof field);
             console.log(sorting.order);
             const reversed = sorting.order === 'asc' ? 1 : -1;
             computedComments = computedComments.sort(
@@ -135,4 +137,4 @@ const DataTable1 = () => {
     );
 };
 
-export default DataTable1;
+export default DataTable;
