@@ -16,6 +16,7 @@ import PieChart from './rechart-DB/PieChart';
 import GraphTests from './rechart-DB/GraphTests';
 import MemberTable from './rechart-DB/MemberTable';
 import OttTable from './rechart-DB/OttTable';
+import MovieTable from './rechart-DB/MovieTable';
 
 export {
     Button,
@@ -34,5 +35,6 @@ export {
     GraphTests,
     PieChart,
     MemberTable,
-    OttTable
+    OttTable,
+    MovieTable
 };

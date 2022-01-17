@@ -35,7 +35,7 @@ const Tests = () => {
                         <div className="card-body">
                             <GraphTests />
                         </div>
-                        <div className="card-footer">Footer</div>
+                        <div className="card-footer"> </div>
                     </div>
                 </div>
             </section>

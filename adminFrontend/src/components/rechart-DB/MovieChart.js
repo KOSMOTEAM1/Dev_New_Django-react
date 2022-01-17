@@ -21,8 +21,8 @@ const MovieChart = () => {
     return (
         <div>
             <LineChart
-                width={800}
-                height={500}
+                width={1000}
+                height={400}
                 data={data}
                 margin={{
                     top: 5,

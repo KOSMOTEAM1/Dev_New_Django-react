@@ -10,6 +10,32 @@ const a = zero + String(1 + date.getMonth()).slice(-2);
 const b = zero + String(date.getDate() - 1).slice(-2);
 const todaydate = year + a + b;
 console.log(todaydate);
+const RADIAN = Math.PI / 180;
+const renderCustomizedLabel = ({
+    cx,
+    cy,
+    midAngle,
+    innerRadius,
+    outerRadius,
+    percent
+}) => {
+    const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
+    const x = cx + radius * Math.cos(-midAngle * RADIAN);
+    const y = cy + radius * Math.sin(-midAngle * RADIAN);
+
+    return (
+        <text
+            x={x}
+            y={y}
+            fill="white"
+            textAnchor={x > cx ? 'start' : 'end'}
+            dominantBaseline="central"
+        >
+            {`${(percent * 100).toFixed(0)}%`}
+        </text>
+    );
+};
+
 const Test1 = () => {
     const [data, setData] = useState('');
     useEffect(() => {
@@ -20,17 +46,17 @@ const Test1 = () => {
     }, []);
 
     return (
-        <PieChart width={800} height={600}>
+        <PieChart width={1000} height={400}>
             <Pie
+                label={renderCustomizedLabel}
                 dataKey="audiCnt"
                 data={data}
                 nameKey="name"
-                isAnimationActive={false}
                 cx="50%"
                 cy="50%"
                 outerRadius={200}
                 fill="#8884d8"
-                label="name"
+                labelLine={false}
             >
                 <Cell key="{cell-1}" fill="#0000CC" />
                 <Cell key="{cell-2}" fill="#0066CC" />

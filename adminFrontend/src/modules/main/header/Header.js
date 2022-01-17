@@ -22,13 +22,13 @@ const Header = ({toggleMenuSidebar}) => {
                 </li>
                 <li className="nav-item d-none d-sm-inline-block">
                     <Link to="/" className="nav-link">
-                        {t('header.label.home')}
+                        {t('관리자 페이지')}
                     </Link>
                 </li>
                 <li className="nav-item d-none d-sm-inline-block">
-                    <Link to="/" className="nav-link">
-                        {t('header.label.contact')}
-                    </Link>
+                    <a href="http://localhost:3000/" className="nav-link">
+                        {t('메인 페이지')}
+                    </a>
                 </li>
             </ul>
             <ul className="navbar-nav ml-auto">

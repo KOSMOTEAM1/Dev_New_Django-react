@@ -39,7 +39,7 @@ const Charts = () => {
                         <div className="card-body">
                             <PieChart />
                         </div>
-                        <div className="card-footer">Footer</div>x
+                        <div className="card-footer"> </div>
                     </div>
                 </div>
             </section>

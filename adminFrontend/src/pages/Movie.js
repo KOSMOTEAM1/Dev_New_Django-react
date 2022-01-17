@@ -1,8 +1,8 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
-import {ContentHeader, OttTable} from '@components';
+import {ContentHeader, MovieTable} from '@components';
 
-const Ott = () => {
+const Movie = () => {
     return (
         <div>
             <ContentHeader title="테이블 데이터" />
@@ -10,10 +10,7 @@ const Ott = () => {
                 <div className="container-fluid">
                     <div className="card">
                         <div className="card-header">
-                            <h3 className="card-title">
-                                {' '}
-                                서비스별 TOP10 데이터{' '}
-                            </h3>
+                            <h3 className="card-title">영상물 데이터</h3>
                             <div className="card-tools">
                                 <button
                                     type="button"
@@ -36,7 +33,7 @@ const Ott = () => {
                             </div>
                         </div>
                         <div className="card-body">
-                            <OttTable />
+                            <MovieTable />
                         </div>
                         <div className="card-footer"> </div>
                     </div>
@@ -46,4 +43,4 @@ const Ott = () => {
     );
 };
 
-export default Ott;
+export default Movie;

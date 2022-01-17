@@ -46,21 +46,32 @@ const Test1 = () => {
                     content={<CustomTooltip />}
                     wrapperStyle={{
                         fontSize: '15px',
-                        backgroundColor: '#F5DA81'
+                        backgroundColor: '#95CBFF'
                     }}
                 />
 
-                <Bar dataKey="top_saleAmt" fill="#8884d8" />
-                <Bar dataKey="second_saleAmt" fill="#8884d8" />
-                <Bar dataKey="third_saleAmt" fill="#8884d8" />
+                <Bar
+                    dataKey="top_audiCnt"
+                    fill="#7401DF"
+                    barSize={30}
+                    label={{position: 'top'}}
+                />
+                <Bar
+                    dataKey="second_audiCnt"
+                    fill="#01DFA5"
+                    barSize={30}
+                    label={{position: 'top'}}
+                />
+                <Bar
+                    dataKey="third_audiCnt"
+                    fill="#FFFF00"
+                    barSize={30}
+                    label={{position: 'top'}}
+                />
 
-                <Bar dataKey="top_audiCnt" fill="#7401DF" />
-                <Bar dataKey="second_audiCnt" fill="#01DFA5" />
-                <Bar dataKey="third_audiCnt" fill="#FFFF00" />
-
-                <Bar dataKey="top_name" />
-                <Bar dataKey="second_name" />
-                <Bar dataKey="third_name" />
+                <Bar dataKey="top_name" barSize={0} />
+                <Bar dataKey="second_name" barSize={0} />
+                <Bar dataKey="third_name" barSize={0} />
             </BarChart>
         </div>
     );

@@ -36,8 +36,8 @@ const ReactTable = () => {
     return (
         <div>
             <BarChart
-                width={800}
-                height={500}
+                width={1000}
+                height={400}
                 data={data}
                 margin={{
                     top: 5,
@@ -54,12 +54,22 @@ const ReactTable = () => {
                     dx={0}
                     fontSize={10}
                 />
-                <YAxis interval={0} dx={0} max={40} />
+                <YAxis interval={0} dx={0} max={40} domain={[-20, 20]} />
                 <Tooltip />
                 <Legend />
-                <ReferenceLine y={0} stroke="#000" />
-                <Bar dataKey="salesChange" fill="#58D3F7" name="매출액 증감" />
-                <Bar dataKey="audiChange" fill="#0101DF" name="관객 수 증감" />
+                <ReferenceLine y={0} stroke="red" />
+                <Bar
+                    dataKey="salesChange"
+                    fill="#58D3F7"
+                    name="매출액 증감"
+                    label={{position: 'middle'}}
+                />
+                <Bar
+                    dataKey="audiChange"
+                    fill="#0101DF"
+                    name="관객 수 증감"
+                    label={{position: 'middle'}}
+                />
             </BarChart>
         </div>
     );
