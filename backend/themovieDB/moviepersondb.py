@@ -3,12 +3,12 @@ import json
 import requests
 from urllib.error import HTTPError
 from datetime import datetime
-# -*- encoding: cp949 -*-
 
 conn = pymysql.connect(host='192.168.0.41', port=3306,
                        user='team1', password='team1', db='otte_dev')
 cur = conn.cursor()
 
+# 영화 출연진, 감독 크롤링
 def moviepersoncrawling(id,otteid):
 
     url = 'https://api.themoviedb.org/3/movie/' + \

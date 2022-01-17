@@ -10,6 +10,7 @@ conn = pymysql.connect(host='192.168.0.41', port=3306,
                        user='team1', password='team1', db='otte_dev')
 cur = conn.cursor()
 
+# 네이버 평점 크롤링
 def get_movie_point(start_id, finish_id):
     data = []
     for i in range(start_id, finish_id):

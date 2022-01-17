@@ -26,7 +26,6 @@ class RecentPost(generics.ListCreateAPIView):
 
 # 한국 작품들 중 19년도 이후에 나온 작품들 sorting
 class KoreaPost(generics.ListCreateAPIView):
-    """ queryset = movie.objects.filter(original_language = 'ko', popularity__gt = 30).order_by('?')[:100] """
     queryset = movie.objects.filter(original_language = 'ko', release_date__range=["2019-01-01", datetime.today()]).order_by('?')[:100]
     serializer_class = SortSerializer
 
@@ -35,7 +34,7 @@ class FamousPost(generics.ListCreateAPIView):
     queryset = movie.objects.filter(imdbscore__gt = 8).order_by('?')[:50]
     serializer_class = SortSerializer
 
-# 인기 컨텐츠
+# 컨텐츠 인기순
 class PopularPost(generics.ListCreateAPIView):
     queryset = movie.objects.order_by('-popularity')
     serializer_class = SortSerializer
@@ -45,6 +44,11 @@ class GenredetailPost(APIView):
     def get(self, request, pk):
         try:
             queryset = moviegenres.objects.filter(otteid=pk).select_related('genreid').values('genreid__name','genreid__id').annotate(name =F('genreid__name'),id=F('genreid__id'))
+            """ SELECT `themovieDB_genresinmovie`.`name`, `themovieDB_moviegenres`.`genreid`, 
+            `themovieDB_genresinmovie`.`name` AS `name`, `themovieDB_moviegenres`.`genreid` 
+            AS `id` FROM `themovieDB_moviegenres` LEFT OUTER JOIN `themovieDB_genresinmovie` 
+            ON (`themovieDB_moviegenres`.`genreid` = `themovieDB_genresinmovie`.`id`) 
+            WHERE `themovieDB_moviegenres`.`otteid` = {id값}"""
             print("@@@@@@@",queryset.query)
             serializer = AllGenreSerializer(queryset, many=True)
             return Response(serializer.data)

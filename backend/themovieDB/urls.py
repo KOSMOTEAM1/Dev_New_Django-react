@@ -12,10 +12,10 @@ urlpatterns = [
     path('famous', views.FamousPost.as_view()),
     # 인기도 높은 작품들 50개만 출력
     path('popular', views.PopularPost.as_view()),
-    # 오떼아이디 장르
-    path('genre/<int:pk>/', views.GenredetailPost.as_view(), name="otteid"),
-    # 오떼아이디 배우
-    path('actor/<int:pk>/', views.ActordetailPost.as_view(), name="otteid"),
-    # 오떼아이디 감독
-    path('director/<int:pk>/', views.DirectordetailPost.as_view(), name="otteid"),
+    # 영화 장르
+    path('genre/<int:pk>/', views.GenredetailPost.as_view()),
+    # 영화 배우
+    path('actor/<int:pk>/', views.ActordetailPost.as_view()),
+    # 영화 감독
+    path('director/<int:pk>/', views.DirectordetailPost.as_view()),
 ]

@@ -3,12 +3,12 @@ import json
 import requests
 from urllib.error import HTTPError
 from datetime import datetime
-# -*- encoding: cp949 -*-
 
 conn = pymysql.connect(host='192.168.0.41', port=3306,
                        user='team1', password='team1', db='otte_dev')
 cur = conn.cursor()
 
+# 한국영화만 크롤링
 def crawling(start_id, finish_id):
 
     for i in range(start_id, finish_id):
@@ -44,6 +44,3 @@ def crawling(start_id, finish_id):
         finally:
             print(i)
             print('완료')
-""" 
-cur.close()
-conn.close() """

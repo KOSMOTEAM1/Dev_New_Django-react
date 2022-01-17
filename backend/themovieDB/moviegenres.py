@@ -8,6 +8,7 @@ conn = pymysql.connect(host='192.168.0.41', port=3306,
                        user='team1', password='team1', db='otte_dev')
 cur = conn.cursor()
 
+# 범위 크롤링
 def genrescrawling(start_id, finish_id):
 
     for i in range(start_id, finish_id):
@@ -52,11 +53,8 @@ def genrescrawling(start_id, finish_id):
         finally:
             print(i)
             print('완료')
-""" 
-cur.close()
-conn.close() """
 
-
+# 특정 id 크롤링
 def genrescrawling(id):
 
         url = "https://api.themoviedb.org/3/movie/" + str(id) + \
@@ -99,6 +97,3 @@ def genrescrawling(id):
         finally:
             print(id)
             print('완료')
-""" 
-cur.close()
-conn.close() """

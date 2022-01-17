@@ -3,7 +3,6 @@ import json
 import requests
 from urllib.error import HTTPError
 from datetime import datetime
-# -*- encoding: cp949 -*-
 
 conn = pymysql.connect(host='192.168.0.41', port=3306,
                        user='team1', password='team1', db='otte_dev')
@@ -21,6 +20,7 @@ def crawling(start_id, finish_id):
             # [JSON 형태로 응답받은 데이터를 딕셔너리 데이터로 변환]
             items = r.json()
 
+            # 성인물이 아닌 컨텐츠만 저장
             if items['adult'] == False:
                 print(items['title'])
                 data = []
@@ -30,18 +30,15 @@ def crawling(start_id, finish_id):
                 sql = "insert into themoviedb_movie(adult, themovieid, imdb_id, original_language, original_title, overview, popularity, poster_path, release_date, runtime, status, title) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s);"
                 cur.executemany(sql, data)
                 
-                
             else:
                 pass            
             conn.commit()
         except KeyError:
-            pass
+            print(i,"없음")
+            pass    
+            # 순차적 진행중 특정아이디가 tmdb에 없는 작품들 pass
         except HTTPError as e:
             print(e)
             pass
         finally:
-            print(i)
-            print('완료')
-""" 
-cur.close()
-conn.close() """
+            print(i,'완료')
