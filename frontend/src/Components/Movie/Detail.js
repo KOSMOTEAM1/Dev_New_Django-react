@@ -19,6 +19,9 @@ function Detail({
   const [genres, setGenres] = useState([]);
   const [actors, setActors] = useState([]);
   const [directors, setDirectors] = useState([]);
+
+  //장르 배우 감독은 두개 이상의 항목이 존재하기때문에 별도의 DB 생성
+
   //장르
   const getGenre = async () => {
     const json = await (
@@ -130,7 +133,6 @@ function Detail({
               <div className="col-lg-7">
                 <div class="section-title">
                   <h4>검색량 변화</h4>
-
                   <LineChart title={title} />
                 </div>
               </div>

@@ -9,25 +9,18 @@ import Header from "./Components/header/Header";
 import Footer from "./Components/footer/Footer";
 
 //Routes
-//import Table from "./Routes/Table";
-//import Community from "./Routes/Community";
 import Community2 from "./Components/board/getboard";
 import Home from "./Routes/Home";
 
 //Routes/board
 import insertboard from "./Components/board/insertboard";
 import boarddetail from "./Components/board/boardview";
-//import adminHeader from "./Components/adminHeader";
-
-//import Sidebar from "./Components/Sidebar/Sidebar";
 
 //css
 import "./source/css/style.css";
-//import "./source/css/bootstrap.min.css";
 import "./source/css/elegant-icons.css";
 import "./source/css/font-awesome.min.css";
 import "./source/css/nice-select.css";
-//import "./source/css/owl.carousel.min.css";
 import "./source/css/plyr.css";
 import "./source/css/slicknav.min.css";
 
@@ -45,7 +38,6 @@ function App() {
         />
         <Switch>
           <Route exact path="/" component={Home} />
-
           <Route render={() => <div className="error">Error</div>} />
         </Switch>
         <Footer />

@@ -5,7 +5,8 @@ import PropTypes from "prop-types";
 function SearchBar({ placeholder, data }) {
   const [filteredData, setFilteredData] = useState([]);
   const [wordEntered, setWordEntered] = useState("");
-
+  //검색 자동완성
+  //참고자료 Search Bar in React Tutorial - Cool Search Filter Tutorial : https://www.youtube.com/watch?v=x7niho285qs&t=0s
   const handleFilter = (event) => {
     var text = "";
     const searchWord = event.target.value;
@@ -57,6 +58,7 @@ function SearchBar({ placeholder, data }) {
             </div>
           </div>
           <div className="row">
+            {/* 검색된 자료들 모달로 호출 */}
             {filteredData.map((value) => {
               return (
                 <div className="col-lg-3">

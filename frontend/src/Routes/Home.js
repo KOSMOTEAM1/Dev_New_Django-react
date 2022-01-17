@@ -51,6 +51,7 @@ function Home() {
     getMoviesKorea();
   }, []);
 
+  //slide 세팅값 설정
   const settings = {
     dots: true,
     infinite: true,
@@ -63,15 +64,18 @@ function Home() {
     <section class="product-page spad">
       <div class="container">
         <div class="row">
+          {/* 실시간 인기검색어 테이블 */}
           <div class="col-lg-12">
             <ReactTable />
           </div>
         </div>
         <div class="row">
           <div class="col-lg-12">
+            {/* 검색 */}
             <div class="product__page__content">
               <SearchBar placeholder="Search here" data={totalmovies} />
             </div>
+            {/* 최신작품 */}
             <div class="product__page__content">
               <div class="product__page__title">
                 <div class="row">
@@ -94,6 +98,7 @@ function Home() {
             </div>
             <br></br>
             <br></br>
+            {/* 한국착품 */}
             <div class="product__page__content">
               <div class="product__page__title">
                 <div class="row">

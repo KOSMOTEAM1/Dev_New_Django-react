@@ -27,6 +27,7 @@ const customStyles = {
   },
 };
 
+//SearchModal에서 검색기록 넘겨주는 기능 제외
 function TestModal({
   id,
   title,
@@ -59,6 +60,7 @@ function TestModal({
         isOpen={modalIsOpen}
         onRequestClose={() => setModalIsOpen(false)}
       >
+        {/* 모달창 안에 Detail 컴포넌트 호출 */}
         <Detail
           title={title}
           id={id}

@@ -40,6 +40,7 @@ function SearchModal({
   imdb,
   nation,
 }) {
+  //검색 기록 서버로 전송
   function submitClick(e) {
     console.log("클릭 이벤트가 실행 되었습니다.");
     console.log(title);
@@ -50,11 +51,13 @@ function SearchModal({
     });
   }
 
+  //modal창 오픈을 위한 변수, 상태 저장
   const [modalIsOpen, setModalIsOpen] = useState(false);
   return (
     <div>
       <div className="row">
         <div className="product__item__pic">
+          {/* 클릭 1회에 2개 이벤트 부여 */}
           <img
             id={id}
             onClick={(e) => {
@@ -67,6 +70,7 @@ function SearchModal({
       </div>
       <div className="product__item__text">
         <h5>
+          {/* 클릭 1회에 2개 이벤트 부여 */}
           <a
             id={id}
             onClick={(e) => {
@@ -83,6 +87,7 @@ function SearchModal({
         isOpen={modalIsOpen}
         onRequestClose={() => setModalIsOpen(false)}
       >
+        {/* 모달창 안에 Detail 컴포넌트 호출 */}
         <Detail
           title={title}
           id={id}

@@ -6,7 +6,7 @@ import TestModal from "../Modal/TestModal";
 function Movie({ id, title }) {
   //최신영화 호출
   const [koreamovies, setkoreaMovies] = useState([]);
-
+  //id로 호출 받아 해당 작품의 상세 정보 불러오기
   const getMovieskorea = async () => {
     const json = await (
       await fetch(`http://127.0.0.1:8000/apimovie/${id}`)
@@ -33,25 +33,10 @@ function Movie({ id, title }) {
         summary={koreamovies.overview}
         coverImg={koreamovies.poster_path}
       />
-
-      {/* <TestModal title={title} id={id} /> */}
-
-      {/* <p>{summary}</p>
-      <ul>{genres && genres.map((g) => <li key={g}>{g}</li>)}</ul> */}
     </div>
   );
 }
 
-{
-  /* <MovieLatest
-  key={movie.id}
-  id={movie.id}
-  coverImg={movie.medium_cover_image}
-  title={movie.title}
-  summary={movie.summary}
-  genres={movie.genres}
-/>; */
-}
 /*{genres.map((g) => <li key={g}>{g}</li>)}</ul> 안됨
   {genres && genres.map((g) => <li key={g}>{g}</li>)}</ul> 가능
   React는 렌더링이 화면에 커밋 된 후에야 모든 효과를 실행함, 즉 react는 return에서

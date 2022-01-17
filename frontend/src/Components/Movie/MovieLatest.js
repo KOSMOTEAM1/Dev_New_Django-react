@@ -6,7 +6,7 @@ import TestModal from "../Modal/TestModal";
 function Movie({ id, title }) {
   //최신영화 호출
   const [latestmovies, setLatestMovies] = useState([]);
-
+  //id로 호출 받아 해당 작품의 상세 정보 불러오기
   const getMoviesLatest = async () => {
     const json = await (
       await fetch(`http://127.0.0.1:8000/apimovie/${id}`)
