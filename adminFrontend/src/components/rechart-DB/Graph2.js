@@ -12,12 +12,13 @@ import {
 } from 'recharts';
 
 const date = new Date();
+date.setDate(date.getDate() - 7);
 const year = date.getFullYear();
 const zero = '0';
 const a = (zero + String(1 + date.getMonth())).slice(-2);
-const b = (zero + String(date.getDate() - 7)).slice(-2);
+const b = (zero + String(date.getDate())).slice(-2);
 const todaydate = year + a + b;
-
+console.log(todaydate);
 const CustomizedDot = (props) => {
     const {cx, cy, value} = props;
 
