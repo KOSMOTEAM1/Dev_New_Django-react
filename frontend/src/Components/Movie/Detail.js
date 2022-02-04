@@ -19,6 +19,7 @@ function Detail({
   const [genres, setGenres] = useState([]);
   const [actors, setActors] = useState([]);
   const [directors, setDirectors] = useState([]);
+  const [ottnames, setOttnames] = useState([]);
 
   //장르 배우 감독은 두개 이상의 항목이 존재하기때문에 별도의 DB 생성
 
@@ -68,6 +69,21 @@ function Detail({
   };
   useEffect(() => {
     getDirector();
+  }, []);
+
+  const getOttname = async () => {
+    const json = await (
+      await fetch(`http://127.0.0.1:8000/apimovie/ott/${id}`)
+    ).json();
+    const jsonarray = [];
+    for (let i = 0; i < json.length; i++) {
+      jsonarray.push(json[i].ottname);
+    }
+    setOttnames(jsonarray);
+    console.log(jsonarray);
+  };
+  useEffect(() => {
+    getOttname();
   }, []);
 
   return (
@@ -143,6 +159,16 @@ function Detail({
             <div className="col-lg-1"></div>
             <div className="col-lg-10">
               <div class="anime__details__text">
+                <div class="section-title">
+                  <h4>서비스중인 사이트</h4>
+                  <ul>
+                    <li>
+                      {ottnames.map((o) => (
+                        <a key={o}>{o} </a>
+                      ))}
+                    </li>
+                  </ul>
+                </div>
                 <div class="section-title">
                   <h4>줄거리</h4>
                 </div>
