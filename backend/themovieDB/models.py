@@ -53,6 +53,12 @@ class moviedirectors(models.Model):
     personname = models.CharField(max_length=100, null=True)
     otteid = models.IntegerField(null=True)
 
+# 영화 - ott 테이블
+class movieott(models.Model):
+    moid = models.AutoField(primary_key=True)
+    ottname = models.CharField(max_length=20, null=True)
+    otteid = models.IntegerField(null=True)
+    priority = models.IntegerField(null=True)
 
 def __str__(self):
     return self.title

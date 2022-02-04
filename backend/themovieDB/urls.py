@@ -18,4 +18,8 @@ urlpatterns = [
     path('actor/<int:pk>/', views.ActordetailPost.as_view()),
     # 영화 감독
     path('director/<int:pk>/', views.DirectordetailPost.as_view()),
+    # 영화 ott
+    path('ott/<int:pk>/', views.OttdetailPost.as_view()),
+
+    path('test/<int:pk>/', views.movieList.as_view()),
 ]
