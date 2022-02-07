@@ -19,7 +19,7 @@ const Header = () => {
               <nav className="header__menu mobile-menu">
                 <ul>
                   <li>
-                    <Link to={"/Community2"}>자유게시판</Link>
+                    <Link to={"/Community2"} >자유게시판</Link>
                   </li>
                 </ul>
               </nav>

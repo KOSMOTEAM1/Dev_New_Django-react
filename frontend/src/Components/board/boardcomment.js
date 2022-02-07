@@ -13,10 +13,10 @@ class boardview extends Component {
         this.delete_user = $('#delete_user').val();
         if(this.comment_user == this.delete_user){
             alert("두 값이 일치합니다.")
+            axios.delete('http://127.0.0.1:8000/board/comment/delete/'+this.board_id+'/')
         }else{
             alert("다른 사용자입니다.")
         }
-        /* axios.delete('http://127.0.0.1:8000/board/comment/delete/'+this.board_id+'/') */
     }
 
     submitClick = (e) => {

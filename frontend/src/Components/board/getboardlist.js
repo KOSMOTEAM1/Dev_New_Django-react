@@ -1,58 +1,48 @@
-import $ from "jquery";
-import axios from "axios";
-import React, { Component } from 'react';
-import { Link } from "react-router-dom";
+import React, { useMemo, useEffect, useState } from "react";
+import { useTable } from "react-table";
+import "../Graph/new.css";
+import ReactTable from "./ReactTable";
 
-class getboard_org extends Component {
+const Posts = ({ posts, loading }) => {
 
-    state = {
-        posts: []
-    };
-
-    async componentDidMount() {
-        try {
-            const res = await fetch('http://127.0.0.1:8000/board/');
-            const posts = await res.json();
-            this.setState({
-                posts
-            });
-            console.log(posts);
-        } catch (e) {
-            console.log(e);
+    const columnData = [
+        {
+          accessor: 'id',
+          Header: 'Num',
+        },
+        {
+          accessor: 'title',
+          Header: 'Title',
+        },
+        {
+            accessor: 'readcount',
+            Header: '조회수',
         }
-    }
- 
-    render() {
-        return (
-            <div className="container">
-                <div className="row">
-                <div className="col-lg-12">
-                    {this.state.posts.map(item => (
-                    <form >
-                    <div key={item.id}>
-                        <div class="card">
-                            <div class="card border-primary mb-3">
-                            <Link to={'/Community2/boarddetail/'+item.id+'/'} >
-                                <div class="card-header">{item.title}</div>
-                                <div class="card-body">
-                                {item.content} 조회수: {item.readcount}
-                                    <input type="hidden" id="id" placeholder={item.id} defaultValue={item.id}></input>
-                                    <input type="hidden" id="title" placeholder={item.title} defaultValue={item.title}></input>
-                                    <input type="hidden" id="content" placeholder={item.content} defaultValue={item.content}></input>
-                                </div>
-                                <div class="card-footer">
-                                </div>
-                            </Link>
-                            </div>
-                        </div>
-                    </div>
-                    </form >
-                ))}
-                </div>
-            </div>
-            </div>
-        );
-    }
-}
+    ]
 
-export default getboard_org;
+    const columns = useMemo(() => columnData, []);
+    const data = useMemo(() => posts);
+
+    if (loading) {
+        return <h2>Now Loadoing...</h2>
+    }
+    return<ReactTable columns={columns} data={data} />;
+};
+export default Posts;
+
+/* const Posts = ({ posts, loading }) => {
+    if (loading) {
+        return <h2>Now Loadoing...</h2>
+    }
+    return (
+        <ul>
+            {posts.map(post =>(
+                <li key={post.id}>
+                    {post.title}
+                </li>
+            ))}
+
+        </ul>
+    );
+}; 
+export default Posts;*/

@@ -26,23 +26,18 @@ import "./source/css/slicknav.min.css";
 
 function App() {
   return (
-    <>
+    <section>
       <Router>
-        <Header />
-        <Route exact path="/Community2" component={Community2} />
-        <Route exact path="/Community2/Insert" component={insertboard} />
-        <Route
-          exact
-          path="/Community2/boarddetail/:id"
-          component={boarddetail}
-        />
+        <Header/>
         <Switch>
+          <Route exact path="/Community2/boarddetail/:id" component={boarddetail} />
+          <Route exact path="/Community2/Insert" component={insertboard} />
+          <Route path="/Community2/" component={Community2} />
           <Route exact path="/" component={Home} />
           <Route render={() => <div className="error">Error</div>} />
         </Switch>
-        <Footer />
       </Router>
-    </>
+    </section>
   );
 }
 

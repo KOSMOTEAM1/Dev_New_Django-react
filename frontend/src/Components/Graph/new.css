@@ -23,9 +23,41 @@
   color: #ffffff;
 }
 .type09 td {
-  width: 300px;
+  width: 700px;
   padding: 10px;
   vertical-align: top;
   border-bottom: 1px solid #ccc;
   text-align: center;
+}
+
+.type10 {
+  border-collapse: collapse;
+  text-align: left;
+  line-height: 1.5;
+  color: black;
+}
+.type10 thead th {
+  padding: 10px;
+  font-weight: bold;
+  vertical-align: top;
+  color: #369;
+  background-color: cornflowerblue;
+  color: black;
+  border-bottom: 3px solid #036;
+}
+.type10 tbody th {
+  width: 100px;
+  padding: 10px;
+  font-weight: bold;
+  vertical-align: top;
+  border-bottom: 1px solid #ccc;
+  background: #f3f6f7;
+  color: black;
+}
+.type10 td {
+  width: 900px;
+  padding: 10px;
+  vertical-align: top;
+  border-bottom: 1px solid #ccc;
+  text-align: left;
 }

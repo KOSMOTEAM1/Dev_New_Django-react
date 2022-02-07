@@ -113,6 +113,7 @@ ol,
 ul {
   margin-top: 0;
   margin-bottom: 1rem;
+  text-align: center;
 }
 ol ol,
 ol ul,
@@ -4445,6 +4446,8 @@ input[type="submit"].btn-block {
   color: #fff;
 }
 .card {
+  margin-top: 1rem;
+  margin-bottom: 3rem;
   position: relative;
   display: -ms-flexbox;
   display: flex;

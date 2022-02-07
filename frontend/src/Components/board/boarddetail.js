@@ -12,7 +12,7 @@ class boardview extends Component {
         this.content = $('#content').val();
 		this.readcount = $('#readcount').val();
 		this.reuser = $('#reuser').val();
-        if(this.reuser == this.reuser){
+        if(this.reuser == this.username){
 			alert("조건이 충족 되었습니다.")
 			axios.put(`http://127.0.0.1:8000/board/${id}/`, {
             title: this.title,
@@ -85,9 +85,7 @@ class boardview extends Component {
                         <input class="form-control" id="writedate" placeholder={this.state.posts.writedate} defaultValue={this.state.posts.writedate} readOnly="readOnly"></input>
                     </p>
 					<input class="form-control" id="reuser" ></input> 
-                    <Link to="/">
 					<button type="submit" onClick={(e) => this.submitClick(e)}>수정</button>
-                    </Link>
                 </div>
             </div>
         );

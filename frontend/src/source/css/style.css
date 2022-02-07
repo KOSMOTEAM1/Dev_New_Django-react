@@ -36,7 +36,7 @@ body {
   height: 100%;
   font-family: "Mulish", sans-serif;
   -webkit-font-smoothing: antialiased;
-  background: #0b0c2a;
+  background: white;
 }
 
 h1,
@@ -112,6 +112,19 @@ ol {
   Helper CSS
 -----------------------*/
 
+section {
+  height: 100vh;
+  background: url(https://assets.nflxext.com/ffe/siteui/vlv3/eb482c64-e879-4e88-9ddc-d839cb7d1232/df2916c4-fbc7-4814-8dc9-bf307b678808/KR-ko-20220131-popsignuptwoweeks-perspective_alpha_website_small.jpg);
+}
+section::before {
+  content: "";
+  background: linear-gradient(to top, white, transparent);
+  position: absolute;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
 .section-title {
   margin-top: 10px;
   margin-bottom: 30px;
@@ -119,10 +132,11 @@ ol {
 
 .section-title h4,
 .section-title h5 {
-  color: #ffffff;
+  color: black;
   font-weight: 700;
   line-height: 21px;
   text-transform: uppercase;
+  margin-top: 50px;
   padding-left: 20px;
   position: relative;
   font-family: "Oswald", sans-serif;
@@ -427,7 +441,7 @@ ol {
 }
 
 .header__menu ul li a {
-  font-size: 25px;
+  font-size: 22px;
   color: #b7b7b7;
   display: block;
   font-weight: 900;
@@ -1358,7 +1372,7 @@ ol {
 }
 
 .breadcrumb__links a {
-  font-size: 15px;
+  font-size: 10px;
   color: #ffffff;
   margin-right: 18px;
   display: inline-block;
