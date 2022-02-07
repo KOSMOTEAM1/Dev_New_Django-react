@@ -53,6 +53,7 @@ function Home() {
 
   //slide 세팅값 설정
   const settings = {
+    dots: true,
     infinite: true,
     speed: 500,
     slidesToShow: 4,
@@ -60,7 +61,8 @@ function Home() {
   };
 
   return (
-    <section class="product-page spad">
+    <>
+    {/* <section class="product-page spad"> */}
       <div class="container">
         <div class="row">
           {/* 실시간 인기검색어 테이블 */}
@@ -123,7 +125,8 @@ function Home() {
           </div>
         </div>
       </div>
-    </section>
+    {/* </section> */}
+    </>
   );
 }
 
