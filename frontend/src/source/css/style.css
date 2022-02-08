@@ -113,15 +113,16 @@ ol {
 -----------------------*/
 
 section {
+  padding-top: 30px;
   height: 100vh;
   background: url(https://assets.nflxext.com/ffe/siteui/vlv3/eb482c64-e879-4e88-9ddc-d839cb7d1232/df2916c4-fbc7-4814-8dc9-bf307b678808/KR-ko-20220131-popsignuptwoweeks-perspective_alpha_website_small.jpg);
 }
 section::before {
+  padding-top: 30px;
   content: "";
   background: linear-gradient(to top, white, transparent);
   position: absolute;
-  left: 0;
-  height: 100%;
+  height: 97%;
   width: 100%;
 }
 
@@ -367,11 +368,16 @@ section::before {
 -----------------------*/
 
 .header {
-  background: #070720;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 60px;
+  width: 100%;
+  background: transparent;
 }
 
 .header__logo {
-  padding: 20px 0 17px;
+  padding: 10px 0 10px;
 }
 
 .header__logo a {
@@ -701,6 +707,11 @@ section::before {
   margin: 20px;
 }
 
+.product__item__pic_box {
+  border-radius: 1rem;
+  box-shadow: 0px 0px 15px;
+}
+
 .product__item__pic__detail {
   height: 50px;
   width: 50px;
@@ -764,13 +775,13 @@ section::before {
 }
 
 .product__item__text h5 a {
-  color: #ffffff;
+  color: black;
   font-weight: 700;
   line-height: 26px;
 }
 
 .product__sidebar .section-title h5 {
-  color: #ffffff;
+  color: black;
   font-weight: 600;
   font-family: "Oswald", sans-serif;
   line-height: 21px;
@@ -2414,4 +2425,97 @@ section::before {
   .anime__review__item__text {
     padding: 18px 20px 20px;
   }
+}
+
+/* LoginModal */
+
+.login-container {
+  position: fixed;
+  top: 200px;
+  left: 200 auto;
+  height: 400px;
+  width: 100%;
+  background: transparent;
+}
+
+.login-box {
+  margin: 0 auto;
+  width: 400px;
+  height: 400px;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 2rem;
+  border: 1px solid rgba(var(--b6a, 219, 219, 219), 1);
+  background: white;
+}
+
+.login-box span {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-top: 15px;
+  margin-bottom: 30px;
+}
+
+.login-box input {
+  display: block;
+  width: 230px;
+  height: 20px;
+  color: rgba(var(--i1d, 38, 38, 38), 1);
+  padding: 9px 0 7px 8px;
+  margin-bottom: 10px;
+  outline: none;
+  background: rgba(var(--b3f, 250, 250, 250), 1);
+  border-radius: 5px;
+  padding: 16px;
+}
+
+/* + LoginModal */
+/* .social-box h4{
+    margin-top: 1rem;
+    color: rgba(102, 112, 139, 0.781);
+    text-align: center;
+} */
+.login-foot {
+  text-align: right;
+  margin-top: 1.5rem;
+}
+.login-foot span {
+  font-size: 17px;
+}
+.foot-link {
+  display: inline-block;
+  font-weight: bold;
+  color: rgba(102, 112, 139, 0.781);
+  cursor: pointer;
+  margin-left: 10px;
+}
+.exit {
+  position: absolute;
+  margin-left: 370px;
+  margin-top: 5px;
+}
+.googlebox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.googlebox .google-login {
+  width: 30px;
+  height: 30px;
+  margin-top: 25px;
+  margin-bottom: 5px;
+}
+.JoinLoign-button {
+  border: 1px solid rgba(102, 112, 139, 0.781);
+  color: white;
+  background-color: black;
+  border-radius: 0.5rem;
+  display: flex;
+  margin: 0 auto;
+  height: 30px;
+  width: 100px;
+  justify-content: center;
+  align-items: center;
 }

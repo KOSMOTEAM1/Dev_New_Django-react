@@ -44,7 +44,7 @@ function TestModal({
     <div>
       <div className="row">
         <div className="product__item__pic">
-          <img
+          <img className="product__item__pic_box"
             onClick={() => setModalIsOpen(true)}
             src={`https://image.tmdb.org/t/p/original/${coverImg}`}
           />

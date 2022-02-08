@@ -114,21 +114,26 @@ function App() {
 
   return (
     <Router>
-      
+      <Header modal={modal} handleLogout={handleLogout} />
+      <Route exact path="/login">
+        <LoginModal
+          setModal={setModal}
+          userHasAuthenticated={userHasAuthenticated}
+        />
+      </Route>
       <section>
-
         <Switch>
-          <Route exact path="/Community2/boarddetail/:id" component={boarddetail} />
+          <Route
+            exact
+            path="/Community2/boarddetail/:id"
+            component={boarddetail}
+          />
           <Route exact path="/Community2/Insert" component={insertboard} />
           <Route path="/Community2/" component={Community2} />
           <Route exact path="/" component={Home} />
           <Route render={() => <div className="error">Error</div>} />
         </Switch>
       </section>
-      <Header modal={modal} handleLogout={handleLogout} />
-      <Route exact path="/login">
-        <LoginModal setModal={setModal} userHasAuthenticated={userHasAuthenticated} />
-      </Route>
     </Router>
   );
 }
