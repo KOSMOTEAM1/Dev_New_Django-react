@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 import pymysql
 from pathlib import Path
 import os
+import datetime  # 56에서 시작되는 JWT_AUTH 의 토큰 유효기간을 설정하기 위한 datetime import
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -32,6 +33,29 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
+REST_FRAMEWORK = {  # 추가
+    'DEFAULT_PERMISSION_CLASSES': [
+        # 'rest_framework.permissions.IsAuthenticated',  # 인증된 회원만 액세스 허용
+        'rest_framework.permissions.AllowAny',  # 모든 회원 액세스 허용
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': (  # api가 실행됬을 때 인증할 클래스를 정의해주는데 우리는 JWT를 쓰기로 했으니
+        # 이와 같이 추가해준 모습이다.
+        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+    ),
+}
+
+JWT_AUTH = {  # 추가
+    'JWT_SECRET_KEY': SECRET_KEY,
+    'JWT_ALGORITHM': 'HS256',
+    'JWT_VERIFY_EXPIRATION': True,  # 토큰검증
+    'JWT_ALLOW_REFRESH': True,  # 유효기간이 지나면 새로운 토큰반환의 refresh
+    # Access Token의 만료 시간
+    'JWT_EXPIRATION_DELTA': datetime.timedelta(minutes=30),
+    # Refresh Token의 만료 시간
+    'JWT_REFRESH_EXPIRATION_DELTA': datetime.timedelta(days=3),
+    'JWT_RESPONSE_PAYLOAD_HANDLER': 'djangoreactapi.custom_responses.my_jwt_response_handler'
+}
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -50,6 +74,8 @@ INSTALLED_APPS = [
     'Charts',
     'weeklytop3',
     'graph',
+    'user',  # 추가
+    'rest_framework_jwt',  # 추가
 
 ]
 
@@ -111,16 +137,7 @@ DATABASES = {
     }
 }
 
-# DATABASES = {
-#     'default': {  # 변경
-#         'ENGINE': 'mysql.connector.django',  # 1
-#         'NAME': 'user',  # 2
-#         'USER': 'user',  # 3
-#         'PASSWORD': 'user',  # 4
-#         'HOST': '127.0.0.1',  # 5
-#         'PORT': '3306',  # 6
-#     }
-# }
+
 
 pymysql.version_info = (1, 4, 2, "final", 0)
 pymysql.install_as_MySQLdb()
