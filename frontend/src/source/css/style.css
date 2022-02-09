@@ -39,6 +39,13 @@ body {
   background: white;
 }
 
+x1 {
+  margin: 50px;
+}
+x2 {
+  margin: 10px;
+}
+
 h1,
 h2,
 h3,
@@ -113,16 +120,15 @@ ol {
 -----------------------*/
 
 section {
-  padding-top: 30px;
   height: 100vh;
   background: url(https://assets.nflxext.com/ffe/siteui/vlv3/eb482c64-e879-4e88-9ddc-d839cb7d1232/df2916c4-fbc7-4814-8dc9-bf307b678808/KR-ko-20220131-popsignuptwoweeks-perspective_alpha_website_small.jpg);
 }
 section::before {
-  padding-top: 30px;
   content: "";
-  background: linear-gradient(to top, white, transparent);
-  position: absolute;
-  height: 97%;
+  background: linear-gradient(to bottom, transparent, white),
+    url(https://assets.nflxext.com/ffe/siteui/vlv3/eb482c64-e879-4e88-9ddc-d839cb7d1232/df2916c4-fbc7-4814-8dc9-bf307b678808/KR-ko-20220131-popsignuptwoweeks-perspective_alpha_website_small.jpg);
+  position: fixed;
+  height: 100%;
   width: 100%;
 }
 
@@ -137,7 +143,7 @@ section::before {
   font-weight: 700;
   line-height: 21px;
   text-transform: uppercase;
-  margin-top: 50px;
+  margin-top: 40px;
   padding-left: 20px;
   position: relative;
   font-family: "Oswald", sans-serif;
@@ -373,7 +379,26 @@ section::before {
   left: 0;
   height: 60px;
   width: 100%;
-  background: transparent;
+  background: white;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: 0.2s;
+}
+.header::before {
+  background: linear-gradient(to bottom, transparent, 10%, white);
+}
+
+.header-btn {
+  border: 3px solid white;
+  color: white;
+  background-color: black;
+  border-radius: 0.5rem;
+  display: flex;
+  margin-top: 20px;
+  height: 30px;
+  width: 100px;
+  justify-content: center;
+  align-items: center;
 }
 
 .header__logo {

@@ -65,6 +65,7 @@ function Home() {
     {/* <section class="product-page spad"> */}
       <div class="container">
         <div class="row">
+          <x1></x1>
           {/* 실시간 인기검색어 테이블 */}
           <div class="col-lg-12">
             <ReactTable />

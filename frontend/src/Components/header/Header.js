@@ -1,8 +1,36 @@
 import { Link } from "react-router-dom";
 import React, { useState, useEffect } from "react";
+import $ from "jquery";
 // import "../../source/css/Header.css";
 
 function Header(props) {
+/*   var didScroll;
+  // 스크롤시에 사용자가 스크롤했다는 것을 알림
+  $(window).scroll(function(event){ didScroll = true; });
+    // hasScrolled()를 실행하고 didScroll 상태를 재설정
+  setInterval(function() { if (didScroll) { hasScrolled(); didScroll = false; } }, 250);
+
+  function hasScrolled() {
+    var nowScrollTop = window.scrollY;
+    if(nowScrollTop>50){
+      console.log(document.getElementById("header"));
+    }else if(nowScrollTop=0){
+      console.log('초기 범위 안입니다.');
+    }
+  } */
+
+  $(document).ready(function(){       
+    var scroll_pos = 0;
+    $(document).scroll(function() { 
+        scroll_pos = $(this).scrollTop();
+        if(scroll_pos > 50) {
+            $("header").css('background', 'linear-gradient(to top, transparent, black)');
+        } else {
+            $("header").css('background', 'transparent');
+        }
+    });
+  });
+
   let [userprofile, setUserprofile] = useState(false);
   let [userPhoto, setUserPhoto] = useState();
   let [currentUser_pk, setCurrentUser_pk] = useState();
@@ -52,7 +80,8 @@ function Header(props) {
               </Link>
             </div>
           </div>
-          <div className="col-lg-6"></div>
+          <div className="col-lg-6">
+          </div>
           <div className="col-lg-2">
             <div className="header__nav">
               <nav className="header__menu mobile-menu">
@@ -79,7 +108,7 @@ function Header(props) {
                         setUserprofile(!userprofile);
                       }}
                     >
-                      <img src={userPhoto} className="user-image" alt="/"></img>
+                      <img src={userPhoto} className="user-image" alt="/">{userPhoto}</img>
                       <svg
                         stroke="currentColor"
                         fill="currentColor"

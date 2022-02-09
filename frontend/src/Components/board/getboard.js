@@ -33,6 +33,7 @@ const App = () => {
         <div>
             <div className="container">
                 <div className="row">
+                    <x1></x1>
                     <div className="col-lg-12">
                     <div class="card">
                         <div class="product__page__title">
@@ -57,7 +58,9 @@ const App = () => {
                         </div>
                         {/* 여기까지 */}
                         <Posts posts={currentPosts} loading={loading}/>
+                        <x2></x2>
                         <Pagiation postsPerPage={postsPerPage} totalPosts={posts.length} paginate = {paginate} />
+                        <x2></x2>
                     </div>
                     </div>
                 </div>

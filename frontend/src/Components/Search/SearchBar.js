@@ -41,24 +41,10 @@ function SearchBar({ placeholder, data }) {
       </form>
 
       {filteredData.length !== 0 && (
-        <section className="product spad">
-          <div className="container">
-            <div className="row">
-              <div className="col-lg-12">
-                <div class="product__page__title">
-                  <div class="row">
-                    <div class="col-lg-8 col-md-8 col-sm-8">
-                      <div class="section-title">
-                        <h4>검색 결과</h4>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="row">
-            {/* 검색된 자료들 모달로 호출 */}
+          <><div class="section-title">
+          <h4>검색 결과</h4>
+        </div>
+        <div className="row">
             {filteredData.map((value) => {
               return (
                 <div className="col-lg-3">
@@ -71,13 +57,12 @@ function SearchBar({ placeholder, data }) {
                     runtime={value.runtime}
                     naver={value.naverid}
                     imdb={value.imdbscore}
-                    nation={value.original_language}
-                  />
+                    nation={value.original_language} />
                 </div>
               );
             })}
-          </div>
-        </section>
+        </div>
+        </>
       )}
     </div>
   );
