@@ -1,9 +1,9 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import LineChart from "../Graph/LineChart";
-
 import PropTypes from "prop-types";
 import "../../source/css/bootstrap.min.css";
+import Otticons from "./Otticons";
 
 function Detail({
   title,
@@ -21,7 +21,7 @@ function Detail({
   const [directors, setDirectors] = useState([]);
   const [ottnames, setOttnames] = useState([]);
 
-  //장르 배우 감독은 두개 이상의 항목이 존재하기때문에 별도의 DB 생성
+  //장르 배우 감독 OTT는 두개 이상의 항목이 존재하기때문에 별도의 DB 생성
 
   //장르
   const getGenre = async () => {
@@ -71,23 +71,8 @@ function Detail({
     getDirector();
   }, []);
 
-  const getOttname = async () => {
-    const json = await (
-      await fetch(`http://127.0.0.1:8000/apimovie/ott/${id}`)
-    ).json();
-    const jsonarray = [];
-    for (let i = 0; i < json.length; i++) {
-      jsonarray.push(json[i].ottname);
-    }
-    setOttnames(jsonarray);
-    console.log(jsonarray);
-  };
-  useEffect(() => {
-    getOttname();
-  }, []);
-
   return (
-    <section className="anime-details spad">
+    <div className="anime-details spad">
       <div class="container">
         <div class="anime__details__content">
           <div class="row">
@@ -163,9 +148,7 @@ function Detail({
                   <h4>서비스중인 사이트</h4>
                   <ul>
                     <li>
-                      {ottnames.map((o) => (
-                        <a key={o}>{o} </a>
-                      ))}
+                      <Otticons key={id} id={id} />
                     </li>
                   </ul>
                 </div>
@@ -179,7 +162,7 @@ function Detail({
           </div>
         </div>
       </div>
-    </section>
+    </div>
     //
   );
 }
