@@ -8,17 +8,20 @@ class boardview extends Component {
         return (
             <div>
                 <div class="container">
-			    <div class="row d-flex justify-content-center"></div>
-                <div class="col-lg-12">
-                <div class="card">
-                <div>
-                    <Boarddetail id={this.props.match.params.id}/>
-                </div>
-                <div>
-                    <Boardcomment id={this.props.match.params.id}/>
-                </div>
-                </div>
-                </div>
+                    <div class="row">
+                    <x1></x1>
+                        <div class="row d-flex justify-content-center"></div>
+                        <div class="col-lg-12">
+                            <div class="card">
+                                <div>
+                                    <Boarddetail id={this.props.match.params.id}/>
+                                </div>
+                                <div>
+                                    <Boardcomment id={this.props.match.params.id}/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         );
