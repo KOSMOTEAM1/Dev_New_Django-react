@@ -22,4 +22,8 @@ urlpatterns = [
     path('ott/<int:pk>/', views.OttdetailPost.as_view()),
 
     path('test/<int:pk>/', views.movieList.as_view()),
+
+    ##댓글기능 구현중
+    path('<int:pk>', views.ListReview.as_view()),
+    # path('delete/<int:pk>/', views.deleteReview.as_view()),
 ]
