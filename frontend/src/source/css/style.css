@@ -143,7 +143,7 @@ section::before {
   font-weight: 700;
   line-height: 21px;
   text-transform: uppercase;
-  margin-top: 40px;
+  margin-top: 10px;
   padding-left: 20px;
   position: relative;
   font-family: "Oswald", sans-serif;
@@ -949,8 +949,10 @@ section::before {
 
 .product__page__title {
   border-bottom: 2px solid rgba(255, 255, 255, 0.2);
-  padding-bottom: 20px;
+  padding-bottom: 5px;
   margin-bottom: 10px;
+  background: linear-gradient(to left, transparent, white);
+  /* background-color: white; */
 }
 
 .product__page__title .section-title {
