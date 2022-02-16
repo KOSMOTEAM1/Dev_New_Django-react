@@ -4,8 +4,6 @@ import LineChart from "../Graph/LineChart";
 import PropTypes from "prop-types";
 import "../../source/css/bootstrap.min.css";
 import Otticons from "./Otticons";
-import CommentLoad from "./CommentLoad";
-import Commentwrite from "./Commentwrite";
 
 function Detail({
   title,
@@ -21,6 +19,7 @@ function Detail({
   const [genres, setGenres] = useState([]);
   const [actors, setActors] = useState([]);
   const [directors, setDirectors] = useState([]);
+  const [ottnames, setOttnames] = useState([]);
 
   //장르 배우 감독 OTT는 두개 이상의 항목이 존재하기때문에 별도의 DB 생성
 
@@ -158,14 +157,6 @@ function Detail({
                 </div>
                 <p>{summary}</p>
               </div>
-            </div>
-            <div className="col-lg-1"></div>
-          </div>
-          <div className="row">
-            <div className="col-lg-1"></div>
-            <div className="col-lg-10">
-              {/* <CommentLoad />
-              <Commentwrite /> */}
             </div>
             <div className="col-lg-1"></div>
           </div>
