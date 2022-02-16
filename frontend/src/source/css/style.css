@@ -139,7 +139,7 @@ section::before {
 
 .section-title h4,
 .section-title h5 {
-  color: white;
+  color: black;
   font-weight: 700;
   line-height: 21px;
   text-transform: uppercase;
@@ -951,8 +951,6 @@ section::before {
   border-bottom: 2px solid rgba(255, 255, 255, 0.2);
   padding-bottom: 20px;
   margin-bottom: 10px;
-  background: linear-gradient(to right, transparent, white);
-  /* background-color: white; */
 }
 
 .product__page__title .section-title {

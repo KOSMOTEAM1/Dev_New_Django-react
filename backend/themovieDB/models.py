@@ -62,14 +62,3 @@ class movieott(models.Model):
 
 def __str__(self):
     return self.title
-
-###댓글기능 구현중
-class Review(models.Model):
-    otteid = models.IntegerField(null=True)
-    username = models.CharField(max_length=200)
-    content = models.TextField()    
-    writedate = models.DateField(auto_now=True)
-
-    def __str__(self):
-        """A string representation of the model."""
-        return self.otteid

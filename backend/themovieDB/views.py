@@ -1,9 +1,9 @@
 from django.db.models import query
 from django.views import generic
 from rest_framework import generics
-from themovieDB.models import movie, moviegenres, movieactors, moviedirectors, movieott, Review
+from themovieDB.models import movie, moviegenres, movieactors, moviedirectors, movieott
 from django.db.models import F
-from .serializers import PostSerializer, SortSerializer, AllGenreSerializer, ActorSerializer, DirectorSerializer, OttSerializer, MovieSerializer, reviewSerializer
+from .serializers import PostSerializer, SortSerializer, AllGenreSerializer, ActorSerializer, DirectorSerializer, OttSerializer, MovieSerializer
 from rest_framework.response import Response
 from django.http import Http404
 from rest_framework.views import APIView
@@ -92,13 +92,3 @@ class OttdetailPost(APIView):
 class movieList(generics.RetrieveUpdateDestroyAPIView):
     queryset = movie.objects.all()
     serializer_class = MovieSerializer
-
-##댓글기능 구현 중
-class ListReview(generics.ListCreateAPIView):
-    queryset = Review.objects.order_by('writedate')
-    serializer_class = reviewSerializer
-
-
-# class DetailLastReview(generics.ListCreateAPIView):
-#     queryset = Review.objects.order_by('-id')[:1]
-#     serializer_class = reviewSerializer
