@@ -4,7 +4,7 @@ import $ from "jquery";
 // import "../../source/css/Header.css";
 
 function Header(props) {
-  /*   var didScroll;
+/*   var didScroll;
   // 스크롤시에 사용자가 스크롤했다는 것을 알림
   $(window).scroll(function(event){ didScroll = true; });
     // hasScrolled()를 실행하고 didScroll 상태를 재설정
@@ -19,24 +19,20 @@ function Header(props) {
     }
   } */
 
-  $(document).ready(function () {
+  $(document).ready(function(){       
     var scroll_pos = 0;
-    $(document).scroll(function () {
-      scroll_pos = $(this).scrollTop();
-      if (scroll_pos > 50) {
-        $("header").css(
-          "background",
-          "linear-gradient(to top, transparent, black)"
-        );
-      } else {
-        $("header").css("background", "transparent");
-      }
+    $(document).scroll(function() { 
+        scroll_pos = $(this).scrollTop();
+        if(scroll_pos > 50) {
+            $("header").css('background', 'linear-gradient(to top, transparent, black)');
+        } else {
+            $("header").css('background', 'transparent');
+        }
     });
   });
 
   let [userprofile, setUserprofile] = useState(false);
   let [userPhoto, setUserPhoto] = useState();
-  let [userNickname, setUserNickname] = useState("")
   let [currentUser_pk, setCurrentUser_pk] = useState();
 
   useEffect(() => {
@@ -64,7 +60,6 @@ function Header(props) {
           .then((userData) => {
             setUserPhoto(userData.photo);
             setCurrentUser_pk(userData.user_pk);
-            setUserNickname(userData.nickname)
           })
           .catch((error) => {
             console.log(error);
@@ -85,7 +80,8 @@ function Header(props) {
               </Link>
             </div>
           </div>
-          <div className="col-lg-6"></div>
+          <div className="col-lg-6">
+          </div>
           <div className="col-lg-2">
             <div className="header__nav">
               <nav className="header__menu mobile-menu">
@@ -112,21 +108,28 @@ function Header(props) {
                         setUserprofile(!userprofile);
                       }}
                     >
-                      <button className="header-btn"> MENU </button>
-                      {userprofile === true ? (
-                        <div className="user-profile">
-                          <div className="profile-menu">
-                            <div className="header-btn">{userNickname}</div>
-                            <Link to="/profile">
-                              <div className="header-btn">내 정보</div>
-                            </Link>
-                            <Link onClick={props.handleLogout} to="/">
-                              <div className="header-btn">로그아웃</div>
-                            </Link>
-                          </div>
-                        </div>
-                      ) : null}
+                      <img src={userPhoto} className="user-image" alt="/">{userPhoto}</img>
+                      <svg
+                        stroke="currentColor"
+                        fill="currentColor"
+                        strokeWidth="0"
+                        viewBox="0 0 24 24"
+                        height="1em"
+                        width="1em"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path d="M7 10l5 5 5-5z"></path>
+                      </svg>
                     </div>
+                    {userprofile === true ? (
+                      <div className="user-profile">
+                        <div className="profile-menu">
+                          <Link onClick={props.handleLogout} to="/">
+                            <div className="menu">로그아웃</div>
+                          </Link>
+                        </div>
+                      </div>
+                    ) : null}
                   </>
                 )}
               </div>

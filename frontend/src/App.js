@@ -1,8 +1,7 @@
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import "./App.css";
 import React, { useState, useEffect } from "react";
-import LoginModal from "./Components/user/LoginModal";
-import Profile from "./Components/user/Profile";
+import LoginModal from "./Components/LoginModal";
 
 //Header
 import Header from "./Components/header/Header";
@@ -115,13 +114,11 @@ function App() {
 
   return (
     <Router>
+      
       <section>
+
         <Switch>
-          <Route
-            exact
-            path="/Community2/boarddetail/:id"
-            component={boarddetail}
-          />
+          <Route exact path="/Community2/boarddetail/:id" component={boarddetail} />
           <Route exact path="/Community2/Insert" component={insertboard} />
           <Route path="/Community2/" component={Community2} />
           <Route exact path="/" component={Home} />
@@ -130,14 +127,7 @@ function App() {
       </section>
       <Header modal={modal} handleLogout={handleLogout} />
       <Route exact path="/login">
-        <LoginModal
-          setModal={setModal}
-          userHasAuthenticated={userHasAuthenticated}
-        />
-      </Route>
-      <Route exact path="/profile">
-        <Header modal={modal} handleLogout={handleLogout} />
-        <Profile handleLogout={handleLogout} />
+        <LoginModal setModal={setModal} userHasAuthenticated={userHasAuthenticated} />
       </Route>
     </Router>
   );
