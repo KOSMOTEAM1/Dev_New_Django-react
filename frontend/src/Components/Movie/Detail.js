@@ -4,8 +4,8 @@ import LineChart from "../Graph/LineChart";
 import PropTypes from "prop-types";
 import "../../source/css/bootstrap.min.css";
 import Otticons from "./Otticons";
-import CommentLoad from "./CommentLoad";
-import Commentwrite from "./Commentwrite";
+import ReviewLoad from "./ReviewLoad";
+import ReviewWrite from "./ReviewWrite";
 
 function Detail({
   title,
@@ -164,8 +164,15 @@ function Detail({
           <div className="row">
             <div className="col-lg-1"></div>
             <div className="col-lg-10">
-              {/* <CommentLoad />
-              <Commentwrite /> */}
+              <div className="anime__details">
+                <div className="anime__details__review">
+                  <div className="section-title">
+                    <h4>영화리뷰</h4>
+                  </div>
+                </div>
+                <ReviewLoad />
+                <ReviewWrite />
+              </div>
             </div>
             <div className="col-lg-1"></div>
           </div>
