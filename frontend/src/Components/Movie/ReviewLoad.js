@@ -1,6 +1,9 @@
 import React from "react";
 
 function ReviewLoad() {
+  // function deleteClick(e){
+  // };
+
   return (
     <div class="anime__review__item">
       <div class="anime__review__item__text">

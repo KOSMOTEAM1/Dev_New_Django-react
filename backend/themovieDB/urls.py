@@ -24,6 +24,6 @@ urlpatterns = [
     path('test/<int:pk>/', views.movieList.as_view()),
 
     ##댓글기능 구현중
-    path('<int:pk>', views.ListReview.as_view()),
+    path('review/<int:pk>', views.ListReview.as_view()),
     # path('delete/<int:pk>/', views.deleteReview.as_view()),
 ]
