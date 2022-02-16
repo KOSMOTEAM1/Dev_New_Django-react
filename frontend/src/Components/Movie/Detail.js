@@ -21,6 +21,7 @@ function Detail({
   const [genres, setGenres] = useState([]);
   const [actors, setActors] = useState([]);
   const [directors, setDirectors] = useState([]);
+  const [ottnames, setOttnames] = useState([]);
 
   //장르 배우 감독 OTT는 두개 이상의 항목이 존재하기때문에 별도의 DB 생성
 
