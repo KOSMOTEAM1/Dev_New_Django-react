@@ -1,8 +1,12 @@
 from django.urls import path
-from .views import current_user, UserList, ProfileUpdateAPI
+from . import views
+
 
 urlpatterns = [
-    path('', UserList.as_view()),
-    path('current/', current_user),
-    path("auth/profile/<int:user_pk>/update/", ProfileUpdateAPI.as_view()),
+    path('', views.UserList.as_view()),
+    path('current/', views.current_user),
+    path("auth/profile/<int:user_pk>/", views.ProfileAPI.as_view()),
+    path("auth/profile/<int:user_pk>/update/",
+         views.ProfileUpdateAPI.as_view()),
+    path("auth/profile/<int:id>/delete/", views.ProfileDelteAPI.as_view()),
 ]

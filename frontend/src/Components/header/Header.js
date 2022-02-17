@@ -34,6 +34,7 @@ function Header(props) {
   let [userprofile, setUserprofile] = useState(false);
   let [userPhoto, setUserPhoto] = useState();
   let [currentUser_pk, setCurrentUser_pk] = useState();
+  let [userNickname, setUserNickname] = useState("")
 
   useEffect(() => {
     fetch("http://localhost:8000/user/current/", {
@@ -60,6 +61,7 @@ function Header(props) {
           .then((userData) => {
             setUserPhoto(userData.photo);
             setCurrentUser_pk(userData.user_pk);
+            setUserNickname(userData.nickname)
           })
           .catch((error) => {
             console.log(error);
@@ -108,28 +110,21 @@ function Header(props) {
                         setUserprofile(!userprofile);
                       }}
                     >
-                      <img src={userPhoto} className="user-image" alt="/">{userPhoto}</img>
-                      <svg
-                        stroke="currentColor"
-                        fill="currentColor"
-                        strokeWidth="0"
-                        viewBox="0 0 24 24"
-                        height="1em"
-                        width="1em"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path d="M7 10l5 5 5-5z"></path>
-                      </svg>
-                    </div>
-                    {userprofile === true ? (
-                      <div className="user-profile">
-                        <div className="profile-menu">
-                          <Link onClick={props.handleLogout} to="/">
-                            <div className="menu">로그아웃</div>
-                          </Link>
+                      <button className="header-btn"> MENU </button>
+                      {userprofile === true ? (
+                        <div className="user-profile">
+                          <div className="profile-menu">
+                            <div className="header-btn">{userNickname}</div>
+                            <Link to="/profile">
+                              <div className="header-btn">내 정보</div>
+                            </Link>
+                            <Link onClick={props.handleLogout} to="/">
+                              <div className="header-btn">로그아웃</div>
+                            </Link>
+                          </div>
                         </div>
-                      </div>
-                    ) : null}
+                      ) : null}
+                    </div>
                   </>
                 )}
               </div>
