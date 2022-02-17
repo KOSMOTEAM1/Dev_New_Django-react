@@ -93,10 +93,30 @@ class movieList(generics.RetrieveUpdateDestroyAPIView):
     queryset = movie.objects.all()
     serializer_class = MovieSerializer
 
-##댓글기능 구현 중
-class ListReview(generics.ListCreateAPIView):
-    queryset = Review.objects.order_by('writedate')
+
+class deleteReview(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Review.objects.all()
     serializer_class = reviewSerializer
+
+
+class DetailReview(APIView):
+    def get_object(self, pk):
+        try:
+            return Review.objects.filter(otteid=pk)
+        except Review.DoesNotExist:
+            raise Http404
+
+    def get(self, request, pk, format=None):
+        Review = self.get_object(pk)
+        serializer = reviewSerializer(Review, many=True)
+        return Response(serializer.data)
+
+
+
+##댓글기능 구현 중
+# class ListReview(generics.ListCreateAPIView):
+#     queryset = Review.objects.order_by('writedate')
+#     serializer_class = reviewSerializer
 
 
 # class DetailLastReview(generics.ListCreateAPIView):
