@@ -6,6 +6,7 @@ function Profile(props) {
   const history = useHistory();
   let [infoModal, setInfomodal] = useState(false);
   let [nicknmaModal, setNickname] = useState(false);
+  let [genderModal, setGender] = useState(false);
 
   //profile
   let [userId, setUserId] = useState();
@@ -13,6 +14,7 @@ function Profile(props) {
   let [userMygit, setUserMygit] = useState("");
   let [userNickname, setUserNickname] = useState("");
   let [usermyInfo, setUserMyInfo] = useState("");
+  let [userGender, setUserGender] = useState("");
 
   useEffect(() => {
     fetch("http://localhost:8000/user/current/", {
@@ -42,6 +44,7 @@ function Profile(props) {
             setUserMygit(userData.mygit);
             setUserNickname(userData.nickname);
             setUserMyInfo(userData.myInfo);
+            setUserGender(userData.gender);
           })
           .catch((error) => {
             console.log(error);
@@ -59,6 +62,8 @@ function Profile(props) {
       mygit: userMygit,
       nickname: userNickname,
       myInfo: usermyInfo,
+      gender: userGender,
+      
     };
     handleSubmit();
   };
@@ -67,6 +72,7 @@ function Profile(props) {
     let form_data = new FormData();
     form_data.append("nickname", sendData.nickname);
     form_data.append("myInfo", sendData.myInfo);
+    form_data.append("gender", sendData.gender);
     fetch("http://localhost:8000/user/auth/profile/" + userId + "/update/", {
       method: "PATCH",
       headers: {
@@ -146,6 +152,25 @@ function Profile(props) {
               </div>
             )}
           </div>
+          <input
+            type="radio"
+            name="sex"
+            value="male"
+            onClick={(e) => {
+                setUserGender(e.target.value);
+              }}
+          />
+          남성
+          <br />
+          <input
+            type="radio"
+            name="sex"
+            value="female"
+            onClick={(e) => {
+                setUserGender(e.target.value);
+              }}
+          />
+          여성
           <div className="contents">
             {/* <button className="out-button" onClick={DeleteUser}>
               회원탈퇴
@@ -156,6 +181,7 @@ function Profile(props) {
                 handleEffect(handleSubmit);
                 setInfomodal(false);
                 setNickname(false);
+                setGender(false);
               }}
             >
               저장

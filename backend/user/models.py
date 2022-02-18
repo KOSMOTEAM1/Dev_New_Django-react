@@ -13,6 +13,7 @@ class Profile(models.Model):
     nickname = models.CharField(max_length=200, blank=True)
     photo = models.ImageField(upload_to="profile/image", default='red.jpg')
     myInfo = models.CharField(max_length=150, blank=True)
+    gender = models.CharField(max_length=150, blank=True)
 
 @receiver(post_save, sender=User)
 def create_user_profilee(sender, instance, created, **kwargs):
