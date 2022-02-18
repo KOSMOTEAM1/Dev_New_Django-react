@@ -39,4 +39,4 @@ class UserSerializerWithToken(serializers.ModelSerializer):
 class ProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = Profile
-        fields = ('id', 'user_pk', 'email', 'nickname', 'user', 'photo', 'mygit', 'myInfo', 'gender')
+        fields = ('id', 'user_pk', 'email', 'nickname', 'user', 'photo', 'mygit', 'myInfo', 'gender', 'birth')

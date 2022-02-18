@@ -7,6 +7,8 @@ function Profile(props) {
   let [infoModal, setInfomodal] = useState(false);
   let [nicknmaModal, setNickname] = useState(false);
   let [genderModal, setGender] = useState(false);
+  let [birthModal, setBirth] = useState(false);
+
 
   //profile
   let [userId, setUserId] = useState();
@@ -15,6 +17,7 @@ function Profile(props) {
   let [userNickname, setUserNickname] = useState("");
   let [usermyInfo, setUserMyInfo] = useState("");
   let [userGender, setUserGender] = useState("");
+  let [userBirth, setUserBirth] = useState("");
 
   useEffect(() => {
     fetch("http://localhost:8000/user/current/", {
@@ -45,6 +48,7 @@ function Profile(props) {
             setUserNickname(userData.nickname);
             setUserMyInfo(userData.myInfo);
             setUserGender(userData.gender);
+            setUserBirth(userData.birth);
           })
           .catch((error) => {
             console.log(error);
@@ -63,7 +67,7 @@ function Profile(props) {
       nickname: userNickname,
       myInfo: usermyInfo,
       gender: userGender,
-      
+      birth: userBirth,
     };
     handleSubmit();
   };
@@ -73,6 +77,7 @@ function Profile(props) {
     form_data.append("nickname", sendData.nickname);
     form_data.append("myInfo", sendData.myInfo);
     form_data.append("gender", sendData.gender);
+    form_data.append("birth", sendData.birth);
     fetch("http://localhost:8000/user/auth/profile/" + userId + "/update/", {
       method: "PATCH",
       headers: {
@@ -116,7 +121,7 @@ function Profile(props) {
       // history.push("/");
     }
   };
-
+  
   return (
     <>
       <div className="login-container">
@@ -152,13 +157,23 @@ function Profile(props) {
               </div>
             )}
           </div>
+            <label>
+              Enter your birthday:
+              <input
+                name="bday"
+                type="date"
+                onChange={(e) => {
+                  setUserBirth(e.target.value);
+                }}
+              />
+            </label>
           <input
             type="radio"
             name="sex"
             value="male"
             onClick={(e) => {
-                setUserGender(e.target.value);
-              }}
+              setUserGender(e.target.value);
+            }}
           />
           남성
           <br />
@@ -167,8 +182,8 @@ function Profile(props) {
             name="sex"
             value="female"
             onClick={(e) => {
-                setUserGender(e.target.value);
-              }}
+              setUserGender(e.target.value);
+            }}
           />
           여성
           <div className="contents">
@@ -182,6 +197,7 @@ function Profile(props) {
                 setInfomodal(false);
                 setNickname(false);
                 setGender(false);
+                setBirth(false);
               }}
             >
               저장
