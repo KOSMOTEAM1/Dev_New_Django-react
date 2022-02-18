@@ -171,8 +171,8 @@ function Detail({
                     <h4>영화리뷰</h4>
                   </div>
                 </div>
-                <ReviewLoad id={id} />
-                <ReviewWrite id={id} />
+                <ReviewLoad key={id} id={id} />
+                <ReviewWrite key={id} id={id} />
               </div>
             </div>
             <div className="col-lg-1"></div>
@@ -188,6 +188,7 @@ Detail.propTypes = {
   genres: PropTypes.arrayOf(PropTypes.string).isRequired,
   actors: PropTypes.arrayOf(PropTypes.string).isRequired,
   directors: PropTypes.arrayOf(PropTypes.string).isRequired,
+  id: PropTypes.number.isRequired,
 };
 
 export default Detail;

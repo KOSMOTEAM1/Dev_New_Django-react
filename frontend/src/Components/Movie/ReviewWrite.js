@@ -1,12 +1,23 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import PropTypes from "prop-types";
 // import { useDispatch } from "react-redux";
 var data = {
   content: "",
   // username: "none",
 };
 
-function ReviewWrite(id) {
+function ReviewWrite({
+  title,
+  coverImg,
+  id,
+  summary,
+  release,
+  runtime,
+  naver,
+  imdb,
+  nation,
+}) {
   console.log(id);
   const [Bodyinput, SetBodyInput] = useState({ body: "" });
   const { body } = Bodyinput;
@@ -28,12 +39,11 @@ function ReviewWrite(id) {
     e.preventDefault();
     console.log(id);
     console.log(data.content);
-    if (data.content === "") {
-    } else {
-      axios.post(`http://127.0.0.1:8000/review/${id}`, {
-        content: data.content,
-      });
-    }
+
+    axios.post(`http://127.0.0.1:8000/apimovie/review/${id}`, {
+      content: data.content,
+    });
+
     // axios
     //   .post(`http://127.0.0.1:8000/review/${id}`, {
     //     content: data.content,
@@ -71,4 +81,7 @@ function ReviewWrite(id) {
   );
 }
 
+ReviewWrite.propTypes = {
+  id: PropTypes.number.isRequired,
+};
 export default ReviewWrite;

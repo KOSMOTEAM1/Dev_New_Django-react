@@ -106,7 +106,7 @@ class DetailReview(APIView):
         except Review.DoesNotExist:
             raise Http404
 
-    def get(self, request, pk, format=None):
+    def post(self, request, pk, format=None):
         Review = self.get_object(pk)
         serializer = reviewSerializer(Review, many=True)
         return Response(serializer.data)

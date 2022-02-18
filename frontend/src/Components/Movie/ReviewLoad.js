@@ -1,12 +1,23 @@
 import { useEffect, useState } from "react";
 import React from "react";
+import PropTypes from "prop-types";
 
-function ReviewLoad(id) {
+function ReviewLoad({
+  title,
+  coverImg,
+  id,
+  summary,
+  release,
+  runtime,
+  naver,
+  imdb,
+  nation,
+}) {
   const [reviewlists, setreviewlists] = useState([]);
   //id로 호출 받아 해당 작품의 상세 정보 불러오기
   const getreviewlists = async () => {
     const json = await (
-      await fetch(`http://127.0.0.1:8000/review/${id}`)
+      await fetch(`http://127.0.0.1:8000/apimovie/review/${id}`)
     ).json();
 
     setreviewlists(json);
@@ -35,5 +46,7 @@ function ReviewLoad(id) {
     </div>
   );
 }
-
+ReviewLoad.propTypes = {
+  id: PropTypes.number.isRequired,
+};
 export default ReviewLoad;
