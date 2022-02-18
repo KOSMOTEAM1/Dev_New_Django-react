@@ -171,8 +171,8 @@ function Detail({
                     <h4>영화리뷰</h4>
                   </div>
                 </div>
-                <ReviewLoad />
-                <ReviewWrite />
+                <ReviewLoad id={id} />
+                <ReviewWrite id={id} />
               </div>
             </div>
             <div className="col-lg-1"></div>
