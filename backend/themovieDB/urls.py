@@ -24,9 +24,9 @@ urlpatterns = [
     path('test/<int:pk>/', views.movieList.as_view()),
 
     ##댓글기능 구현중
-    path('review/<int:pk>', views.DetailReview.as_view()),
-    path('review/list/<int:pk>', views.ListReview.as_view()),
-
-    path('review/delete/<int:pk>/', views.deleteReview.as_view()),
+    #댓글 보기, 등록
+    path('review/<int:pk>', views.ListReview.as_view()),
+    #댓글 수정 삭제
+    path('review/delete/<int:pk>/', views.DetailReview.as_view()),
     # path('delete/<int:pk>/', views.deleteReview.as_view()),
 ]
