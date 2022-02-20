@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 // import { useDispatch } from "react-redux";
 var data = {
   content: "",
+  otteid: "",
   // username: "none",
 };
 
@@ -31,6 +32,7 @@ function ReviewWrite({
   if (body.length === 0) {
   } else {
     data.content = body;
+    data.otteid = id;
   }
   console.log(body);
   console.log(data.content);
@@ -39,9 +41,9 @@ function ReviewWrite({
     e.preventDefault();
     console.log(id);
     console.log(data.content);
-
     axios.post(`http://127.0.0.1:8000/apimovie/review/${id}`, {
       content: data.content,
+      otteid: data.otteid,
     });
 
     // axios

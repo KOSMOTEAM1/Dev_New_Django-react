@@ -65,7 +65,7 @@ def __str__(self):
 
 ###댓글기능 구현중
 class Review(models.Model):
-    otteid = models.IntegerField(null=True)
+    otteid = models.ForeignKey("movie", on_delete=models.CASCADE)
     username = models.CharField(max_length=200)
     content = models.TextField()    
     writedate = models.DateField(auto_now=True)

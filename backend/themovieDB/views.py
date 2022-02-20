@@ -1,5 +1,6 @@
 from django.db.models import query
 from django.views import generic
+from elasticsearch import serializer
 from rest_framework import generics
 from themovieDB.models import movie, moviegenres, movieactors, moviedirectors, movieott, Review
 from django.db.models import F
@@ -8,6 +9,7 @@ from rest_framework.response import Response
 from django.http import Http404
 from rest_framework.views import APIView
 from datetime import datetime
+from django.shortcuts import get_object_or_404
 
 class ListPost(generics.ListCreateAPIView):
     queryset = movie.objects.all()
@@ -98,18 +100,56 @@ class deleteReview(generics.RetrieveUpdateDestroyAPIView):
     queryset = Review.objects.all()
     serializer_class = reviewSerializer
 
-
-class DetailReview(APIView):
-    def get_object(self, pk):
-        try:
-            return Review.objects.filter(otteid=pk)
-        except Review.DoesNotExist:
-            raise Http404
-
-    def get(self, request, pk, format=None):
-        Review = self.get_object(pk)
-        serializer = reviewSerializer(Review, many=True)
+#댓글 목록 및 새 댓글 작성
+class ListReview(generics.ListCreateAPIView):
+    def get(self, request):
+        serializer = reviewSerializer(Review.objects.all(), many=True)
         return Response(serializer.data)
+    def post(self, request):
+        serializer = reviewSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=201)
+        return Response(serializer.errors, status=400)
+
+    # queryset = Review.objects.all()
+    # serializer_class = reviewSerializer
+
+
+#댓글 내용, 수정, 삭제
+class DetailReview(generics.ListCreateAPIView):
+    # queryset = Review.objects.filter(post=otteid)
+    # serializer_class = reviewSerializer
+    def get_object(self, pk):
+        return get_object_or_404(Review, otteid=pk)
+    def get(self, request, pk, format=None):
+        post = self.get_object(pk)
+        serializer = reviewSerializer(post)
+        return Response(serializer.data)
+    def put(self, request, pk):
+        post = self.get_object(pk)
+        serializer = reviewSerializer(post, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors)
+    def delete(self, request, pk):
+        post = self.get_object(pk)
+        post.delete()
+        return Response()
+
+
+# class DetailReview(APIView):
+#     def get_object(self, pk):
+#         try:
+#             return Review.objects.filter(otteid=pk)
+#         except Review.DoesNotExist:
+#             raise Http404
+
+#     def post(self, request, pk, format=None):
+#         Review = self.get_object(pk)
+#         serializer = reviewSerializer(Review, many=True)
+#         return Response(serializer.data)
 
 
 
