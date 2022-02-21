@@ -9,7 +9,6 @@ function Profile(props) {
   let [genderModal, setGender] = useState(false);
   let [birthModal, setBirth] = useState(false);
 
-
   //profile
   let [userId, setUserId] = useState();
   let [userEmail, setUserEmail] = useState("");
@@ -88,6 +87,7 @@ function Profile(props) {
       .then((res) => res.json())
       .catch((error) => console.error("Error:", error))
       .then((response) => console.log("Success:", JSON.stringify(response)));
+    history.push("/");
   };
 
   const DeleteUser = () => {
@@ -121,21 +121,20 @@ function Profile(props) {
       // history.push("/");
     }
   };
-  
+
   return (
     <>
-      <div className="login-container">
-        <div className="login-box">
-          <div className="title-wrapper">
-            <h3>닉네임</h3>
-          </div>
-          <div className="block-for-mobile">
+      <div className="profile-container">
+        <div className="profile-box">
+          <hr />
+          <span>프로필 설정</span>
+          <div>
             {nicknmaModal === true ? null : (
               <div className="contents">{userNickname}</div>
             )}
 
             {nicknmaModal === true ? (
-              <form className="nickname-form">
+              <form>
                 <input
                   className="nickname-input"
                   placeholder={userNickname}
@@ -145,53 +144,60 @@ function Profile(props) {
                 ></input>
               </form>
             ) : (
-              <div className="edit-wrapper">
+              <div>
                 <button
                   className="fix-button"
                   onClick={() => {
                     setNickname(true);
                   }}
                 >
-                  수정
+                  닉네임 변경
                 </button>
               </div>
             )}
           </div>
-            <label>
-              Enter your birthday:
-              <input
-                name="bday"
-                type="date"
-                onChange={(e) => {
-                  setUserBirth(e.target.value);
-                }}
-              />
-            </label>
-          <input
-            type="radio"
-            name="sex"
-            value="male"
-            onClick={(e) => {
-              setUserGender(e.target.value);
-            }}
-          />
-          남성
-          <br />
-          <input
-            type="radio"
-            name="sex"
-            value="female"
-            onClick={(e) => {
-              setUserGender(e.target.value);
-            }}
-          />
-          여성
-          <div className="contents">
+          <label>
+            Enter your birthday:
+            {birthModal === true ? null : (
+              <div className="contents">{userBirth}</div>
+            )}
+            <input
+              name="bday"
+              type="date"
+              onChange={(e) => {
+                setUserBirth(e.target.value);
+              }}
+            />
+          </label>
+          {/* {genderModal === true ? null : (
+            <div className="contents">{userGender}</div>
+          )} */}
+          <div classname="gender">
+            남
+            <input
+              type="radio"
+              name="sex"
+              value="male"
+              onClick={(e) => {
+                setUserGender(e.target.value);
+              }}
+            />
+            여
+            <input
+              type="radio"
+              name="sex"
+              value="female"
+              onClick={(e) => {
+                setUserGender(e.target.value);
+              }}
+            />
+          </div>
+          <div class="login-foot">
             {/* <button className="out-button" onClick={DeleteUser}>
               회원탈퇴
             </button> */}
             <button
-              className="save-button"
+              class="JoinLogin-button"
               onClick={() => {
                 handleEffect(handleSubmit);
                 setInfomodal(false);

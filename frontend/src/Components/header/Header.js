@@ -32,7 +32,6 @@ function Header(props) {
   });
 
   let [userprofile, setUserprofile] = useState(false);
-  let [userPhoto, setUserPhoto] = useState();
   let [currentUser_pk, setCurrentUser_pk] = useState();
   let [userNickname, setUserNickname] = useState("")
 
@@ -59,9 +58,8 @@ function Header(props) {
         )
           .then((res) => res.json())
           .then((userData) => {
-            setUserPhoto(userData.photo);
             setCurrentUser_pk(userData.user_pk);
-            setUserNickname(userData.nickname)
+            setUserNickname(userData.nickname);
           })
           .catch((error) => {
             console.log(error);
@@ -70,7 +68,7 @@ function Header(props) {
       .catch((error) => {
         console.log(error);
       });
-  }, [userPhoto]);
+  }, [userNickname]);
   return (
     <header className="header">
       <div className="container">
@@ -114,7 +112,6 @@ function Header(props) {
                       {userprofile === true ? (
                         <div className="user-profile">
                           <div className="profile-menu">
-                            <div className="header-btn">{userNickname}</div>
                             <Link to="/profile">
                               <div className="header-btn">내 정보</div>
                             </Link>
