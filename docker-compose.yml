@@ -1,21 +1,21 @@
+# docker-compose.yml
 version: "3"
 services:
-  proxy:
+  nginx:
     image: nginx
-    container_name: proxy
+    container_name: nginx
     ports:
-      - "80:80"
+      - "8000:90/tcp"
     volumes:
-      - ./nginx.conf:/etc/nginx/nginx.conf
-    restart: "unless-stopped"
-    
-  react:
-    build: 
+      - ./nginx.conf:/etc/nginx/conf.d
+      - ./static:/staticfiles
+    depends_on:
+      - web
+  web:
+    build:
       context: .
-      dockerfile: Dockerfile.dev
-    ports:
-     - "3000:3000"
+      dockerfile: Dockerfile
+    container_name: web
+    command: gunicorn djangoreactapi.wsgi:application --bind 0.0.0.0:8000
     volumes:
-     - /usr/src/app/node_modules # 로컬에 node_modules 없으니 매핑하지 말라
-     - ./:/usr/src/app # 매핑
-    stdin_open: true # docker run의 -i 옵션. react 한정으로 필요함.
+      - ./static:/usr/src/app/staticfiles
