@@ -47,31 +47,10 @@ function ReviewWrite({
       content: data.content,
       otteid: data.otteid,
     });
-    // .then((response) => {
-    //   if (response.data.success) {
-    //     console.log(response.data.result);
-    //     SetBodyInput(""); //저장후 빈칸으로 만들기 위해
-    //     // props.refreshFunction(response.data.result);
-    //   } else {
-    //     alert("커멘트를 저장하지 못했습니다.");
-    //   }
-    // });
-
-    // axios
-    //   .post(`http://127.0.0.1:8000/review/${id}`, {
-    //     content: data.content,
-    //   })
-    //   .then(function (response) {
-    //     e.preventDefault();
-    //     if (response.data["response"] === "Good") {
-    //     } else {
-    //       alert("오류가 발생하였습니다");
-    //     }
-    //   })
-    //   .catch(function (error) {
-    //     console.log(error);
-    //   }); // username: data.username,
   };
+  // useEffect(() => {
+  //   getDirector();
+  // }, []);
 
   return (
     <div class="anime__details__form">

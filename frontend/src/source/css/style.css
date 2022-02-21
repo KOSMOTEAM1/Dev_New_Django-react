@@ -133,8 +133,8 @@ section::before {
 }
 
 .section-title {
-  margin-top: 10px;
-  margin-bottom: 30px;
+  margin-top: 1px;
+  margin-bottom: 3px;
 }
 
 .section-title h4,
@@ -143,7 +143,8 @@ section::before {
   font-weight: 700;
   line-height: 21px;
   text-transform: uppercase;
-  margin-top: 40px;
+  margin-top: 5px;
+  margin-bottom: 5px;
   padding-left: 20px;
   position: relative;
   font-family: "Oswald", sans-serif;
@@ -323,15 +324,19 @@ section::before {
   display: flex;
   justify-content: center;
   margin-bottom: 30px;
+  font-family: "Oswald", sans-serif;
+  text-align: center;
 }
 
 .search-model-form input {
   width: 500px;
-  font-size: 40px;
+  font-size: 30px;
   border: none;
-  border-bottom: 2px solid #333;
+  border-bottom: 2px solid rgb(20, 20, 20);
   background: 0 0;
-  color: #999;
+  color: rgb(0, 0, 0);
+  font-family: "Oswald", sans-serif;
+  text-align: center;
 }
 
 .search-close-switch {
@@ -949,14 +954,23 @@ section::before {
 
 .product__page__title {
   border-bottom: 2px solid rgba(255, 255, 255, 0.2);
-  padding-bottom: 20px;
-  margin-bottom: 10px;
-  background: linear-gradient(to right, transparent, white);
+  padding-bottom: 2px;
+  margin-bottom: 1px;
+  background: linear-gradient(to left, transparent, rgb(244, 240, 255));
   /* background-color: white; */
 }
 
-.product__page__title .section-title {
+.product__page__title .section-title h4 {
   margin-bottom: 0;
+  color: black;
+  font-weight: 700;
+  line-height: 21px;
+  text-transform: uppercase;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding-left: 20px;
+  position: relative;
+  font-family: "Oswald", sans-serif;
 }
 
 .product__page__title .product__page__filter {
@@ -1049,7 +1063,7 @@ section::before {
 
 .anime__details__text {
   position: relative;
-  margin-bottom: 50px;
+  margin-bottom: 20px;
 }
 
 .anime__details__text p {
@@ -1062,6 +1076,18 @@ section::before {
   font-weight: 700;
   margin-top: 30px;
   margin-bottom: 13px;
+}
+
+.anime__details__text .section-title h4 {
+  color: white;
+  font-weight: 700;
+  line-height: 21px;
+  text-transform: uppercase;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  padding-left: 20px;
+  position: relative;
+  font-family: "Oswald", sans-serif;
 }
 
 .anime__details__pic {
@@ -1138,6 +1164,8 @@ section::before {
 
 .anime__details__widget {
   margin-bottom: 15px;
+  display: inline-table;
+  text-align: left;
 }
 
 .anime__details__widget ul {
@@ -1166,7 +1194,6 @@ section::before {
 .anime__details__widget ul li span {
   color: #b7b7b7;
   width: 115px;
-  display: inline-block;
 }
 
 .anime__details__btn .follow-btn {
@@ -1204,8 +1231,16 @@ section::before {
   border-radius: 0 4px 4px 0;
 }
 
-.anime__details__review {
-  margin-bottom: 55px;
+.anime__details__review .section-title h4 {
+  color: white;
+  font-weight: 700;
+  line-height: 21px;
+  text-transform: uppercase;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  padding-left: 20px;
+  position: relative;
+  font-family: "Oswald", sans-serif;
 }
 
 .anime__review__item {
@@ -1242,6 +1277,7 @@ section::before {
   background: #1d1e39;
   padding: 18px 30px 16px 20px;
   border-radius: 10px;
+  margin-bottom: 10px;
 }
 
 .anime__review__item__text h6 {

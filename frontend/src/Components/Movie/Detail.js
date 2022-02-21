@@ -78,6 +78,7 @@ function Detail({
       <div class="container">
         <div class="anime__details__content">
           <div class="row">
+            <div class="col-lg-1"></div>
             <div class="col-lg-4">
               <div class="anime__details__pic">
                 <img
@@ -86,7 +87,7 @@ function Detail({
                 />
               </div>
             </div>
-            <div class="col-lg-8">
+            <div class="col-lg-6">
               <div class="anime__details__text">
                 <div class="section-title">
                   <h4>{title}</h4>
@@ -140,8 +141,10 @@ function Detail({
                 </div>
               </div>
             </div>
+            <div class="col-lg-1"></div>
           </div>
           <br></br>
+
           <div className="row">
             <div className="col-lg-1"></div>
             <div className="col-lg-10">
@@ -154,6 +157,15 @@ function Detail({
                     </li>
                   </ul>
                 </div>
+              </div>
+            </div>
+            <div className="col-lg-1"></div>
+          </div>
+
+          <div className="row">
+            <div className="col-lg-1"></div>
+            <div className="col-lg-10">
+              <div class="anime__details__text">
                 <div class="section-title">
                   <h4>줄거리</h4>
                 </div>
@@ -162,6 +174,7 @@ function Detail({
             </div>
             <div className="col-lg-1"></div>
           </div>
+
           <div className="row">
             <div className="col-lg-1"></div>
             <div className="col-lg-10">

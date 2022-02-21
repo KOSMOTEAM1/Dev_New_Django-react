@@ -41,10 +41,11 @@ function SearchBar({ placeholder, data }) {
       </form>
 
       {filteredData.length !== 0 && (
-          <><div class="section-title">
-          <h4>검색 결과</h4>
-        </div>
-        <div className="row">
+        <div class="product__page__title">
+          <div class="section-title">
+            <h4>검색 결과</h4>
+          </div>
+          <div className="row">
             {filteredData.map((value) => {
               return (
                 <div className="col-lg-3">
@@ -57,12 +58,13 @@ function SearchBar({ placeholder, data }) {
                     runtime={value.runtime}
                     naver={value.naverid}
                     imdb={value.imdbscore}
-                    nation={value.original_language} />
+                    nation={value.original_language}
+                  />
                 </div>
               );
             })}
+          </div>
         </div>
-        </>
       )}
     </div>
   );

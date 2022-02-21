@@ -75,7 +75,7 @@ function Home() {
           <div class="col-lg-12">
             {/* 검색 */}
             <div class="product__page__content">
-              <SearchBar placeholder="Search here" data={totalmovies} />
+              <SearchBar placeholder="영화 제목" data={totalmovies} />
             </div>
             {/* 최신작품 */}
             <div class="product__page__content">

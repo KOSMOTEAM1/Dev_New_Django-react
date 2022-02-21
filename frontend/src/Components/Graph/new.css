@@ -1,8 +1,16 @@
 .type09 {
   border-collapse: collapse;
   text-align: left;
-  line-height: 1.5;
-  color: #ffffff;
+  /* line-height: 1.5; */
+  color: black;
+  font-weight: 900;
+  line-height: 21px;
+  text-transform: uppercase;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding-left: 20px;
+  position: relative;
+  font-family: "Oswald", sans-serif;
 }
 .type09 thead th {
   padding: 10px;
@@ -14,7 +22,7 @@
   border-bottom: 3px solid #036;
 }
 .type09 tbody th {
-  width: 150px;
+  width: 300px;
   padding: 10px;
   font-weight: bold;
   vertical-align: top;
@@ -23,9 +31,10 @@
   color: #ffffff;
 }
 .type09 td {
-  width: 700px;
+  width: 800px;
   padding: 10px;
   vertical-align: top;
+  background-color: rgba(255, 255, 255, 0.473);
   border-bottom: 1px solid #ccc;
   text-align: center;
 }

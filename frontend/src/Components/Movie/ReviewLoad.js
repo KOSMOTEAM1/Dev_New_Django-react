@@ -29,12 +29,6 @@ function ReviewLoad({
 
   return (
     <div class="anime__review__item">
-      <div class="anime__review__item__text">
-        <h6>
-          hi <span> hi </span>
-        </h6>
-        <p>hi</p>
-      </div>
       {reviewlists.map((reviewlist) => (
         <div class="anime__review__item__text">
           <h6>
