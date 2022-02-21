@@ -17,7 +17,7 @@ function ReviewLoad({
   //id로 호출 받아 해당 작품의 상세 정보 불러오기
   const getreviewlists = async () => {
     const json = await (
-      await fetch(`http://127.0.0.1:8000/apimovie/review/list/${id}`)
+      await fetch(`http://127.0.0.1:8000/apimovie/review/${id}`)
     ).json();
 
     setreviewlists(json);

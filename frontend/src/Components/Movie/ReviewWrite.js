@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 var data = {
   content: "",
   otteid: "",
-  // username: "none",
+  username: "none",
 };
 
 function ReviewWrite({
@@ -39,12 +39,23 @@ function ReviewWrite({
 
   const submitClick = (e) => {
     e.preventDefault();
-    console.log(id);
+    console.log(data.otteid);
     console.log(data.content);
-    axios.post(`http://127.0.0.1:8000/apimovie/review/${id}`, {
+    console.log(data.username);
+    axios.post(`http://127.0.0.1:8000/apimovie/review`, {
+      username: data.username,
       content: data.content,
       otteid: data.otteid,
     });
+    // .then((response) => {
+    //   if (response.data.success) {
+    //     console.log(response.data.result);
+    //     SetBodyInput(""); //저장후 빈칸으로 만들기 위해
+    //     // props.refreshFunction(response.data.result);
+    //   } else {
+    //     alert("커멘트를 저장하지 못했습니다.");
+    //   }
+    // });
 
     // axios
     //   .post(`http://127.0.0.1:8000/review/${id}`, {
