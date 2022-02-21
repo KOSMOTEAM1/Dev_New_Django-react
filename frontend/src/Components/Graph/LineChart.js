@@ -62,8 +62,8 @@ class LineCharts extends Component {
             position: "absolute",
             top: "0",
             left: "0",
-            width: "130%",
-            height: "100%",
+            width: "180%",
+            height: "130%",
           }}
         >
           <ResponsiveContainer>
@@ -78,7 +78,7 @@ class LineCharts extends Component {
             >
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis dataKey="sysdate" />
-              <YAxis dataKey="rank" reversed="true" />
+              <YAxis dataKey="rank" reversed="false" domain={[1, 20]} />
               <Tooltip />
               <Legend align="center" verticalAlign="bottom" height={10} />
               <Line dataKey="rank" stroke="#8884d8" activeDot={{ r: 8 }} />
