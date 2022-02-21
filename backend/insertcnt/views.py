@@ -90,9 +90,20 @@ class Inserttotalrank(APIView):
         serializer_class = totalrankSerializer(rank, many=True)
         return Response(serializer_class.data)
     def get_object(self, a):
+        today=datetime.today()
+        lastweek = date.today() - timedelta(days=6)
+        
+
+        todaydates=today.strftime('%m-%d')
+        lastweekdates=lastweek.strftime('%m-%d')
+        print("today+", today)
+        print("lastweek1+", lastweekdates)
+        print("today1+", todaydates)
         print("get start")
         print("get + ", a)
-        queryset = totalrank.objects.filter(text=a)
+        #queryset = totalrank.objects.filter(text=a)
+        queryset = totalrank.objects.filter(text=a, sysdate__range=[lastweekdates, todaydates])
+        #queryset = movie.objects.filter(       release_date__range=["2019-01-01"                    , datetime.today()]).order_by('?')[:100]
         print(queryset)
         try:
             return queryset
@@ -106,9 +117,9 @@ class Inserttotalrank(APIView):
             a=date.today() - timedelta(days=1)
             print(a)
             data = []
-            data.append([a])
+            data.append([a])     
             #어제날짜 까지만
-            sql = "insert into otte_dev.insertcnt_totalrank (text, rank, sysdate)select a.text, @rownum := @rownum+1 as rank, substring_index(a.sysdate, '-', -2) from (SELECT id, text, count(text)as cnt, sysdate FrOM otte_dev.insertcnt_insertcnt as insertcnt, otte_dev.themoviedb_movie as movie  where sysdate = '2022-01-15' and insertcnt.text=movie.title and not exists(select sysdate from otte_dev.insertcnt_totalrank where sysdate='2022-01-15') group by text having count(text)>0 order by cnt desc limit 0,20) as a, (select @rownum:=0) as b;"
+            sql = "insert into otte_dev.insertcnt_totalrank (text, rank, sysdate)select a.text, @rownum := @rownum+1 as rank, substring_index(a.sysdate, '-', -2) from (SELECT id, text, count(text)as cnt, sysdate from otte_dev.insertcnt_insertcnt as insertcnt, otte_dev.themoviedb_movie as movie  where sysdate = %s and insertcnt.text=movie.title and not exists(select sysdate from otte_dev.insertcnt_totalrank where sysdate=%s) group by text having count(text)>0 order by cnt desc limit 0,20) as a, (select @rownum:=0) as b;"
             #insertcnt_totalrank 테이블에 어제날짜의 데이터가 없을경우 
             #어제날짜의 검색기록을 카운트해서 1-100순위로 나눈후 insert한다.
 
