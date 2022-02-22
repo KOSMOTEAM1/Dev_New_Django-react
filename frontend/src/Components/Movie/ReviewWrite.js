@@ -34,14 +34,9 @@ function ReviewWrite({
     data.content = body;
     data.otteid = id;
   }
-  console.log(body);
-  console.log(data.content);
 
   const submitClick = (e) => {
     e.preventDefault();
-    console.log(data.otteid);
-    console.log(data.content);
-    console.log(data.username);
     axios.post(`http://127.0.0.1:8000/apimovie/review`, {
       username: data.username,
       content: data.content,
