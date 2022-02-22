@@ -102,7 +102,7 @@ class Inserttotalrank(APIView):
         print("get start")
         print("get + ", a)
         #queryset = totalrank.objects.filter(text=a)
-        queryset = totalrank.objects.filter(text=a, sysdate__range=[lastweekdates, todaydates])
+        queryset = totalrank.objects.filter(text=a, sysdate__range=[lastweekdates, todaydates]).order_by('sysdate')
         #queryset = movie.objects.filter(       release_date__range=["2019-01-01"                    , datetime.today()]).order_by('?')[:100]
         print(queryset)
         try:
