@@ -67,6 +67,9 @@ const App = () => {
               />
               <x2></x2>
             </div>
+            <Link to="/Community2/insert">
+                    <button>신규등록</button>
+            </Link>
           </div>
         </div>
       </div>
