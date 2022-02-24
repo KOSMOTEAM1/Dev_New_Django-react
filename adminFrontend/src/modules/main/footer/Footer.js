@@ -11,7 +11,7 @@ const Footer = () => {
             <strong>
                 <span>Copyright © {DateTime.now().toFormat('y')} </span>
                 <a
-                    href="https://youtube.com"
+                    href="https://www.youtube.com/channel/UCV1kjYsup5T_DZx2lLlS1CA"
                     target="_blank"
                     rel="noopener noreferrer"
                 >

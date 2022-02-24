@@ -30,6 +30,14 @@ const Header = ({toggleMenuSidebar}) => {
                         {t('메인 페이지')}
                     </a>
                 </li>
+                <li className="nav-item d-none d-sm-inline-block">
+                    <a
+                        href="http://192.168.0.41:5601/app/canvas#/workpad/workpad-656c9527-d4b0-422f-a2de-da31b282d1e1/page/1?__fullscreen=true"
+                        className="nav-link"
+                    >
+                        {t('데이터 현황 페이지')}
+                    </a>
+                </li>
             </ul>
             <ul className="navbar-nav ml-auto">
                 {/* <li className="nav-item">
