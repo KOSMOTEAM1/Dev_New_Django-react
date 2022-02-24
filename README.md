@@ -16,4 +16,5 @@
 사용자 자유 게시판을 이용하여 사용자 간 소통이 가능합니다.
 
 [OTTE사이트](www.otte.kro.kr)
+
 [kosmoteam1 notion](https://www.notion.so/5d067ad3ed594cd49f65c9a09cf26ab8?v=cb03ca6f61f44843b73c9b2832c88cf9)
