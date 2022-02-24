@@ -1,6 +1,5 @@
 from django.db.models import query
 from django.views import generic
-from elasticsearch import serializer
 from rest_framework import generics
 from themovieDB.models import movie, moviegenres, movieactors, moviedirectors, movieott, Review
 from django.db.models import F

@@ -3067,6 +3067,11 @@ commander@^2.18.0, commander@^2.20.0, commander@^2.5.0:
   resolved "https://registry.npmjs.org/commander/-/commander-2.20.3.tgz"
   integrity sha512-GpVkmM8vF2vQUkj2LvZmD35JxeJOLCwJ9cUkugyk2nuhbv3+mJvpLYYt+0+USMxE+oj+ey/lJEnhZw75x/OMcQ==
 
+commander@^6.1.0:
+  version "6.2.1"
+  resolved "https://registry.yarnpkg.com/commander/-/commander-6.2.1.tgz#0792eb682dfbc325999bb2b84fddddba110ac73c"
+  integrity sha512-U7VdrJFnJgo4xjrHpTzu0yrHPGImdsmD95ZlgYSEajAn2JKzDhDTPG9kBTefmObL2w/ngeZnilk+OV9CG3d7UA==
+
 commander@^7.2.0:
   version "7.2.0"
   resolved "https://registry.npmjs.org/commander/-/commander-7.2.0.tgz"
@@ -6536,6 +6541,14 @@ neo-async@^2.6.2:
   version "2.6.2"
   resolved "https://registry.npmjs.org/neo-async/-/neo-async-2.6.2.tgz"
   integrity sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==
+
+nginx@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/nginx/-/nginx-1.0.3.tgz#fa9b042207b72d8e0733a7a11f302688240a7cad"
+  integrity sha512-5q4ddIBXgkvYV3+yJurgSW7NV72GnmLLbvMC8FEPRq71NWP3bMLHqemtzsofqmx1bkBdnW75ANbRiOvA6sSUtg==
+  dependencies:
+    chalk "^4.1.0"
+    commander "^6.1.0"
 
 no-case@^3.0.4:
   version "3.0.4"
