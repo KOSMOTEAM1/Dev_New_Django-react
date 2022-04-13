@@ -18,3 +18,5 @@
 [OTTE사이트](www.otte.kro.kr)
 
 [kosmoteam1 notion](https://www.notion.so/5d067ad3ed594cd49f65c9a09cf26ab8?v=cb03ca6f61f44843b73c9b2832c88cf9)
+
+[kosmoteam1 시연동영상](https://www.youtube.com/channel/UCV1kjYsup5T_DZx2lLlS1CA)
